@@ -31,7 +31,7 @@ test("server-renders the completed OXSA Nepal homepage", async () => {
   const html = await response.text();
   assert.match(html, /<title>OXSA Nepal \| Animal Welfare Society<\/title>/i);
   assert.match(html, /OXSA Nepal/);
-  assert.match(html, /Compassion in action/i);
+  assert.match(html, /Every street animal deserves/i);
   assert.match(html, /href="\/donate"/);
   assert.match(html, /href="\/sponsor"/);
   assert.match(html, /href="\/adopt"/);
@@ -66,6 +66,37 @@ test("primary navigation routes render successfully", async () => {
       `${route} should return HTML`,
     );
   }
+});
+
+test("every rendered internal link resolves successfully", async () => {
+  const pending = ["/"];
+  const visited = new Set();
+
+  while (pending.length) {
+    const path = pending.shift();
+    if (!path || visited.has(path)) continue;
+    visited.add(path);
+
+    const response = await render(path);
+    assert.equal(response.status, 200, `${path} should return 200`);
+    const html = await response.text();
+
+    for (const match of html.matchAll(/href="([^"]+)"/g)) {
+      const href = match[1].replaceAll("&amp;", "&");
+      const url = new URL(href, "http://localhost");
+      if (
+        url.origin !== "http://localhost" ||
+        !url.pathname.startsWith("/") ||
+        url.pathname.startsWith("/_next/") ||
+        url.pathname.startsWith("/images/") ||
+        /\.[a-z0-9]+$/i.test(url.pathname)
+      ) continue;
+      const nextPath = `${url.pathname}${url.search}`;
+      if (!visited.has(nextPath)) pending.push(nextPath);
+    }
+  }
+
+  assert.ok(visited.size > 20, `expected a full-site crawl, visited ${visited.size} routes`);
 });
 
 test("unknown routes return a proper not-found response", async () => {

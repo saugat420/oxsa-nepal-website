@@ -23,15 +23,15 @@ function FooterLinks({ title, links }: { title: string; links: readonly (readonl
 }
 
 export function PageHero({ eyebrow, title, children, actions }: { eyebrow?: string; title: string; children: React.ReactNode; actions?: React.ReactNode }) {
-  return <section className="page-hero"><div className="container narrow"><p className="eyebrow">{eyebrow ?? "OXSA Nepal"}</p><h1>{title}</h1><div className="hero-copy">{children}</div>{actions && <div className="button-row">{actions}</div>}</div></section>;
+  return <section className="page-hero"><div className="container"><div className="page-hero-inner"><p className="eyebrow">{eyebrow ?? "OXSA Nepal"}</p><h1>{title}</h1><div className="hero-copy">{children}</div>{actions && <div className="button-row">{actions}</div>}</div></div></section>;
 }
 
 export function PawPlaceholder({ name, species = "Animal" }: { name: string; species?: string }) {
-  return <div className="paw-placeholder" role="img" aria-label={`${name}, ${species}; photo coming soon`}><span>♥</span><b>{name}</b><small>Photo coming soon</small></div>;
+  return <div className="paw-placeholder" role="img" aria-label={`${name}, ${species}; photo coming soon`}><Image src="/images/logo/oxsa-logo.jpg" alt="" width={150} height={150}/><b>{name}</b><small>Photo coming soon</small></div>;
 }
 
 export function Breadcrumb({ items }: { items: [string,string?][] }) {
-  return <nav className="breadcrumb" aria-label="Breadcrumb"><Link href="/">Home</Link>{items.map(([label,href]) => <span key={label}>/ {href ? <Link href={href}>{label}</Link> : label}</span>)}</nav>;
+  return <nav className="breadcrumb" aria-label="Breadcrumb"><Link href="/">Home</Link>{items.map(([label,href]) => <span key={label}>› {href ? <Link href={href}>{label}</Link> : label}</span>)}</nav>;
 }
 
 export function CTA() {
