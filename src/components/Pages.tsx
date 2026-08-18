@@ -1,9 +1,9 @@
-import Link from "next/link";
 import { ArrowRight, Banknote, Bone, ExternalLink, Heart, Home, Mail, MapPin, Phone, ShieldCheck, ShoppingBasket, Stethoscope, Syringe } from "lucide-react";
 import { adoptions, animals, blog, faqs, media, stories, wishlist, work } from "@/src/content/data";
 import { siteConfig } from "@/src/config/site";
 import { Breadcrumb, CTA, PageHero, PawPlaceholder } from "./SiteChrome";
 import { CopyButton, SmartForm, SponsorGrid, VetDirectory } from "./Interactive";
+import { NativeLink as Link } from "./NativeLink";
 
 export function HomePage() {
   return <>

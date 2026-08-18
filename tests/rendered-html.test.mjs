@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 async function render(path = "/") {
@@ -70,4 +71,19 @@ test("primary navigation routes render successfully", async () => {
 test("unknown routes return a proper not-found response", async () => {
   const response = await render("/this-page-does-not-exist");
   assert.equal(response.status, 404);
+});
+
+test("internal navigation uses production-safe native links", async () => {
+  const files = [
+    "../src/components/HeaderNav.tsx",
+    "../src/components/SiteChrome.tsx",
+    "../src/components/Interactive.tsx",
+    "../src/components/Pages.tsx",
+    "../app/not-found.tsx",
+  ];
+  const source = await Promise.all(
+    files.map((file) => readFile(new URL(file, import.meta.url), "utf8")),
+  );
+
+  for (const contents of source) assert.doesNotMatch(contents, /next\/link/);
 });

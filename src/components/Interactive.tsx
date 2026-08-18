@@ -1,11 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import { Check, Copy, Search } from "lucide-react";
 import { animals, vets } from "@/src/content/data";
 import { PawPlaceholder } from "./SiteChrome";
 import { siteConfig } from "@/src/config/site";
+import { NativeLink as Link } from "./NativeLink";
 
 export function CopyButton({ value, label = "Copy" }: { value: string; label?: string }) {
   const [copied, setCopied] = useState(false);

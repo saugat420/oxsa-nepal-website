@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Heart, Menu, X } from "lucide-react";
 import { exploreNav, nav } from "@/src/config/site";
+import { NativeLink as Link } from "./NativeLink";
 
 export function HeaderNav() {
   const [exploreOpen, setExploreOpen] = useState(false);

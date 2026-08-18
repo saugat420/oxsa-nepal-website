@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { siteConfig } from "@/src/config/site";
 import { HeaderNav } from "./HeaderNav";
+import { NativeLink as Link } from "./NativeLink";
 
 export function Header() {
   return <HeaderNav />;
