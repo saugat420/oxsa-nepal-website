@@ -10,7 +10,7 @@ import { siteConfig } from "@/src/config/site";
 export function CopyButton({ value, label = "Copy" }: { value: string; label?: string }) {
   const [copied, setCopied] = useState(false);
   async function copy() { await navigator.clipboard.writeText(value); setCopied(true); window.setTimeout(()=>setCopied(false), 1800); }
-  return <button className="copy-button" type="button" onClick={copy} aria-live="polite">{copied ? <><Check size={16}/> Copied to clipboard</> : <><Copy size={16}/> {label}</>}</button>;
+  return <button className="copy-button" type="button" onClick={copy} aria-live="polite">{copied ? <><Check/> Copied to clipboard</> : <><Copy/> {label}</>}</button>;
 }
 
 export function SponsorGrid({ limit }: { limit?: number }) {
@@ -23,7 +23,7 @@ export function VetDirectory() {
   const [query,setQuery] = useState(""); const [city,setCity] = useState("All");
   const cities=["All","Lalitpur","Kathmandu","Bhaktapur","Pokhara","Bharatpur","Birgunj"];
   const results=useMemo(()=>vets.filter(v=>(city==="All"||v[1]===city)&&`${v[0]} ${v[1]} ${v[2]}`.toLowerCase().includes(query.toLowerCase())),[query,city]);
-  return <><div className="directory-tools"><label className="search-box"><Search size={19}/><span className="sr-only">Search vet centres</span><input value={query} onInput={e=>setQuery(e.currentTarget.value)} onChange={e=>setQuery(e.target.value)} placeholder="Search clinic, area or city"/></label><label><span className="sr-only">Filter by city</span><select value={city} onChange={e=>setCity(e.target.value)}>{cities.map(c=><option key={c}>{c}</option>)}</select></label></div><div className="vet-list" role="list">{results.map((v,i)=><article className="vet-card" role="listitem" key={`${v[0]}-${i}`}><div><span className="tag">{v[1]}</span><h3>{v[0]}</h3><p>{v[2]}</p></div><a className="phone-link" href={`tel:${v[3].replaceAll("-","")}`}>{v[3]}</a></article>)}</div>{results.length===0&&<div className="empty-state">No vet centres match your search. Try a different area or city.</div>}</>;
+  return <><div className="directory-tools"><label className="search-box"><Search/><span className="sr-only">Search vet centres</span><input value={query} onInput={e=>setQuery(e.currentTarget.value)} onChange={e=>setQuery(e.target.value)} placeholder="Search clinic, area or city"/></label><label><span className="sr-only">Filter by city</span><select value={city} onChange={e=>setCity(e.target.value)}>{cities.map(c=><option key={c}>{c}</option>)}</select></label></div><div className="vet-list" role="list">{results.map((v,i)=><article className="vet-card" role="listitem" key={`${v[0]}-${i}`}><div><span className="tag">{v[1]}</span><h3>{v[0]}</h3><p>{v[2]}</p></div><a className="phone-link" href={`tel:${v[3].replaceAll("-","")}`}>{v[3]}</a></article>)}</div>{results.length===0&&<div className="empty-state">No vet centres match your search. Try a different area or city.</div>}</>;
 }
 
 type FormKind = "contact"|"sponsor"|"adoption";
