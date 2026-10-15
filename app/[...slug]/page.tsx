@@ -6,14 +6,14 @@ import { AboutPage, AdoptPage, ArticlePage, BlogPage, ContactPage, DonatePage, F
 const meta: Record<string,[string,string]>={
   about:["Our Story","Learn how a dog named Oxsa inspired an animal-welfare organization in Lalitpur."],
   "our-work":["Our Work","Spaying and neutering, adoption, feeding, vaccination and awareness."],
-  donate:["Donate","Verified ways to donate directly to OXSA Nepal."], sponsor:["Sponsor an Animal","Support an OXSA Nepal shelter animal each month."],
-  adopt:["Adopt","Learn about responsible adoption and submit an application."], stories:["Stories of Compassion","Read OXSA Nepal's animal-welfare success stories."],
-  blog:["Blog","Animal-welfare education and stories from OXSA Nepal."], wishlist:["Shelter Wishlist","Practical supplies that help OXSA Nepal care for animals."],
+  donate:["Donate","Verified ways to donate directly to Oxsa Nepal."], sponsor:["Sponsor an Animal","Support an Oxsa Nepal shelter animal each month."],
+  adopt:["Adopt","Learn about responsible adoption and submit an application."], stories:["Stories of Compassion","Read Oxsa Nepal's animal-welfare success stories."],
+  blog:["Blog","Animal-welfare education and stories from Oxsa Nepal."], wishlist:["Shelter Wishlist","Practical supplies that help Oxsa Nepal care for animals."],
   "vet-centres":["Veterinary Centres","Search a practical directory of veterinary centres in Nepal."], faq:["FAQ","Answers to common animal-welfare questions."],
-  media:["Media","OXSA Nepal stories and interviews in Nepali media."], contact:["Contact","Call, email or visit OXSA Nepal in Lalitpur."],
+  media:["Media","Oxsa Nepal stories and interviews in Nepali media."], contact:["Contact","Call, email or visit Oxsa Nepal in Lalitpur."],
 };
 
-export async function generateMetadata({params}:{params:Promise<{slug:string[]}>}):Promise<Metadata>{const {slug}=await params;const root=slug[0];let data=meta[root];if(root==="sponsor"&&slug[1]==="apply")data=["Sponsorship Form","Apply to sponsor an OXSA Nepal shelter animal."];else if(root==="sponsor"&&slug[1]){const a=animals.find(x=>x.slug===slug[1]);if(a)data=[`Sponsor ${a.name}`,a.excerpt];}if((root==="blog"||root==="stories")&&slug[1]){const a=(root==="blog"?blog:stories).find(x=>x.slug===slug[1]);if(a)data=[a.title,a.excerpt];}if(!data)return {};return{title:data[0],description:data[1],alternates:{canonical:`/${slug.join("/")}`},icons:{icon:[{url:"/favicon.png?v=2",type:"image/png",sizes:"512x512"}],shortcut:"/favicon.png?v=2",apple:"/favicon.png?v=2"},openGraph:{title:`${data[0]} | Oxsa Nepal`,description:data[1]}}}
+export async function generateMetadata({params}:{params:Promise<{slug:string[]}>}):Promise<Metadata>{const {slug}=await params;const root=slug[0];let data=meta[root];if(root==="sponsor"&&slug[1]==="apply")data=["Sponsorship Form","Apply to sponsor an Oxsa Nepal shelter animal."];else if(root==="sponsor"&&slug[1]){const a=animals.find(x=>x.slug===slug[1]);if(a)data=[`Sponsor ${a.name}`,a.excerpt];}if((root==="blog"||root==="stories")&&slug[1]){const a=(root==="blog"?blog:stories).find(x=>x.slug===slug[1]);if(a)data=[a.title,a.excerpt];}if(!data)return {};return{title:data[0],description:data[1],alternates:{canonical:`/${slug.join("/")}`},icons:{icon:[{url:"/favicon.png?v=2",type:"image/png",sizes:"512x512"}],shortcut:"/favicon.png?v=2",apple:"/favicon.png?v=2"},openGraph:{title:`${data[0]} | Oxsa Nepal`,description:data[1]}}}
 
 export async function generateStaticParams(){return [...Object.keys(meta).map(x=>({slug:[x]})),...animals.map(x=>({slug:["sponsor",x.slug]})),...blog.map(x=>({slug:["blog",x.slug]})),...stories.map(x=>({slug:["stories",x.slug]})),{slug:["sponsor","apply"]}]}
 

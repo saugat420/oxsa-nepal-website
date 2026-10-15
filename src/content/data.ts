@@ -4,11 +4,11 @@ const dogNames = ["Puku", "Candy", "Dony", "Chunti", "Sumnima", "Seti", "Tinu", 
 const catNames = ["Bhattu", "Ginju"];
 
 const profiles: Record<string, { excerpt: string; story: string[] }> = {
-  Puku: { excerpt: "Sweet, mischievous and always ready for a tiny adventure.", story: ["Puku arrived at the shelter gate when he was a small puppy after roaming near the Thapathali Pool. Although many male puppies find homes, Puku stayed and grew up with OXSA Nepal.", "He enjoys watching the road and occasionally slips through an open door, only to return from his little adventure a few minutes later. Sponsorship helps provide the steady food, shelter and care he depends on."] },
-  Candy: { excerpt: "A gentle shelter resident who values calm company.", story: ["Candy is one of the animals who depends on OXSA Nepal for daily food, safety and care.", "Monthly sponsorship helps make that care dependable and gives the shelter a steadier foundation for planning."] },
-  Dony: { excerpt: "A much-loved member of the OXSA shelter family.", story: ["Dony lives in OXSA Nepal's care and is part of its monthly sponsorship programme.", "A sponsor can contribute to his everyday food, shelter and access to medical support when it is needed."] },
+  Puku: { excerpt: "Sweet, mischievous and always ready for a tiny adventure.", story: ["Puku arrived at the shelter gate when he was a small puppy after roaming near the Thapathali Pool. Although many male puppies find homes, Puku stayed and grew up with Oxsa Nepal.", "He enjoys watching the road and occasionally slips through an open door, only to return from his little adventure a few minutes later. Sponsorship helps provide the steady food, shelter and care he depends on."] },
+  Candy: { excerpt: "A gentle shelter resident who values calm company.", story: ["Candy is one of the animals who depends on Oxsa Nepal for daily food, safety and care.", "Monthly sponsorship helps make that care dependable and gives the shelter a steadier foundation for planning."] },
+  Dony: { excerpt: "A much-loved member of the Oxsa shelter family.", story: ["Dony lives in Oxsa Nepal's care and is part of its monthly sponsorship programme.", "A sponsor can contribute to his everyday food, shelter and access to medical support when it is needed."] },
   Chunti: { excerpt: "Learning that safety can feel like freedom.", story: ["Chunti's journey is connected with recovery from life in a cage and the patient work of rebuilding trust.", "Sponsorship supports the calm routines and consistent care on which that trust depends."] },
-  Tinu: { excerpt: "The shelter's watchful and affectionate guardian.", story: ["Tinu is remembered in OXSA Nepal's writing as the shelter's adorable guardian.", "Monthly support helps provide the everyday care that keeps Tinu safe at the shelter."] },
+  Tinu: { excerpt: "The shelter's watchful and affectionate guardian.", story: ["Tinu is remembered in Oxsa Nepal's writing as the shelter's adorable guardian.", "Monthly support helps provide the everyday care that keeps Tinu safe at the shelter."] },
   Nakali: { excerpt: "A resilient animal whose trust grew with patient care.", story: ["Nakali's story is connected with Chunti's journey from confinement toward freedom and care.", "Sponsorship helps sustain the patient, consistent care behind that recovery."] },
 };
 
@@ -18,29 +18,29 @@ export const animals: Animal[] = [...dogNames.map((name) => ({
   species: "Dog" as const,
   excerpt: profiles[name]?.excerpt ?? "A shelter resident with an individual story and a need for steady care.",
   story: profiles[name]?.story ?? [
-    `${name} is one of the animals living in OXSA Nepal's care and is included in the monthly sponsorship programme.`,
-    "Monthly sponsorship helps OXSA Nepal provide consistent food, shelter and care.",
+    `${name} is one of the animals living in Oxsa Nepal's care and is included in the monthly sponsorship programme.`,
+    "Monthly sponsorship helps Oxsa Nepal provide consistent food, shelter and care.",
   ],
 })), ...catNames.map((name) => ({
   name,
   slug: name.toLowerCase(),
   species: "Cat" as const,
   excerpt: "A feline shelter resident who can be supported from afar.",
-  story: [`${name} is one of the cats living in OXSA Nepal's care.`, "Monthly sponsorship helps OXSA Nepal provide consistent food, shelter and care."],
+  story: [`${name} is one of the cats living in Oxsa Nepal's care.`, "Monthly sponsorship helps Oxsa Nepal provide consistent food, shelter and care."],
 }))];
 
 export const work = [
-  { id: "spaying", title: "Spaying & Neutering", short: "Humane population management prevents future litters from being born into hunger, illness and danger.", body: "Spaying and neutering is one of the most responsible ways to reduce long-term suffering. OXSA Nepal supports humane population management so fewer animals are born into unsafe conditions." },
-  { id: "adoption", title: "Adoption", short: "Careful matching helps animals find safe, permanent and responsible homes.", body: "Adoption is a lifelong promise. OXSA Nepal screens prospective homes because a good match protects both the animal and the family welcoming them." },
+  { id: "spaying", title: "Spaying & Neutering", short: "Humane population management prevents future litters from being born into hunger, illness and danger.", body: "Spaying and neutering is one of the most responsible ways to reduce long-term suffering. Oxsa Nepal supports humane population management so fewer animals are born into unsafe conditions." },
+  { id: "adoption", title: "Adoption", short: "Careful matching helps animals find safe, permanent and responsible homes.", body: "Adoption is a lifelong promise. Oxsa Nepal screens prospective homes because a good match protects both the animal and the family welcoming them." },
   { id: "feeding", title: "Daily Feeding", short: "Regular meals relieve hunger and help build trust with community animals.", body: "Street animals face hunger every day. Regular feeding gives immediate relief and creates the trust needed to notice illness, support vaccination and offer further care." },
-  { id: "vaccination", title: "Vaccination", short: "Vaccination protects animals and communities from preventable disease.", body: "OXSA Nepal supports vaccination work against serious diseases including rabies and distemper. Prevention protects individual animals and the wider community." },
-  { id: "awareness", title: "Awareness", short: "Education turns everyday choices into a more compassionate community.", body: "Lasting change depends on how people understand and respond to animals. OXSA Nepal shares practical guidance and encourages community responsibility." },
+  { id: "vaccination", title: "Vaccination", short: "Vaccination protects animals and communities from preventable disease.", body: "Oxsa Nepal supports vaccination work against serious diseases including rabies and distemper. Prevention protects individual animals and the wider community." },
+  { id: "awareness", title: "Awareness", short: "Education turns everyday choices into a more compassionate community.", body: "Lasting change depends on how people understand and respond to animals. Oxsa Nepal shares practical guidance and encourages community responsibility." },
 ] as const;
 
 export type Article = { title: string; slug: string; excerpt: string; date?: string; category?: string; paragraphs: string[]; published?: boolean };
 const article = (title: string, slug: string, excerpt: string, category = "Story"): Article => ({
   title, slug, excerpt, category, published: true,
-  paragraphs: [excerpt, "OXSA Nepal shares this account to encourage patient, practical compassion and a stronger sense of responsibility toward animals in our communities."],
+  paragraphs: [excerpt, "Oxsa Nepal shares this account to encourage patient, practical compassion and a stronger sense of responsibility toward animals in our communities."],
 });
 
 export const stories: Article[] = [
@@ -71,9 +71,9 @@ export const blog: Article[] = [
 ];
 
 export const faqs = [
-  ["Do you take dogs into the shelter?", "Shelter space and care capacity are limited. Please contact OXSA Nepal before bringing an animal so the team can explain what help is currently possible."],
-  ["Do you do rescues?", "Rescue capability can change with staffing, space and funding. Call OXSA Nepal for current guidance; do not assume an immediate rescue response is available."],
-  ["Where can my dog stay while I travel?", "OXSA Nepal is not presented as a boarding service. Ask a trusted caregiver or a verified boarding provider and check the environment in person."],
+  ["Do you take dogs into the shelter?", "Shelter space and care capacity are limited. Please contact Oxsa Nepal before bringing an animal so the team can explain what help is currently possible."],
+  ["Do you do rescues?", "Rescue capability can change with staffing, space and funding. Call Oxsa Nepal for current guidance; do not assume an immediate rescue response is available."],
+  ["Where can my dog stay while I travel?", "Oxsa Nepal is not presented as a boarding service. Ask a trusted caregiver or a verified boarding provider and check the environment in person."],
   ["How can I help a sick or injured street dog?", "Keep yourself and the animal safe, approach calmly, contact a veterinary clinic and ask local animal-welfare groups for current assistance. Avoid giving human medicine."],
   ["How can I feed local dogs affordably?", "Offer clean water and nutritionally suitable food in a safe place away from traffic, then clean the area. Consistency and community cooperation help."],
   ["How do I find a home for an animal?", "Use clear photos and honest information, ask trusted networks to share, and screen every interested home carefully."],
@@ -107,7 +107,7 @@ export const wishlist = {
 } as const;
 
 export const media = [
-  { publication: "Herne Katha", title: "OXSA Nepal feature", url: "https://www.youtube.com/results?search_query=Herne+Katha+OXSA+Nepal" },
+  { publication: "Herne Katha", title: "Oxsa Nepal feature", url: "https://www.youtube.com/results?search_query=Herne+Katha+Oxsa+Nepal" },
   { publication: "The Annapurna Express", title: "Raina Byanjankar: All in for animal welfare", url: "https://theannapurnaexpress.com/story/46777/" },
   { publication: "Edusanjal", title: "Oxsa Nepal: An Organization for Those Who Can't Speak for Themselves", url: "https://edusanjal.com/post/oxsa-nepal-an-organization-for-those-who-cant-speak-for-themselves/" },
 ] as const;

@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "OXSA Nepal Animal Welfare Society",
+  name: "Oxsa Nepal Animal Welfare Society",
   shortName: "Oxsa Nepal",
   description: "An animal-welfare nonprofit working for safer, healthier lives for street animals in Nepal.",
   url: "https://oxsa-nepal.digitalsaugatb.chatgpt.site",

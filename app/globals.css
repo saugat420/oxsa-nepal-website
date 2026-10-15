@@ -86,11 +86,13 @@ p { margin: 0 0 1.15em; color: var(--muted); }
 .mobile-section { margin-top: 6px; color: var(--brand-dark); font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 
 .home-hero { padding: 80px 0; border-bottom: 1px solid var(--line); background: var(--cream); }
-.hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; grid-template-areas: "title visual" "details visual"; align-items: center; gap: 20px 56px; }
+.hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; grid-template-areas: "title visual" "description visual" "actions visual"; align-items: center; gap: 20px 56px; }
 .hero-title { grid-area: title; align-self: end; }
-.hero-details { grid-area: details; align-self: start; }
+.hero-description { grid-area: description; align-self: center; }
+.hero-actions { grid-area: actions; align-self: start; }
+.hero-actions .button-row { margin-top: 0; }
 .home-hero h1 { max-width: 650px; font-size: clamp(2.45rem, 4vw, 3.45rem); }
-.home-hero .lead { max-width: 650px; margin-top: 24px; }
+.home-hero .lead { max-width: 650px; margin: 0; }
 .hero-visual, .story-image, .program-image { display: grid; place-items: center; overflow: hidden; border: 1px solid var(--line); border-radius: 24px; background: var(--blush); }
 .hero-visual { grid-area: visual; aspect-ratio: 1097/731; min-height: 0; }
 .hero-visual:before, .hero-visual:after, .hero-note { display: none; }
@@ -385,7 +387,7 @@ p { margin: 0 0 1.15em; color: var(--muted); }
   .site-header .button-small { padding: 9px 12px; font-size: 0; }
   .home-hero { padding: 56px 0; }
   .hero-grid, .home-story-grid, .about-intro-grid, .work-section, .profile-grid, .form-wrap, .contact-grid { grid-template-columns: 1fr; }
-  .hero-grid { grid-template-areas: "title" "visual" "details"; gap: 28px; }
+  .hero-grid { grid-template-areas: "title" "description" "visual" "actions"; gap: 28px; }
   .hero-visual { max-width: 580px; width: 100%; margin-inline: auto; }
   .home-story-grid, .about-intro-grid, .work-section { gap: 34px; }
   .work-section:nth-child(even) > div:first-child { order: 0; }

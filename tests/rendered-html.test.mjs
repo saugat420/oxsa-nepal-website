@@ -23,7 +23,7 @@ async function render(path = "/") {
   );
 }
 
-test("server-renders the completed OXSA Nepal homepage", async () => {
+test("server-renders the completed Oxsa Nepal homepage", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
@@ -35,7 +35,8 @@ test("server-renders the completed OXSA Nepal homepage", async () => {
   assert.match(html, /images\/logo\/oxsa-logo\.png/i);
   assert.match(html, /images\/content\/hero-oxsa-original\.jpg/i);
   assert.match(html, /images\/content\/our-story\.jpg/i);
-  assert.match(html, /hero-title[\s\S]*hero-oxsa-original[\s\S]*OXSA Nepal works/i);
+  assert.match(html, /hero-title[\s\S]*Oxsa Nepal works[\s\S]*hero-oxsa-original[\s\S]*hero-actions/i);
+  assert.doesNotMatch(html, /\bOXSA\b/);
   assert.match(html, /favicon\.png\?v=2/i);
   assert.match(html, /href="\/donate"/);
   assert.match(html, /href="\/sponsor"/);

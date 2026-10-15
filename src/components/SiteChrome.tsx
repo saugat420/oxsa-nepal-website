@@ -15,7 +15,7 @@ export function Footer() {
     <FooterLinks title="Quick Links" links={[["About","/about"],["Our Work","/our-work"],["Adopt","/adopt"],["Sponsor","/sponsor"],["Donate","/donate"]]}/>
     <FooterLinks title="Helpful Resources" links={[["Success Stories","/stories"],["Blog","/blog"],["FAQ","/faq"],["Vet Centres","/vet-centres"],["Wishlist","/wishlist"]]}/>
     <div><h3>Contact</h3><address><a href={`tel:${siteConfig.phone}`}><Phone/>{siteConfig.phone}</a><a href={`mailto:${siteConfig.email}`}><Mail/>{siteConfig.email}</a><span><MapPin/>{siteConfig.shelter}</span><span><MapPin/>{siteConfig.office}</span></address></div>
-  </div><div className="container copyright">© {year} OXSA Nepal Animal Welfare Society. All rights reserved.</div></footer>;
+  </div><div className="container copyright">© {year} Oxsa Nepal Animal Welfare Society. All rights reserved.</div></footer>;
 }
 
 function FooterLinks({ title, links }: { title: string; links: readonly (readonly [string,string])[] }) {
