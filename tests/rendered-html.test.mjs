@@ -33,6 +33,9 @@ test("server-renders the completed OXSA Nepal homepage", async () => {
   assert.match(html, /Oxsa Nepal/);
   assert.match(html, /Every street animal deserves/i);
   assert.match(html, /images\/logo\/oxsa-logo\.png/i);
+  assert.match(html, /images\/content\/hero-oxsa-hd\.png/i);
+  assert.match(html, /images\/content\/our-story\.jpg/i);
+  assert.match(html, /hero-title[\s\S]*hero-oxsa-hd[\s\S]*OXSA Nepal works/i);
   assert.match(html, /favicon\.png\?v=2/i);
   assert.match(html, /href="\/donate"/);
   assert.match(html, /href="\/sponsor"/);
@@ -135,4 +138,5 @@ test("internal navigation uses production-safe native links", async () => {
   );
 
   for (const contents of source) assert.doesNotMatch(contents, /next\/link/);
+  assert.doesNotMatch(source.join("\n"), /[✚⌂◒✦◎]/);
 });

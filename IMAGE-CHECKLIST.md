@@ -1,13 +1,13 @@
 # Oxsa Nepal website image checklist
 
-## First delivery: 26 original photos
+## First delivery: 26 original photos — 2 supplied, 24 remaining
 
 These images will remove the main placeholders across the most important pages. Please send the original, highest-resolution files without text, frames, filters or screenshots. Landscape photos should ideally be at least 2000 px wide; animal portraits should be at least 1400 px on the shortest side.
 
 ### Shared across Home, About and Contact — 4 photos
 
-1. **Oxsa's portrait** — a clear, warm photo of the German Shepherd who inspired the organization. Used on Home and About. Portrait or square.
-2. **Current shelter exterior / wide view** — a welcoming, recent view of the shelter. Used on Home and Contact. Landscape, ideally 16:9.
+1. **Oxsa's portrait — supplied** — now used in the Home story section and About page.
+2. **Current shelter exterior / wide view — supplied** — the provided team-and-animals photo has been HD-refined and is now used in the Home hero.
 3. **Founder or core team with animals** — natural group photo, not a formal passport-style pose. Used on About and Contact. Landscape.
 4. **Early garage or shelter archive** — a photo from the early rescue years, especially around or after 2015. Used on About. Landscape.
 

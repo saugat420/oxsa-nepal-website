@@ -30,11 +30,11 @@ export const animals: Animal[] = [...dogNames.map((name) => ({
 }))];
 
 export const work = [
-  { id: "spaying", icon: "✚", title: "Spaying & Neutering", short: "Humane population management prevents future litters from being born into hunger, illness and danger.", body: "Spaying and neutering is one of the most responsible ways to reduce long-term suffering. OXSA Nepal supports humane population management so fewer animals are born into unsafe conditions." },
-  { id: "adoption", icon: "⌂", title: "Adoption", short: "Careful matching helps animals find safe, permanent and responsible homes.", body: "Adoption is a lifelong promise. OXSA Nepal screens prospective homes because a good match protects both the animal and the family welcoming them." },
-  { id: "feeding", icon: "◒", title: "Daily Feeding", short: "Regular meals relieve hunger and help build trust with community animals.", body: "Street animals face hunger every day. Regular feeding gives immediate relief and creates the trust needed to notice illness, support vaccination and offer further care." },
-  { id: "vaccination", icon: "✦", title: "Vaccination", short: "Vaccination protects animals and communities from preventable disease.", body: "OXSA Nepal supports vaccination work against serious diseases including rabies and distemper. Prevention protects individual animals and the wider community." },
-  { id: "awareness", icon: "◎", title: "Awareness", short: "Education turns everyday choices into a more compassionate community.", body: "Lasting change depends on how people understand and respond to animals. OXSA Nepal shares practical guidance and encourages community responsibility." },
+  { id: "spaying", title: "Spaying & Neutering", short: "Humane population management prevents future litters from being born into hunger, illness and danger.", body: "Spaying and neutering is one of the most responsible ways to reduce long-term suffering. OXSA Nepal supports humane population management so fewer animals are born into unsafe conditions." },
+  { id: "adoption", title: "Adoption", short: "Careful matching helps animals find safe, permanent and responsible homes.", body: "Adoption is a lifelong promise. OXSA Nepal screens prospective homes because a good match protects both the animal and the family welcoming them." },
+  { id: "feeding", title: "Daily Feeding", short: "Regular meals relieve hunger and help build trust with community animals.", body: "Street animals face hunger every day. Regular feeding gives immediate relief and creates the trust needed to notice illness, support vaccination and offer further care." },
+  { id: "vaccination", title: "Vaccination", short: "Vaccination protects animals and communities from preventable disease.", body: "OXSA Nepal supports vaccination work against serious diseases including rabies and distemper. Prevention protects individual animals and the wider community." },
+  { id: "awareness", title: "Awareness", short: "Education turns everyday choices into a more compassionate community.", body: "Lasting change depends on how people understand and respond to animals. OXSA Nepal shares practical guidance and encourages community responsibility." },
 ] as const;
 
 export type Article = { title: string; slug: string; excerpt: string; date?: string; category?: string; paragraphs: string[]; published?: boolean };
