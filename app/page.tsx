@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { HomePage } from "@/src/components/Pages";
 
 export const metadata: Metadata = {
-  title: { absolute: "OXSA Nepal | Animal Welfare Society" },
+  title: { absolute: "Oxsa Nepal | Animal Welfare Society" },
   description: "OXSA Nepal supports street animals through spaying and neutering, feeding, vaccination, adoption and awareness.",
   alternates: { canonical: "/" },
 };

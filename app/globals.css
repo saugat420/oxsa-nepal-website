@@ -170,19 +170,51 @@ p { margin: 0 0 1.15em; color: var(--muted); }
 .impact-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 70px; }
 .impact-row > div { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 20px 10px; border: 1px solid var(--line); border-radius: 14px; text-align: center; }
 .impact-row svg { width: 32px; height: 32px; color: var(--brand); }
-.donation-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-.donation-card { padding: 26px; }
-.donation-card > svg, .method-mark { width: 46px; height: 46px; color: var(--brand); }
-.method-mark { display: grid; place-items: center; border-radius: 50%; background: var(--blush); font-size: 1.3rem; font-weight: 900; }
-.donation-card h3 { margin-top: 18px; }
-.donation-card dl { display: grid; grid-template-columns: 125px 1fr; gap: 5px 16px; margin: 0; padding: 16px 0; border-block: 1px solid var(--line); }
-.donation-card dt { color: var(--muted); font-size: .86rem; }
-.donation-card dd { margin: 0; overflow-wrap: anywhere; font-weight: 700; }
-.donation-card .number { font-size: 1.08rem; }
+.donation-methods { display: grid; gap: 26px; }
+.donation-method-card { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 380px); align-items: center; gap: 44px; overflow: hidden; padding: clamp(24px, 4vw, 42px); border: 1px solid var(--line-strong); border-radius: 24px; background: #fff; box-shadow: var(--shadow); }
+.donation-method-card:before { position: absolute; top: 0; right: 0; left: 0; height: 6px; background: var(--brand); content: ""; }
+.donation-method-card.esewa-card { border-color: #d7ead0; background: linear-gradient(135deg, #fff 0%, #f3faef 100%); }
+.donation-method-card.esewa-card:before { background: #58b533; }
+.donation-method-card.paypal-card { border-color: #d6e6f5; background: linear-gradient(135deg, #fff 0%, #eff7ff 100%); }
+.donation-method-card.paypal-card:before { background: linear-gradient(90deg, #07388e, #1288e8); }
+.donation-method-title { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.donation-method-title h3 { font-size: 1.65rem; }
+.donation-method-title small { display: block; margin-bottom: 2px; color: var(--muted); font-size: .76rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+.payment-logo { display: grid; width: 62px; height: 62px; place-items: center; flex: none; overflow: hidden; border-radius: 16px; background: #fff; box-shadow: 0 7px 20px rgba(32,33,36,.08); }
+.payment-logo img { width: 100%; height: 100%; object-fit: contain; }
+.payment-logo.paypal-logo { width: 78px; padding: 8px; }
+.payment-logo.bank-logo { background: var(--blush); color: var(--brand); }
+.payment-logo.bank-logo svg { width: 30px; height: 30px; }
+.donation-method-card dl, .donation-bank-card dl { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 8px 18px; margin: 22px 0 0; padding: 18px 0; border-block: 1px solid rgba(32,33,36,.1); }
+.donation-method-card dt, .donation-bank-card dt { color: var(--muted); font-size: .85rem; font-weight: 700; }
+.donation-method-card dd, .donation-bank-card dd { margin: 0; overflow-wrap: anywhere; font-weight: 800; }
+.donation-method-card .number, .donation-bank-card .number { font-size: 1.08rem; letter-spacing: .02em; }
 .copy-button { display: inline-flex; align-items: center; gap: 7px; margin-top: 16px; padding: 9px 13px; border: 0; border-radius: 9px; background: var(--blush); color: var(--brand-dark); font-weight: 800; cursor: pointer; }
 .copy-button svg { width: 20px; height: 20px; }
-.qr-note { display: flex; align-items: center; gap: 24px; margin-top: 40px; padding: 28px; border-radius: 16px; background: var(--surface); }
-.qr-box { display: grid; width: 128px; height: 128px; place-items: center; flex: none; border: 2px dashed var(--line-strong); border-radius: 12px; background: #fff; color: var(--muted); font-size: .8rem; text-align: center; }
+.donation-qr { display: grid; justify-items: center; gap: 10px; margin: 0; padding: 16px; border: 1px solid rgba(32,33,36,.08); border-radius: 18px; background: #fff; }
+.donation-qr img { width: 100%; max-height: 360px; border-radius: 10px; object-fit: contain; }
+.donation-qr figcaption { color: var(--muted); font-size: .8rem; font-weight: 700; text-align: center; }
+.donation-qr.paypal-qr img { max-width: 285px; }
+.donation-bank-card { padding: clamp(24px, 4vw, 34px); border: 1px solid #cfe8de; border-top: 6px solid #1eaa78; border-radius: 24px; background: linear-gradient(145deg, #fbfffd 0%, #eaf8f2 100%); box-shadow: var(--shadow); transition: transform .18s, box-shadow .18s; }
+.donation-bank-card:hover { transform: translateY(-3px); box-shadow: 0 18px 42px rgba(32,33,36,.11); }
+.donation-bank-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 22px; }
+.donation-bank-heading small { display: block; margin-bottom: 3px; color: var(--muted); font-size: .76rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+.donation-bank-heading h3 { font-size: 1.6rem; }
+.donation-bank-heading p { margin: 3px 0 0; }
+.bank-details { display: grid; gap: 10px; }
+.bank-detail-row { display: grid; grid-template-columns: 110px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid #d7eee5; border-radius: 13px; background: rgba(255,255,255,.86); }
+.bank-detail-row > span { color: var(--muted); font-size: .84rem; font-weight: 800; }
+.bank-detail-row > b { overflow-wrap: anywhere; }
+.bank-detail-row .copy-button { min-width: 82px; justify-content: center; margin-top: 0; background: #fff; }
+.donation-item-list { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.donation-item-list > div { display: flex; align-items: center; gap: 10px; min-height: 64px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; background: #fff; font-weight: 800; }
+.donation-item-list svg { width: 24px; height: 24px; flex: none; color: var(--brand); }
+.donation-visit { display: flex; align-items: center; justify-content: space-between; gap: 32px; margin-top: 54px; padding: clamp(28px, 5vw, 48px); border-radius: 22px; background: var(--ink); }
+.donation-visit h2, .donation-visit p { color: #fff; }
+.donation-visit .eyebrow { color: #ff9da8; }
+.donation-visit p:last-child { max-width: 660px; margin-bottom: 0; color: #d3d4d6; }
+.donation-visit .button { flex: none; }
+.donation-visit .button:hover { color: #fff; }
 
 .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 25px; }
 .filter-row button { padding: 7px 16px; border: 1px solid var(--line-strong); border-radius: 999px; background: #fff; cursor: pointer; }
@@ -311,7 +343,11 @@ p { margin: 0 0 1.15em; color: var(--muted); }
   .profile-grid > .paw-placeholder { position: static; }
   .article-grid, .animal-grid, .media-grid { grid-template-columns: repeat(2, 1fr); }
   .belief-grid { grid-template-columns: 1fr; }
-  .donation-grid, .wishlist-grid { grid-template-columns: 1fr; }
+  .donation-method-card { grid-template-columns: 1fr; }
+  .donation-qr { max-width: 520px; width: 100%; }
+  .donation-item-list { grid-template-columns: repeat(3, 1fr); }
+  .donation-visit { align-items: flex-start; flex-direction: column; }
+  .wishlist-grid { grid-template-columns: 1fr; }
   .contact-summary { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid > div:first-child, .footer-grid > div:last-child { grid-column: 1/-1; }
@@ -327,11 +363,11 @@ p { margin: 0 0 1.15em; color: var(--muted); }
   .page-hero { padding: 48px 0 50px; }
   .work-grid, .help-grid, .animal-grid, .article-grid, .media-grid, .contact-summary { grid-template-columns: 1fr; }
   .impact-row { grid-template-columns: repeat(2, 1fr); }
-  .donation-card { padding: 22px; }
-  .donation-card dl { grid-template-columns: 1fr; gap: 0; }
-  .donation-card dd { margin-bottom: 10px; }
-  .qr-note { align-items: flex-start; flex-direction: column; }
-  .qr-box { width: 100%; height: 116px; }
+  .donation-method-card dl, .donation-bank-card dl { grid-template-columns: 1fr; gap: 2px; }
+  .donation-method-card dd, .donation-bank-card dd { margin-bottom: 10px; }
+  .donation-item-list { grid-template-columns: repeat(2, 1fr); }
+  .bank-detail-row { grid-template-columns: 82px minmax(0, 1fr); }
+  .bank-detail-row .copy-button { grid-column: 1/-1; width: 100%; }
   .form-card { padding: 18px; }
   .form-grid, .directory-tools { grid-template-columns: 1fr; }
   .vet-card { align-items: flex-start; flex-direction: column; }

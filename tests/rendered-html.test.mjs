@@ -29,9 +29,11 @@ test("server-renders the completed OXSA Nepal homepage", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>OXSA Nepal \| Animal Welfare Society<\/title>/i);
-  assert.match(html, /OXSA Nepal/);
+  assert.match(html, /<title>Oxsa Nepal \| Animal Welfare Society<\/title>/i);
+  assert.match(html, /Oxsa Nepal/);
   assert.match(html, /Every street animal deserves/i);
+  assert.match(html, /images\/logo\/oxsa-logo\.png/i);
+  assert.match(html, /favicon\.png\?v=2/i);
   assert.match(html, /href="\/donate"/);
   assert.match(html, /href="\/sponsor"/);
   assert.match(html, /href="\/adopt"/);
@@ -39,6 +41,22 @@ test("server-renders the completed OXSA Nepal homepage", async () => {
   assert.match(html, /aria-label="Open navigation"/);
   assert.match(html, /aria-controls="explore-menu"/);
   assert.doesNotMatch(html, /Your site is taking shape|Building your site/i);
+});
+
+test("donation page contains the verified payment details and QR assets", async () => {
+  const response = await render("/donate");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+
+  assert.match(html, /9849321303/);
+  assert.match(html, /Oxsa Nepal Animal Welfare Organization/);
+  assert.match(html, /01901017501825/);
+  assert.match(html, /Nabil Bank Ltd/);
+  assert.match(html, /sonysukaso@gmail\.com/);
+  assert.match(html, /images\/donations\/esewa-qr\.jpeg/);
+  assert.match(html, /images\/donations\/paypal-qr\.jpeg/);
+  assert.match(html, /wa\.me\/9779849321303/);
+  assert.match(html, /favicon\.png\?v=2/i);
 });
 
 test("primary navigation routes render successfully", async () => {

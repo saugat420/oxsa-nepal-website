@@ -40,9 +40,9 @@ export function HeaderNav() {
     <a className="skip-link" href="#main">Skip to content</a>
     <header className="site-header">
       <div className="header-inner">
-        <Link className="brand" href="/" aria-label="OXSA Nepal home" onClick={closeAll}>
-          <Image src="/images/logo/oxsa-logo.jpg" alt="OXSA Nepal paw logo" width={62} height={62} priority />
-          <span><b>OXSA Nepal</b><small>Animal Welfare Society</small></span>
+        <Link className="brand" href="/" aria-label="Oxsa Nepal home" onClick={closeAll}>
+          <Image src="/images/logo/oxsa-logo.png" alt="Oxsa Nepal paw logo" width={62} height={62} priority />
+          <span><b>Oxsa Nepal</b><small>Animal Welfare Society</small></span>
         </Link>
 
         <nav className="desktop-nav" aria-label="Primary navigation">

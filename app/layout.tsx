@@ -9,11 +9,15 @@ const manrope = Manrope({ subsets:["latin"], variable:"--font-heading" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: { default:"OXSA Nepal | Animal Welfare Society", template:"%s | OXSA Nepal" },
+  title: { default:"Oxsa Nepal | Animal Welfare Society", template:"%s | Oxsa Nepal" },
   description: siteConfig.description,
-  icons: { icon:"/images/logo/oxsa-logo.jpg", apple:"/images/logo/oxsa-logo.jpg" },
-  openGraph: { type:"website", siteName:"OXSA Nepal", title:"OXSA Nepal | Animal Welfare Society", description:siteConfig.description, images:[{url:"/og.png",width:1536,height:910,alt:"OXSA Nepal — safety, care and kindness for street animals"}] },
-  twitter: { card:"summary_large_image", title:"OXSA Nepal", description:siteConfig.description, images:["/og.png"] },
+  icons: {
+    icon: [{ url:"/favicon.png?v=2", type:"image/png", sizes:"512x512" }],
+    shortcut: "/favicon.png?v=2",
+    apple: "/favicon.png?v=2",
+  },
+  openGraph: { type:"website", siteName:"Oxsa Nepal", title:"Oxsa Nepal | Animal Welfare Society", description:siteConfig.description, images:[{url:"/og.png",width:1536,height:910,alt:"Oxsa Nepal — safety, care and kindness for street animals"}] },
+  twitter: { card:"summary_large_image", title:"Oxsa Nepal", description:siteConfig.description, images:["/og.png"] },
 };
 
 export default function RootLayout({children}:{children:React.ReactNode}){

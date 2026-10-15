@@ -11,7 +11,7 @@ export function Header() {
 export function Footer() {
   const year = new Date().getFullYear();
   return <footer className="footer"><div className="container footer-grid">
-    <div className="footer-brand"><Image src="/images/logo/oxsa-logo.jpg" alt="" width={72} height={72}/><h2>OXSA Nepal</h2><p>Working for safer, healthier lives for street animals through practical care and community compassion.</p></div>
+    <div className="footer-brand"><Image src="/images/logo/oxsa-logo.png" alt="" width={72} height={72}/><h2>Oxsa Nepal</h2><p>Working for safer, healthier lives for street animals through practical care and community compassion.</p></div>
     <FooterLinks title="Quick Links" links={[["About","/about"],["Our Work","/our-work"],["Adopt","/adopt"],["Sponsor","/sponsor"],["Donate","/donate"]]}/>
     <FooterLinks title="Helpful Resources" links={[["Success Stories","/stories"],["Blog","/blog"],["FAQ","/faq"],["Vet Centres","/vet-centres"],["Wishlist","/wishlist"]]}/>
     <div><h3>Contact</h3><address><a href={`tel:${siteConfig.phone}`}><Phone/>{siteConfig.phone}</a><a href={`mailto:${siteConfig.email}`}><Mail/>{siteConfig.email}</a><span><MapPin/>{siteConfig.shelter}</span><span><MapPin/>{siteConfig.office}</span></address></div>
@@ -23,11 +23,11 @@ function FooterLinks({ title, links }: { title: string; links: readonly (readonl
 }
 
 export function PageHero({ eyebrow, title, children, actions }: { eyebrow?: string; title: string; children: React.ReactNode; actions?: React.ReactNode }) {
-  return <section className="page-hero"><div className="container"><div className="page-hero-inner"><p className="eyebrow">{eyebrow ?? "OXSA Nepal"}</p><h1>{title}</h1><div className="hero-copy">{children}</div>{actions && <div className="button-row">{actions}</div>}</div></div></section>;
+  return <section className="page-hero"><div className="container"><div className="page-hero-inner"><p className="eyebrow">{eyebrow ?? "Oxsa Nepal"}</p><h1>{title}</h1><div className="hero-copy">{children}</div>{actions && <div className="button-row">{actions}</div>}</div></div></section>;
 }
 
 export function PawPlaceholder({ name, species = "Animal" }: { name: string; species?: string }) {
-  return <div className="paw-placeholder" role="img" aria-label={`${name}, ${species}; photo coming soon`}><Image src="/images/logo/oxsa-logo.jpg" alt="" width={150} height={150}/><b>{name}</b><small>Photo coming soon</small></div>;
+  return <div className="paw-placeholder" role="img" aria-label={`${name}, ${species}; photo coming soon`}><Image src="/images/logo/oxsa-logo.png" alt="" width={150} height={150}/><b>{name}</b><small>Photo coming soon</small></div>;
 }
 
 export function Breadcrumb({ items }: { items: [string,string?][] }) {
