@@ -82,21 +82,80 @@ export const faqs = [
   ["How can I adopt an animal?", "Review the available listings, complete the adoption application and be ready to discuss your home, experience and lifelong care plan."],
 ] as const;
 
-export const vets = [
-  ["City Veterinary Hospital", "Lalitpur", "Satdobato", "9801017334"],
-  ["Jibachha Veterinary Hospital", "Lalitpur", "Jhamsikhel", "01-5450013"],
-  ["Patan Veterinary Clinic", "Lalitpur", "Patan", "01-5442733"],
-  ["Animal Care Centre (Veterinary Clinic)", "Kathmandu", "Chabahil", "9851224131"],
-  ["Kathmandu Veterinary Clinic", "Kathmandu", "Chakrapath", "01-4720266"],
-  ["Central Referral Animal Hospital", "Kathmandu", "Tripureshwor", "01-5329064"],
-  ["Vet For Your Pet – the Animals' Clinic", "Bhaktapur", "Suryabinayak", "01-6613244"],
-  ["Pacific Vet Clinic", "Bhaktapur", "Madhyapur Thimi", "9841080258"],
-  ["Sunshine Veterinary Centre", "Pokhara", "Pokhara", "9856035513"],
-  ["Veterinary Hospital and Livestock Service Expert Center", "Pokhara", "Pokhara", "061-520082"],
-  ["Metro Vet Clinic Pvt Ltd", "Bharatpur", "Bharatpur", "9851054224"],
-  ["Chitwan Lumbini Kennal Club & Pet Vet Clinic", "Bharatpur", "Bharatpur", "9845050944"],
-  ["Birgunj Vet Pharma", "Birgunj", "Birgunj", "051-522523"],
-  ["Birgunj Pet Clinic", "Birgunj", "Birgunj", "9845262670"],
+export type VetCentre = {
+  name: string;
+  province: string;
+  city: string;
+  location: string;
+  phones: readonly string[];
+  source: string;
+};
+
+export const vetDirectoryUpdated = "15 October 2026";
+
+const koshiSource = "https://dolfd.p1.gov.np/en-vhlec";
+const bagmatiSource = "https://dolfd.bagamati.gov.np/en-vhlec";
+const sudurSource = "https://molmac.sudurpashchim.gov.np/pages/in-the-aftermath-offices-14/";
+
+export const vets: readonly VetCentre[] = [
+  { name: "National Referral Veterinary Hospital", province: "Bagmati", city: "Kathmandu", location: "Tripureshwor, Kathmandu", phones: ["01-5361382"], source: "https://crvh.gov.np/en/" },
+
+  { name: "Veterinary Hospital and Livestock Service Centre — Panchthar", province: "Koshi", city: "Phidim", location: "Phidim, Panchthar", phones: ["024-520127", "9852684127"], source: koshiSource },
+  { name: "Veterinary Hospital and Livestock Service Centre — Jhapa", province: "Koshi", city: "Bhadrapur", location: "Bhadrapur, Jhapa", phones: ["023-521161", "9852671390"], source: koshiSource },
+  { name: "Veterinary Hospital and Livestock Service Centre — Morang", province: "Koshi", city: "Biratnagar", location: "Biratnagar, Morang", phones: ["021-471958", "9852030239"], source: koshiSource },
+  { name: "Veterinary Hospital and Livestock Service Centre — Sunsari", province: "Koshi", city: "Inaruwa", location: "Inaruwa, Sunsari", phones: ["025-565162", "9852055625"], source: koshiSource },
+  { name: "Veterinary Hospital and Livestock Service Centre — Okhaldhunga", province: "Koshi", city: "Siddhicharan", location: "Siddhicharan, Okhaldhunga", phones: ["037-520210", "9852842210"], source: koshiSource },
+  { name: "Veterinary Hospital and Livestock Service Centre — Udayapur", province: "Koshi", city: "Gaighat", location: "Gaighat, Udayapur", phones: ["035-420129", "9852835006"], source: koshiSource },
+  { name: "Veterinary Hospital and Livestock Service Centre — Sankhuwasabha", province: "Koshi", city: "Khandbari", location: "Khandbari, Sankhuwasabha", phones: ["029-560159", "9852051910"], source: koshiSource },
+  { name: "Veterinary Hospital and Livestock Service Centre — Dhankuta", province: "Koshi", city: "Dhankuta", location: "Dhankuta Municipality, Dhankuta", phones: ["026-520280", "9842032215"], source: koshiSource },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Solukhumbu", province: "Koshi", city: "Salleri", location: "Salleri, Solukhumbu", phones: ["038-520103", "9852873123"], source: koshiSource },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Ilam", province: "Koshi", city: "Ilam", location: "Ilam Municipality, Ilam", phones: ["027-523043", "9852626127"], source: koshiSource },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Bhojpur", province: "Koshi", city: "Bhojpur", location: "Bhojpur Municipality, Bhojpur", phones: ["029-420129", "9852053129"], source: koshiSource },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Tehrathum", province: "Koshi", city: "Myanglung", location: "Myanglung, Tehrathum", phones: ["026-460127", "9852060127"], source: koshiSource },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Khotang", province: "Koshi", city: "Diktel", location: "Diktel, Khotang", phones: ["036-420107", "9852849126"], source: koshiSource },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Taplejung", province: "Koshi", city: "Phungling", location: "Phungling, Taplejung", phones: ["024-460167", "9852660176"], source: koshiSource },
+
+  { name: "Livestock Service Office — Lagankhel", province: "Bagmati", city: "Lalitpur", location: "Lagankhel, Lalitpur", phones: ["01-5547377", "9851137970"], source: bagmatiSource },
+  { name: "Livestock Service Office — Chitwan", province: "Bagmati", city: "Bharatpur", location: "Bharatpur, Chitwan", phones: ["056-520176", "9855065176"], source: bagmatiSource },
+  { name: "Livestock Service Office — Makawanpur", province: "Bagmati", city: "Hetauda", location: "Hetauda, Makawanpur", phones: ["057-412828", "9855070728"], source: bagmatiSource },
+  { name: "Livestock Service Office — Sindhuli", province: "Bagmati", city: "Kamalamai", location: "Kamalamai, Sindhuli", phones: ["047-520185", "9854041785"], source: bagmatiSource },
+  { name: "Livestock Service Office — Nuwakot", province: "Bagmati", city: "Bidur", location: "Bidur, Nuwakot", phones: ["010-560012"], source: bagmatiSource },
+  { name: "Livestock Service Office — Dhading", province: "Bagmati", city: "Dhadingbesi", location: "Dhadingbesi, Dhading", phones: ["010-520107", "9851213874"], source: bagmatiSource },
+  { name: "Livestock Service Office — Dolakha", province: "Bagmati", city: "Charikot", location: "Charikot, Dolakha", phones: ["049-421115", "9854045115"], source: bagmatiSource },
+  { name: "Livestock Service Office — Kavrepalanchowk", province: "Bagmati", city: "Dhulikhel", location: "Dhulikhel, Kavrepalanchowk", phones: ["011-4950266", "9851164594"], source: bagmatiSource },
+
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Saptari", province: "Madhesh", city: "Rajbiraj", location: "Rajbiraj, Saptari", phones: ["031-520142"], source: "https://vhlsecsaptari.madhesh.gov.np/" },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Siraha", province: "Madhesh", city: "Siraha", location: "Siraha-7, Siraha", phones: ["033-520008", "9852834801"], source: "https://vhlsecsiraha.p2.gov.np/contact/" },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Dhanusha", province: "Madhesh", city: "Janakpurdham", location: "Janakpurdham, Dhanusha", phones: ["9854026021"], source: "https://vhlsecdhanusha.madhesh.gov.np/" },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Rautahat", province: "Madhesh", city: "Gaur", location: "Gaur, Rautahat", phones: ["055-520125"], source: "https://vhlsecrautahat.madhesh.gov.np/detail/contactUs?language=en" },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Sarlahi", province: "Madhesh", city: "Malangawa", location: "Malangawa, Sarlahi", phones: ["9854038757"], source: "https://vhlsecsarlahi.madhesh.gov.np/" },
+
+  { name: "Veterinary Hospital and Livestock Service Office — Kaski", province: "Gandaki", city: "Pokhara", location: "Pokhara, Kaski", phones: ["061-570082", "061-583356"], source: "https://vhlseckaski.gandaki.gov.np/contact-us" },
+  { name: "Veterinary Hospital and Livestock Service Office — Gorkha", province: "Gandaki", city: "Gorkha", location: "Gorkha Municipality, Gorkha", phones: ["064-411251", "9856040291"], source: "https://vhlgorkha.gov.np/contact-us" },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Tanahun", province: "Gandaki", city: "Damauli", location: "Damauli, Tanahun", phones: ["065-563205", "065-564792"], source: "https://vhlsectanahun.gandaki.gov.np/en/contacts" },
+  { name: "Veterinary Hospital and Livestock Service Office — Lamjung", province: "Gandaki", city: "Besisahar", location: "Besisahar, Lamjung", phones: ["066-520131", "9856045321"], source: "https://vhlseclamjung.gandaki.gov.np/en/" },
+  { name: "Veterinary Hospital and Livestock Service Office — Syangja", province: "Gandaki", city: "Putalibazar", location: "Putalibazar, Syangja", phones: ["063-425000"], source: "https://vhlsecsyangja.gandaki.gov.np/en/" },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Parbat", province: "Gandaki", city: "Kushma", location: "Kushma, Parbat", phones: ["067-420123"], source: "https://www.bolpatra.gov.np/egp/download?alfId=22620d9a-8d36-45a8-ad3d-9e8662eb3146&docId=76603656" },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Nawalpur", province: "Gandaki", city: "Kawasoti", location: "Kawasoti-8, Nawalpur", phones: ["078-541091"], source: "https://vhlsecnawalparasieast.gandaki.gov.np/en/" },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Manang", province: "Gandaki", city: "Chame", location: "Chame, Manang", phones: ["066-440113", "9856030274"], source: "https://vhlsecmanang.gandaki.gov.np/" },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Myagdi", province: "Gandaki", city: "Beni", location: "Beni, Myagdi", phones: ["069-520121"], source: "https://vhlsecmyagdi.gandaki.gov.np/english/gallery-details/6/2020/95515499" },
+
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Palpa", province: "Lumbini", city: "Tansen", location: "Tansen, Palpa", phones: ["075-522032", "075-520245", "9857060836"], source: "https://vethospalpa.lumbini.gov.np/en/" },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Arghakhanchi", province: "Lumbini", city: "Sandhikharka", location: "Sandhikharka, Arghakhanchi", phones: ["077-420116", "9857054749"], source: "https://arghakhanchi.vethos.gov.np/" },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Banke", province: "Lumbini", city: "Nepalgunj", location: "Ramlila Maidan, Nepalgunj-13, Banke", phones: ["081-530254"], source: "https://banke.vethos.gov.np/documentCategory/information1?language=en" },
+
+  { name: "Veterinary Hospital and Livestock Service Office — Surkhet", province: "Karnali", city: "Birendranagar", location: "Birendranagar-5, Surkhet", phones: ["083-520099", "083-520288"], source: "https://dold.karnali.gov.np/detail/contactUs?language=en" },
+  { name: "Veterinary Hospital and Livestock Service Office — Dailekh", province: "Karnali", city: "Dailekh", location: "Dailekh Municipality, Dailekh", phones: ["089-410085", "089-410148"], source: "https://dailekh.vethos.gov.np/detail/contactUs?language=en" },
+
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Bajhang", province: "Sudurpashchim", city: "Chainpur", location: "Chainpur, Bajhang", phones: ["092-421050", "9868560746"], source: sudurSource },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Achham", province: "Sudurpashchim", city: "Mangalsen", location: "Mangalsen, Achham", phones: ["097-620102", "9868525415"], source: sudurSource },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Kanchanpur", province: "Sudurpashchim", city: "Bhimdatta", location: "Bhimdatta, Kanchanpur", phones: ["099-521176", "9851157487"], source: sudurSource },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Kailali", province: "Sudurpashchim", city: "Dhangadhi", location: "Dhangadhi, Kailali", phones: ["091-521114", "9858477127"], source: sudurSource },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Dadeldhura", province: "Sudurpashchim", city: "Dadeldhura", location: "Amargadhi, Dadeldhura", phones: ["096-410114", "9858783060"], source: sudurSource },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Doti", province: "Sudurpashchim", city: "Dipayal Silgadhi", location: "Dipayal Silgadhi, Doti", phones: ["094-420114", "9858488137"], source: sudurSource },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Darchula", province: "Sudurpashchim", city: "Khalanga", location: "Khalanga, Darchula", phones: ["093-420104", "9848898494"], source: sudurSource },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Baitadi", province: "Sudurpashchim", city: "Patan", location: "Patan, Baitadi", phones: ["9858782525"], source: sudurSource },
+  { name: "Veterinary Hospital and Livestock Service Expert Centre — Bajura", province: "Sudurpashchim", city: "Martadi", location: "Martadi, Bajura", phones: ["097-541064", "9858425020"], source: sudurSource },
 ] as const;
 
 export const wishlist = {

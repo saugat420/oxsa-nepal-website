@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Check, Copy, Search } from "lucide-react";
+import { Check, Copy, ExternalLink, MapPin, Phone, Search, ShieldCheck } from "lucide-react";
 import { animals, vets } from "@/src/content/data";
 import { PawPlaceholder } from "./SiteChrome";
 import { siteConfig } from "@/src/config/site";
@@ -20,10 +20,31 @@ export function SponsorGrid({ limit }: { limit?: number }) {
 }
 
 export function VetDirectory() {
-  const [query,setQuery] = useState(""); const [city,setCity] = useState("All");
-  const cities=["All","Lalitpur","Kathmandu","Bhaktapur","Pokhara","Bharatpur","Birgunj"];
-  const results=useMemo(()=>vets.filter(v=>(city==="All"||v[1]===city)&&`${v[0]} ${v[1]} ${v[2]}`.toLowerCase().includes(query.toLowerCase())),[query,city]);
-  return <><div className="directory-tools"><label className="search-box"><Search/><span className="sr-only">Search vet centres</span><input value={query} onInput={e=>setQuery(e.currentTarget.value)} onChange={e=>setQuery(e.target.value)} placeholder="Search clinic, area or city"/></label><label><span className="sr-only">Filter by city</span><select value={city} onChange={e=>setCity(e.target.value)}>{cities.map(c=><option key={c}>{c}</option>)}</select></label></div><div className="vet-list" role="list">{results.map((v,i)=><article className="vet-card" role="listitem" key={`${v[0]}-${i}`}><div><span className="tag">{v[1]}</span><h3>{v[0]}</h3><p>{v[2]}</p></div><a className="phone-link" href={`tel:${v[3].replaceAll("-","")}`}>{v[3]}</a></article>)}</div>{results.length===0&&<div className="empty-state">No vet centres match your search. Try a different area or city.</div>}</>;
+  const [query,setQuery] = useState("");
+  const [province,setProvince] = useState("All");
+  const provinces=["All",...Array.from(new Set(vets.map(v=>v.province))).sort()];
+  const normalizedQuery=query.trim().toLowerCase();
+  const results=useMemo(()=>vets.filter(v=>{
+    const matchesProvince=province==="All"||v.province===province;
+    const searchable=`${v.name} ${v.province} ${v.city} ${v.location} ${v.phones.join(" ")}`.toLowerCase();
+    return matchesProvince&&(!normalizedQuery||searchable.includes(normalizedQuery));
+  }),[normalizedQuery,province]);
+
+  return <>
+    <div className="directory-tools">
+      <label className="search-box"><Search/><span className="sr-only">Search vet centres</span><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search name, phone, city, district or place"/></label>
+      <label><span className="sr-only">Filter by province</span><select value={province} onChange={e=>setProvince(e.target.value)}>{provinces.map(p=><option key={p}>{p}</option>)}</select></label>
+    </div>
+    <div className="directory-summary" aria-live="polite"><ShieldCheck/>{results.length} verified {results.length===1?"centre":"centres"} shown</div>
+    <div className="vet-list" role="list">{results.map(v=>{
+      const mapQuery=encodeURIComponent(`${v.name}, ${v.location}, Nepal`);
+      return <article className="vet-card" role="listitem" key={`${v.name}-${v.location}`}>
+        <div className="vet-card-copy"><div className="vet-tags"><span className="tag">{v.province}</span><span>{v.city}</span></div><h3>{v.name}</h3><p><MapPin/>{v.location}</p></div>
+        <div className="vet-card-actions"><div className="vet-phones">{v.phones.map(phone=><a className="phone-link" href={`tel:${phone.replace(/[^\d+]/g,"")}`} key={phone}><Phone/>{phone}</a>)}</div><a className="vet-action-link" href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`} target="_blank" rel="noopener noreferrer"><MapPin/>Google Maps</a><a className="vet-source-link" href={v.source} target="_blank" rel="noopener noreferrer">Official source<ExternalLink/></a></div>
+      </article>;
+    })}</div>
+    {results.length===0&&<div className="empty-state">No verified vet centres match your search. Try a different spelling, district, city or province.</div>}
+  </>;
 }
 
 type FormKind = "contact"|"sponsor"|"adoption";

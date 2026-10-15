@@ -63,6 +63,20 @@ test("donation page contains the verified payment details and QR assets", async 
   assert.match(html, /favicon\.png\?v=2/i);
 });
 
+test("vet directory includes verified nationwide contacts, filters and map links", async () => {
+  const response = await render("/vet-centres");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.equal((html.match(/class="vet-card"/g) ?? []).length, 51);
+  assert.match(html, /National Referral Veterinary Hospital/);
+  assert.match(html, /Veterinary Hospital and Livestock Service Expert Centre — Bajura/);
+  for (const province of ["Koshi", "Madhesh", "Bagmati", "Gandaki", "Lumbini", "Karnali", "Sudurpashchim"]) assert.match(html, new RegExp(`>${province}<`));
+  assert.match(html, /Search name, phone, city, district or place/);
+  assert.match(html, /google\.com\/maps\/search\/\?api=1(?:&amp;|&)query=/);
+  assert.match(html, /href="tel:015361382"/);
+  assert.match(html, /Official source/);
+});
+
 test("primary navigation routes render successfully", async () => {
   const routes = [
     "/about",
