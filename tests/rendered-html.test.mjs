@@ -1,26 +1,36 @@
 import assert from "node:assert/strict";
+import { spawn } from "node:child_process";
 import { readFile } from "node:fs/promises";
-import test from "node:test";
+import { after, before, test } from "node:test";
+
+const port = 3210;
+const baseUrl = `http://127.0.0.1:${port}`;
+let server;
+
+before(async () => {
+  server = spawn(process.execPath, ["node_modules/next/dist/bin/next", "start", "-p", `${port}`], {
+    cwd: new URL("..", import.meta.url),
+    stdio: "ignore",
+  });
+
+  for (let attempt = 0; attempt < 50; attempt += 1) {
+    try {
+      const response = await fetch(baseUrl);
+      if (response.ok) return;
+    } catch {
+      // The production server is still starting.
+    }
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
+  throw new Error("Next production server did not start in time");
+});
+
+after(() => {
+  server?.kill("SIGTERM");
+});
 
 async function render(path = "/") {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${path}`);
-  const { default: worker } = await import(workerUrl.href);
-
-  return worker.fetch(
-    new Request(`http://localhost${path}`, {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
+  return fetch(`${baseUrl}${path}`, { headers: { accept: "text/html" } });
 }
 
 test("server-renders the completed Oxsa Nepal homepage", async () => {
@@ -33,9 +43,9 @@ test("server-renders the completed Oxsa Nepal homepage", async () => {
   assert.match(html, /Oxsa Nepal/);
   assert.match(html, /Every street animal deserves/i);
   assert.match(html, /images\/logo\/oxsa-logo\.png/i);
-  assert.match(html, /images\/content\/hero-circle\.png/i);
+  assert.match(html, /images\/content\/hero-image-v2\.png/i);
   assert.match(html, /images\/content\/our-story\.jpg/i);
-  assert.match(html, /hero-title[\s\S]*Oxsa Nepal works[\s\S]*hero-circle[\s\S]*hero-actions/i);
+  assert.match(html, /hero-title[\s\S]*Oxsa Nepal works[\s\S]*hero-image-v2[\s\S]*hero-actions/i);
   assert.doesNotMatch(html, /\bOXSA\b/);
   assert.match(html, /favicon\.png\?v=3/i);
   assert.match(html, /href="\/donate"/);
@@ -62,6 +72,21 @@ test("donation page contains the verified payment details and QR assets", async 
   assert.match(html, /wa\.me\/9779849321303/);
   assert.match(html, /favicon\.png\?v=3/i);
   assert.doesNotMatch(html, /No contribution is too small|Medicines &amp; checkups|Veterinary support/i);
+});
+
+test("sponsor page lists the current 21 photo-backed shelter residents", async () => {
+  const response = await render("/sponsor");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+
+  assert.match(html, /21 shelter residents/i);
+  assert.equal((html.match(/Oxsa Nepal shelter (?:dog|cat)/gi) ?? []).length, 21);
+  for (const name of ["Nemo", "Choti Kali", "Badi Kali", "Mimi", "Betali", "Sweaty"]) {
+    assert.match(html, new RegExp(`>${name}<`));
+  }
+  for (const name of ["Seti", "Bhattu", "Pinky", "Seru"]) {
+    assert.doesNotMatch(html, new RegExp(`>${name}<`));
+  }
 });
 
 test("vet directory includes verified nationwide contacts, filters and map links", async () => {

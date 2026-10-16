@@ -1,7 +1,28 @@
-export type Animal = { name: string; slug: string; species: "Dog" | "Cat"; excerpt: string; story: string[] };
+export type Animal = { name: string; slug: string; species: "Dog" | "Cat"; image: string; excerpt: string; story: string[] };
 
-const dogNames = ["Puku", "Candy", "Dony", "Chunti", "Sumnima", "Seti", "Tinu", "Kanthuli Musi", "Baby", "Sana", "Tiku", "Pinky", "Seru", "Sam", "Nakali"];
-const catNames = ["Bhattu", "Ginju"];
+const shelterAnimals: { name: string; species: Animal["species"]; image: string }[] = [
+  { name: "Baby", species: "Dog", image: "/images/animals/baby.png" },
+  { name: "Badi Kali", species: "Dog", image: "/images/animals/badi-kali.png" },
+  { name: "Candy", species: "Dog", image: "/images/animals/candy.png" },
+  { name: "Choti Kali", species: "Dog", image: "/images/animals/choti-kali.jpg" },
+  { name: "Chunti", species: "Dog", image: "/images/animals/chunti.png" },
+  { name: "Dony", species: "Dog", image: "/images/animals/dony.png" },
+  { name: "Jasmin", species: "Dog", image: "/images/animals/jasmin.png" },
+  { name: "Lucy", species: "Dog", image: "/images/animals/lucy.png" },
+  { name: "Nakali", species: "Dog", image: "/images/animals/nakali.png" },
+  { name: "Nemo", species: "Dog", image: "/images/animals/nemo.png" },
+  { name: "Oxsa", species: "Dog", image: "/images/animals/oxsa.png" },
+  { name: "Puku", species: "Dog", image: "/images/animals/puku.png" },
+  { name: "Sam", species: "Dog", image: "/images/animals/sam.png" },
+  { name: "Sana", species: "Dog", image: "/images/animals/sana.png" },
+  { name: "Sumnima", species: "Dog", image: "/images/animals/sumnima.png" },
+  { name: "Tiku", species: "Dog", image: "/images/animals/tiku.png" },
+  { name: "Tinu", species: "Dog", image: "/images/animals/tinu.png" },
+  { name: "Betali", species: "Cat", image: "/images/animals/betali.png" },
+  { name: "Jinju", species: "Cat", image: "/images/animals/jinju.png" },
+  { name: "Mimi", species: "Cat", image: "/images/animals/mimi.png" },
+  { name: "Sweaty", species: "Cat", image: "/images/animals/sweaty.png" },
+];
 
 const profiles: Record<string, { excerpt: string; story: string[] }> = {
   Puku: { excerpt: "Sweet, mischievous and always ready for a tiny adventure.", story: ["Puku arrived at the shelter gate when he was a small puppy after roaming near the Thapathali Pool. Although many male puppies find homes, Puku stayed and grew up with Oxsa Nepal.", "He enjoys watching the road and occasionally slips through an open door, only to return from his little adventure a few minutes later. Sponsorship helps provide the steady food, shelter and care he depends on."] },
@@ -12,22 +33,17 @@ const profiles: Record<string, { excerpt: string; story: string[] }> = {
   Nakali: { excerpt: "A resilient animal whose trust grew with patient care.", story: ["Nakali's story is connected with Chunti's journey from confinement toward freedom and care.", "Sponsorship helps sustain the patient, consistent care behind that recovery."] },
 };
 
-export const animals: Animal[] = [...dogNames.map((name) => ({
+export const animals: Animal[] = shelterAnimals.map(({ name, species, image }) => ({
   name,
   slug: name.toLowerCase().replaceAll(" ", "-"),
-  species: "Dog" as const,
-  excerpt: profiles[name]?.excerpt ?? "A shelter resident with an individual story and a need for steady care.",
+  species,
+  image,
+  excerpt: profiles[name]?.excerpt ?? (species === "Cat" ? "A feline shelter resident who can be supported from afar." : "A shelter resident with an individual story and a need for steady care."),
   story: profiles[name]?.story ?? [
-    `${name} is one of the animals living in Oxsa Nepal's care and is included in the monthly sponsorship programme.`,
+    `${name} is one of the ${species === "Cat" ? "cats" : "animals"} living in Oxsa Nepal's care.`,
     "Monthly sponsorship helps Oxsa Nepal provide consistent food, shelter and care.",
   ],
-})), ...catNames.map((name) => ({
-  name,
-  slug: name.toLowerCase(),
-  species: "Cat" as const,
-  excerpt: "A feline shelter resident who can be supported from afar.",
-  story: [`${name} is one of the cats living in Oxsa Nepal's care.`, "Monthly sponsorship helps Oxsa Nepal provide consistent food, shelter and care."],
-}))];
+}));
 
 export const work = [
   { id: "spaying", title: "Spaying & Neutering", short: "Humane population management prevents future litters from being born into hunger, illness and danger.", body: "Spaying and neutering is one of the most responsible ways to reduce long-term suffering. Oxsa Nepal supports humane population management so fewer animals are born into unsafe conditions." },

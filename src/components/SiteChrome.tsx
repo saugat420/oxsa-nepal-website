@@ -30,6 +30,10 @@ export function PawPlaceholder({ name, species = "Animal" }: { name: string; spe
   return <div className="paw-placeholder" role="img" aria-label={`${name}, ${species}; photo coming soon`}><Image src="/images/logo/oxsa-logo.png" alt="" width={150} height={150}/><b>{name}</b><small>Photo coming soon</small></div>;
 }
 
+export function AnimalPhoto({ name, species, src }: { name: string; species: string; src: string }) {
+  return <div className="animal-photo"><Image src={src} alt={`${name}, an Oxsa Nepal shelter ${species.toLowerCase()}`} width={1600} height={1200}/></div>;
+}
+
 export function Breadcrumb({ items }: { items: [string,string?][] }) {
   return <nav className="breadcrumb" aria-label="Breadcrumb"><Link href="/">Home</Link>{items.map(([label,href]) => <span key={label}>› {href ? <Link href={href}>{label}</Link> : label}</span>)}</nav>;
 }

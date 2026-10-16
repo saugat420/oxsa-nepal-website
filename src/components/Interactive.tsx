@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { Check, Copy, ExternalLink, MapPin, Phone, Search, ShieldCheck } from "lucide-react";
 import { animals, vets } from "@/src/content/data";
-import { PawPlaceholder } from "./SiteChrome";
+import { AnimalPhoto } from "./SiteChrome";
 import { siteConfig } from "@/src/config/site";
 import { NativeLink as Link } from "./NativeLink";
 
@@ -16,7 +16,7 @@ export function CopyButton({ value, label = "Copy" }: { value: string; label?: s
 export function SponsorGrid({ limit }: { limit?: number }) {
   const [filter, setFilter] = useState<"All"|"Dog"|"Cat">("All");
   const shown = (filter === "All" ? animals : animals.filter(a=>a.species===filter)).slice(0, limit ?? animals.length);
-  return <><div className="filter-row" aria-label="Filter sponsor animals">{(["All","Dog","Cat"] as const).map(x=><button key={x} className={filter===x?"active":""} onClick={()=>setFilter(x)}>{x === "Dog" ? "Dogs" : x === "Cat" ? "Cats" : x}</button>)}</div><div className="card-grid animal-grid">{shown.map(a=><article className="animal-card" key={a.slug}><PawPlaceholder name={a.name} species={a.species}/><div><span className="tag">{a.species}</span><h3>{a.name}</h3><p>{a.excerpt}</p><div className="card-actions"><Link className="text-link" href={`/sponsor/${a.slug}`}>Read their story →</Link><Link className="button button-small" href={`/sponsor/apply?animal=${a.slug}`}>Sponsor</Link></div></div></article>)}</div>{shown.length===0&&<div className="empty-state">No animals match this filter.</div>}</>;
+  return <><div className="filter-row" aria-label="Filter sponsor animals">{(["All","Dog","Cat"] as const).map(x=><button key={x} className={filter===x?"active":""} onClick={()=>setFilter(x)}>{x === "Dog" ? "Dogs" : x === "Cat" ? "Cats" : x}</button>)}</div><div className="card-grid animal-grid">{shown.map(a=><article className="animal-card" key={a.slug}><AnimalPhoto name={a.name} species={a.species} src={a.image}/><div><span className="tag">{a.species}</span><h3>{a.name}</h3><p>{a.excerpt}</p><div className="card-actions"><Link className="text-link" href={`/sponsor/${a.slug}`}>Read their story →</Link><Link className="button button-small" href={`/sponsor/apply?animal=${a.slug}`}>Sponsor</Link></div></div></article>)}</div>{shown.length===0&&<div className="empty-state">No animals match this filter.</div>}</>;
 }
 
 export function VetDirectory() {

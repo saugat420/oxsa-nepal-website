@@ -100,7 +100,7 @@ p { margin: 0 0 1.15em; color: var(--muted); }
 .hero-visual { position: relative; grid-area: visual; display: grid; width: min(100%, 570px); aspect-ratio: 1; place-items: center; justify-self: end; }
 .hero-visual:before { position: absolute; width: 90%; aspect-ratio: 1; border-radius: 50%; background: rgba(253,70,88,.2); filter: blur(34px); transform: translateY(18px); content: ""; }
 .hero-photo-frame { position: relative; z-index: 1; width: 84%; aspect-ratio: 1; padding: 0; overflow: hidden; border: 0; border-radius: 50%; background: transparent; box-shadow: none; }
-.hero-visual .hero-photo { display: block; width: 100%; height: 100%; max-width: none; border: 0; border-radius: 50%; object-fit: cover; object-position: 50% 50%; }
+.hero-visual .hero-photo { display: block; width: 100%; height: 100%; max-width: none; border: 0; border-radius: 50%; object-fit: contain; object-position: 50% 50%; }
 .hero-badge { position: absolute; z-index: 2; display: grid; width: 88px; height: 88px; place-items: center; border: 9px solid rgba(255,255,255,.96); border-radius: 28px; box-shadow: 0 16px 36px rgba(53,30,34,.14); font-size: 2.5rem; line-height: 1; animation: badge-float 5s ease-in-out infinite; }
 .hero-badge-cat { top: 3%; right: 0; background: #dff7ff; transform: rotate(7deg); }
 .hero-badge-dog { bottom: 7%; left: 0; background: #fff3cf; animation-delay: -2.3s; transform: rotate(-7deg); }
@@ -149,6 +149,8 @@ p { margin: 0 0 1.15em; color: var(--muted); }
 .paw-placeholder img { width: 34%; border-radius: 50%; mix-blend-mode: multiply; opacity: .58; }
 .paw-placeholder b { margin-top: 12px; font-family: var(--font-heading), Manrope, sans-serif; font-size: 1.1rem; }
 .paw-placeholder small { color: var(--muted); }
+.animal-photo { display: grid; aspect-ratio: 4/3; place-items: center; overflow: hidden; background: var(--blush); }
+.animal-photo img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; }
 .animal-card > div:last-child, .article-card > div:last-child { padding: 22px; }
 .tag { display: inline-flex; padding: 4px 9px; border-radius: 999px; background: var(--blush); color: var(--brand-dark); font-size: .7rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
 .animal-card h3, .article-card h3 { margin: 10px 0; }
@@ -243,7 +245,7 @@ p { margin: 0 0 1.15em; color: var(--muted); }
 .filter-row button { padding: 7px 16px; border: 1px solid var(--line-strong); border-radius: 999px; background: #fff; cursor: pointer; }
 .filter-row button.active { border-color: var(--ink); background: var(--ink); color: #fff; }
 .profile-grid { display: grid; grid-template-columns: 1fr 1.05fr; align-items: start; gap: 60px; }
-.profile-grid > .paw-placeholder { position: sticky; top: 98px; aspect-ratio: 1; border-radius: 18px; }
+.profile-grid > .paw-placeholder, .profile-grid > .animal-photo { position: sticky; top: 98px; aspect-ratio: 1; border-radius: 18px; }
 .profile-grid h1 { margin-top: 12px; font-size: clamp(2.5rem, 5vw, 4rem); }
 .sponsor-box { margin-top: 34px; padding: 25px; border: 1px solid var(--line); border-radius: 16px; background: var(--blush); }
 .sponsor-box h2 { font-size: 1.45rem; }
@@ -424,7 +426,7 @@ p { margin: 0 0 1.15em; color: var(--muted); }
   .hero-grid { gap: 26px; }
   .home-story-grid, .about-intro-grid, .work-section { gap: 34px; }
   .work-section:nth-child(even) > div:first-child { order: 0; }
-  .profile-grid > .paw-placeholder { position: static; }
+  .profile-grid > .paw-placeholder, .profile-grid > .animal-photo { position: static; }
   .article-grid, .animal-grid, .media-grid { grid-template-columns: repeat(2, 1fr); }
   .belief-grid { grid-template-columns: 1fr; }
   .donation-method-card { grid-template-columns: 1fr; }
