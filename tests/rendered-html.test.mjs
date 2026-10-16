@@ -33,9 +33,9 @@ test("server-renders the completed Oxsa Nepal homepage", async () => {
   assert.match(html, /Oxsa Nepal/);
   assert.match(html, /Every street animal deserves/i);
   assert.match(html, /images\/logo\/oxsa-logo\.png/i);
-  assert.match(html, /images\/content\/hero-oxsa-original\.jpg/i);
+  assert.match(html, /images\/content\/hero-circle\.png/i);
   assert.match(html, /images\/content\/our-story\.jpg/i);
-  assert.match(html, /hero-title[\s\S]*Oxsa Nepal works[\s\S]*hero-oxsa-original[\s\S]*hero-actions/i);
+  assert.match(html, /hero-title[\s\S]*Oxsa Nepal works[\s\S]*hero-circle[\s\S]*hero-actions/i);
   assert.doesNotMatch(html, /\bOXSA\b/);
   assert.match(html, /favicon\.png\?v=3/i);
   assert.match(html, /href="\/donate"/);
