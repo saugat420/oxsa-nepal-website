@@ -7,7 +7,7 @@ export const siteConfig = {
   email: "mail@oxsanepal.org",
   shelter: "Jwagal, Lalitpur",
   office: "Jhamsikhel, Lalitpur",
-  visitingHours: "9:00 AM – 4:00 PM",
+  visitingHours: "10:00 AM – 3:00 PM",
   social: { facebook: "", instagram: "", youtube: "" },
   donations: {
     banks: [

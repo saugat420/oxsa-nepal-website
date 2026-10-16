@@ -37,7 +37,7 @@ test("server-renders the completed Oxsa Nepal homepage", async () => {
   assert.match(html, /images\/content\/our-story\.jpg/i);
   assert.match(html, /hero-title[\s\S]*Oxsa Nepal works[\s\S]*hero-oxsa-original[\s\S]*hero-actions/i);
   assert.doesNotMatch(html, /\bOXSA\b/);
-  assert.match(html, /favicon\.png\?v=2/i);
+  assert.match(html, /favicon\.png\?v=3/i);
   assert.match(html, /href="\/donate"/);
   assert.match(html, /href="\/sponsor"/);
   assert.match(html, /href="\/adopt"/);
@@ -60,7 +60,8 @@ test("donation page contains the verified payment details and QR assets", async 
   assert.match(html, /images\/donations\/esewa-qr\.jpeg/);
   assert.match(html, /images\/donations\/paypal-qr\.jpeg/);
   assert.match(html, /wa\.me\/9779849321303/);
-  assert.match(html, /favicon\.png\?v=2/i);
+  assert.match(html, /favicon\.png\?v=3/i);
+  assert.doesNotMatch(html, /No contribution is too small|Medicines &amp; checkups|Veterinary support/i);
 });
 
 test("vet directory includes verified nationwide contacts, filters and map links", async () => {
@@ -101,7 +102,20 @@ test("primary navigation routes render successfully", async () => {
       /^text\/html\b/i,
       `${route} should return HTML`,
     );
+    const html = await response.text();
+    assert.match(html, /favicon\.png\?v=3/i, `${route} should include the global favicon`);
   }
+});
+
+test("requested page content updates render cleanly", async () => {
+  const about = await (await render("/about")).text();
+  assert.match(about, /class="belief-quote"[\s\S]*Our belief[\s\S]*<strong>IF NOT US, THEN WHO\?<\/strong>[\s\S]*Compassion begins/i);
+
+  const workPage = await (await render("/our-work")).text();
+  assert.doesNotMatch(workPage, /Programme 0\d/i);
+
+  const contact = await (await render("/contact")).text();
+  assert.match(contact, /10:00 AM [–—-] 3:00 PM/);
 });
 
 test("every rendered internal link resolves successfully", async () => {
