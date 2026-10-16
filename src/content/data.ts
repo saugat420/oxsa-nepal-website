@@ -53,24 +53,24 @@ export const work = [
   { id: "awareness", title: "Awareness", short: "Education turns everyday choices into a more compassionate community.", body: "Lasting change depends on how people understand and respond to animals. Oxsa Nepal shares practical guidance and encourages community responsibility." },
 ] as const;
 
-export type Article = { title: string; slug: string; excerpt: string; date?: string; category?: string; paragraphs: string[]; published?: boolean };
-const article = (title: string, slug: string, excerpt: string, category = "Story"): Article => ({
-  title, slug, excerpt, category, published: true,
+export type Article = { title: string; slug: string; excerpt: string; date?: string; category?: string; image?: string; imageAlt?: string; paragraphs: string[]; published?: boolean };
+const article = (title: string, slug: string, excerpt: string, category = "Story", image?: string, imageAlt?: string): Article => ({
+  title, slug, excerpt, category, image, imageAlt, published: true,
   paragraphs: [excerpt, "Oxsa Nepal shares this account to encourage patient, practical compassion and a stronger sense of responsibility toward animals in our communities."],
 });
 
 export const stories: Article[] = [
-  article("How Kalu Fought Nasal Cancer", "how-kalu-fought-nasal-cancer", "Kalu's story is about illness, treatment and the determination to keep caring."),
-  article("Saving a Hit-and-Run Puppy", "saving-a-hit-and-run-puppy", "A reminder that quick, compassionate action can give an injured puppy a chance."),
-  article("Love Has No Looks: The Story of Timar Kancha", "love-has-no-looks", "Timar Kancha's story asks us to see worth beyond appearance."),
-  article("Not Every Cat Is a Natural-Born Hunter", "not-every-cat-is-a-natural-born-hunter", "A compassionate look at the assumptions people make about cats and survival."),
-  article("Please Check Under Your Vehicle Before Driving", "check-under-your-vehicle", "A simple safety habit can prevent terrible injuries to resting street animals."),
-  article("The Journey of the Three Kalus", "journey-of-the-three-kalus", "Three animals, one shared name and a journey toward safety."),
-  article("How Two Puppies Chose to Leave the Street", "two-puppies-left-the-street", "A story about trust, choice and the promise of a safer life."),
-  article("A Man With a Golden Heart", "a-man-with-a-golden-heart", "One person's kindness shows the difference an ordinary neighbour can make."),
-  article("Remembering Tyau – A Rescued Cat", "remembering-tyau", "A loving remembrance of Tyau and the life made possible through rescue."),
-  article("A Story of Overcoming Superstition", "overcoming-superstition", "Compassion grows when fear and superstition give way to understanding."),
-  article("The Story of Pappan – A Crow", "pappan-the-crow", "Pappan's story widens the circle of care beyond dogs and cats."),
+  article("How Kalu Fought Nasal Cancer", "how-kalu-fought-nasal-cancer", "Kalu's story is about illness, treatment and the determination to keep caring.", "Story", "/images/stories/how-kalu-fought-nasal-cancer.png", "Kalu before and after recovering from nasal cancer"),
+  article("Saving a Hit-and-Run Puppy", "saving-a-hit-and-run-puppy", "A reminder that quick, compassionate action can give an injured puppy a chance.", "Story", "/images/stories/saving-a-hit-and-run-puppy.png", "A rescued puppy resting with a bandaged leg"),
+  article("Love Has No Looks: The Story of Timar Kancha", "love-has-no-looks", "Timar Kancha's story asks us to see worth beyond appearance.", "Story", "/images/stories/love-has-no-looks.png", "Timar Kancha resting outdoors"),
+  article("Not Every Cat Is a Natural-Born Hunter", "not-every-cat-is-a-natural-born-hunter", "A compassionate look at the assumptions people make about cats and survival.", "Story", "/images/stories/not-every-cat-is-a-natural-born-hunter.png", "A close-up portrait of a shelter cat"),
+  article("Please Check Under Your Vehicle Before Driving", "check-under-your-vehicle", "A simple safety habit can prevent terrible injuries to resting street animals.", "Story", "/images/stories/check-under-your-vehicle.png", "A person checking near a parked vehicle where a dog is resting safely"),
+  article("The Journey of the Three Kalus", "journey-of-the-three-kalus", "Three animals, one shared name and a journey toward safety.", "Story", "/images/stories/journey-of-the-three-kalus.png", "Three dogs being cared for beside a street"),
+  article("How Two Puppies Chose to Leave the Street", "two-puppies-left-the-street", "A story about trust, choice and the promise of a safer life.", "Story", "/images/stories/two-puppies-left-the-street.png", "Two puppies at the doorway of a safe shelter"),
+  article("A Man With a Golden Heart", "a-man-with-a-golden-heart", "One person's kindness shows the difference an ordinary neighbour can make.", "Story", "/images/stories/a-man-with-a-golden-heart.png", "A neighbour feeding a community dog outside a shop"),
+  article("Remembering Tyau – A Rescued Cat", "remembering-tyau", "A loving remembrance of Tyau and the life made possible through rescue.", "Story", "/images/stories/remembering-tyau.png", "A rescued tabby-and-white cat resting peacefully on a blanket"),
+  article("A Story of Overcoming Superstition", "overcoming-superstition", "Compassion grows when fear and superstition give way to understanding.", "Story", "/images/stories/overcoming-superstition.png", "A family warmly caring for a black community dog"),
+  article("The Story of Pappan – A Crow", "pappan-the-crow", "Pappan's story widens the circle of care beyond dogs and cats.", "Story", "/images/stories/pappan-the-crow.png", "A healthy crow perched in a shelter garden"),
 ];
 
 export const blog: Article[] = [
