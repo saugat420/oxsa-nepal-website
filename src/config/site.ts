@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Oxsa Nepal Animal Welfare Society",
   shortName: "Oxsa Nepal",
   description: "An animal-welfare nonprofit working for safer, healthier lives for street animals in Nepal.",
-  url: "https://oxsa-nepal.digitalsaugatb.chatgpt.site",
+  url: "https://oxsanepal.org",
   whatsapp: "https://wa.me/9779849321303",
   email: "mail@oxsanepal.org",
   shelter: "Jwagal, Lalitpur",
