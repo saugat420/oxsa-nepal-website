@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { siteConfig } from "@/src/config/site";
 import { HeaderNav } from "./HeaderNav";
 import { NativeLink as Link } from "./NativeLink";
@@ -14,7 +14,7 @@ export function Footer() {
     <div className="footer-brand"><Image src="/images/logo/oxsa-logo.png" alt="" width={72} height={72}/><h2>Oxsa Nepal</h2><p>Working for safer, healthier lives for street animals through practical care and community compassion.</p></div>
     <FooterLinks title="Quick Links" links={[["About","/about"],["Our Work","/our-work"],["Adopt","/adopt"],["Sponsor","/sponsor"],["Donate","/donate"]]}/>
     <FooterLinks title="Helpful Resources" links={[["Success Stories","/stories"],["Blog","/blog"],["FAQ","/faq"],["Vet Centres","/vet-centres"],["Wishlist","/wishlist"]]}/>
-    <div><h3>Contact</h3><address><a href={`tel:${siteConfig.phone}`}><Phone/>{siteConfig.phone}</a><a href={`mailto:${siteConfig.email}`}><Mail/>{siteConfig.email}</a><span><MapPin/>{siteConfig.shelter}</span><span><MapPin/>{siteConfig.office}</span></address></div>
+    <div><h3>Contact</h3><address><a href={`mailto:${siteConfig.email}`}><Mail/>{siteConfig.email}</a><span><MapPin/>Shelter: {siteConfig.shelter}</span><span><MapPin/>Head Office: {siteConfig.office}</span></address></div>
   </div><div className="container copyright">© {year} Oxsa Nepal Animal Welfare Society. All rights reserved.</div></footer>;
 }
 

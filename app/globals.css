@@ -356,7 +356,7 @@ p { margin: 0 0 1.15em; color: var(--muted); }
 .footer-links li { margin: 7px 0; }
 .footer a:hover { color: var(--brand-dark); }
 .footer address { display: grid; gap: 9px; font-style: normal; }
-.footer address a, .footer address span { display: flex; align-items: flex-start; gap: 8px; color: var(--muted); }
+.footer address a, .footer address span { display: flex; align-items: flex-start; gap: 8px; color: #111; }
 .footer address svg { width: 20px; height: 20px; flex: none; margin-top: 3px; }
 .copyright { margin-top: 48px; padding: 20px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .8rem; }
 

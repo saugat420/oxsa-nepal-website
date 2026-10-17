@@ -3,7 +3,7 @@ export const siteConfig = {
   shortName: "Oxsa Nepal",
   description: "An animal-welfare nonprofit working for safer, healthier lives for street animals in Nepal.",
   url: "https://oxsa-nepal.digitalsaugatb.chatgpt.site",
-  phone: "9849321303",
+  whatsapp: "https://wa.me/9779849321303",
   email: "mail@oxsanepal.org",
   shelter: "Jwagal, Lalitpur",
   office: "Jhamsikhel, Lalitpur",
@@ -13,7 +13,7 @@ export const siteConfig = {
     banks: [
       { bank: "Nabil Bank Ltd", accountName: "Oxsa Nepal Animal Welfare Society", accountNumber: "01901017501825", branch: "Pulchowk" },
     ],
-    esewa: { name: "Oxsa Nepal Animal Welfare Organization", number: "9849321303" },
+    esewa: { name: "Oxsa Nepal Animal Welfare Organization" },
     paypal: "sonysukaso@gmail.com",
   },
 } as const;

@@ -10,7 +10,7 @@ const meta: Record<string,[string,string]>={
   adopt:["Adopt","Learn about responsible adoption and submit an application."], stories:["Stories of Compassion","Read Oxsa Nepal's animal-welfare success stories."],
   blog:["Blog","Animal-welfare education and stories from Oxsa Nepal."], wishlist:["Shelter Wishlist","Practical supplies that help Oxsa Nepal care for animals."],
   "vet-centres":["Veterinary Centres","Search a practical directory of veterinary centres in Nepal."], faq:["FAQ","Answers to common animal-welfare questions."],
-  media:["Media","Oxsa Nepal stories and interviews in Nepali media."], contact:["Contact","Call, email or visit Oxsa Nepal in Lalitpur."],
+  media:["Media","Oxsa Nepal stories and interviews in Nepali media."], contact:["Contact","Email or visit Oxsa Nepal in Lalitpur."],
 };
 
 export async function generateMetadata({params}:{params:Promise<{slug:string[]}>}):Promise<Metadata>{const {slug}=await params;const root=slug[0];let data=meta[root];if(root==="sponsor"&&slug[1]==="apply")data=["Sponsorship Form","Apply to sponsor an Oxsa Nepal shelter animal."];else if(root==="sponsor"&&slug[1]){const a=animals.find(x=>x.slug===slug[1]);if(a)data=[`Sponsor ${a.name}`,a.excerpt];}if((root==="blog"||root==="stories")&&slug[1]){const a=(root==="blog"?blog:stories).find(x=>x.slug===slug[1]);if(a)data=[a.title,a.excerpt];}if(!data)return {};return{title:data[0],description:data[1],alternates:{canonical:`/${slug.join("/")}`},openGraph:{title:`${data[0]} | Oxsa Nepal`,description:data[1]}}}

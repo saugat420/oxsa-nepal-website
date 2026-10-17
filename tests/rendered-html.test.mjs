@@ -54,6 +54,8 @@ test("server-renders the completed Oxsa Nepal homepage", async () => {
   assert.match(html, /aria-controls="mobile-navigation"/);
   assert.match(html, /aria-label="Open navigation"/);
   assert.match(html, /aria-controls="explore-menu"/);
+  assert.match(html, /Shelter: (?:<!-- -->)?Jwagal, Lalitpur/);
+  assert.match(html, /Head Office: (?:<!-- -->)?Jhamsikhel, Lalitpur/);
   assert.doesNotMatch(html, /Your site is taking shape|Building your site/i);
 });
 
@@ -62,7 +64,7 @@ test("donation page contains the verified payment details and QR assets", async 
   assert.equal(response.status, 200);
   const html = await response.text();
 
-  assert.match(html, /9849321303/);
+  assert.doesNotMatch(html, />9849321303</);
   assert.match(html, /Oxsa Nepal Animal Welfare Organization/);
   assert.match(html, /01901017501825/);
   assert.match(html, /Nabil Bank Ltd/);
@@ -72,6 +74,17 @@ test("donation page contains the verified payment details and QR assets", async 
   assert.match(html, /wa\.me\/9779849321303/);
   assert.match(html, /favicon\.png\?v=3/i);
   assert.doesNotMatch(html, /No contribution is too small|Medicines &amp; checkups|Veterinary support/i);
+});
+
+test("contact, media, and work pages contain the requested updates", async () => {
+  const contact = await (await render("/contact")).text();
+  assert.doesNotMatch(contact, /Get Directions|9849321303|tel:/i);
+
+  const media = await (await render("/media")).text();
+  assert.match(media, /youtube\.com\/watch\?v=2QZAUVMkKg8(?:&amp;|&)t=1749s/);
+
+  const workPage = await (await render("/our-work")).text();
+  assert.match(workPage, /images\/work\/awareness\.png/);
 });
 
 test("sponsor page lists the current 21 photo-backed shelter residents", async () => {

@@ -182,7 +182,7 @@ export const wishlist = {
 } as const;
 
 export const media = [
-  { publication: "Herne Katha", title: "Oxsa Nepal feature", url: "https://www.youtube.com/results?search_query=Herne+Katha+Oxsa+Nepal" },
+  { publication: "Herne Katha", title: "Oxsa Nepal feature", url: "https://www.youtube.com/watch?v=2QZAUVMkKg8&t=1749s" },
   { publication: "The Annapurna Express", title: "Raina Byanjankar: All in for animal welfare", url: "https://theannapurnaexpress.com/story/46777/" },
   { publication: "Edusanjal", title: "Oxsa Nepal: An Organization for Those Who Can't Speak for Themselves", url: "https://edusanjal.com/post/oxsa-nepal-an-organization-for-those-who-cant-speak-for-themselves/" },
 ] as const;

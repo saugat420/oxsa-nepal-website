@@ -16,6 +16,6 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({children}:{children:React.ReactNode}){
-  const org={"@context":"https://schema.org","@type":"NGO",name:siteConfig.name,url:siteConfig.url,email:siteConfig.email,telephone:siteConfig.phone,address:[{"@type":"PostalAddress",streetAddress:siteConfig.office,addressLocality:"Lalitpur",addressCountry:"NP"},{"@type":"PostalAddress",streetAddress:siteConfig.shelter,addressLocality:"Lalitpur",addressCountry:"NP"}]};
+  const org={"@context":"https://schema.org","@type":"NGO",name:siteConfig.name,url:siteConfig.url,email:siteConfig.email,address:[{"@type":"PostalAddress",streetAddress:siteConfig.office,addressLocality:"Lalitpur",addressCountry:"NP"},{"@type":"PostalAddress",streetAddress:siteConfig.shelter,addressLocality:"Lalitpur",addressCountry:"NP"}]};
   return <html lang="en"><head><link rel="icon" href="/favicon.png?v=3" type="image/png" sizes="512x512"/><link rel="shortcut icon" href="/favicon.png?v=3" type="image/png"/><link rel="apple-touch-icon" href="/favicon.png?v=3"/></head><body className={`${inter.variable} ${manrope.variable}`}><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(org)}}/><Header/><main id="main">{children}</main><Footer/></body></html>;
 }
