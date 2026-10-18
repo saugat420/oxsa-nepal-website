@@ -1,90 +1,1202 @@
 import Image from "next/image";
-import { ArrowRight, Banknote, Bone, BriefcaseMedical, Cookie, ExternalLink, Gift, HandHeart, Heart, HeartPulse, Home, Mail, MapPin, Megaphone, MessageCircle, PackageOpen, PawPrint, Pill, Scissors, ShieldCheck, ShoppingBasket, Sparkles, Syringe, Wheat } from "lucide-react";
-import { adoptions, animals, blog, faqs, media, stories, vetDirectoryUpdated, wishlist, work } from "@/src/content/data";
+import {
+  ArrowRight,
+  Banknote,
+  Bone,
+  BriefcaseMedical,
+  Cookie,
+  ExternalLink,
+  Gift,
+  HandHeart,
+  Heart,
+  HeartPulse,
+  Home,
+  Mail,
+  MapPin,
+  Megaphone,
+  MessageCircle,
+  PackageOpen,
+  PawPrint,
+  Pill,
+  Scissors,
+  ShieldCheck,
+  ShoppingBasket,
+  Sparkles,
+  Syringe,
+  Wheat,
+} from "lucide-react";
+import {
+  adoptions,
+  animals,
+  blog,
+  faqs,
+  media,
+  stories,
+  vetDirectoryUpdated,
+  wishlist,
+  work,
+} from "@/src/content/data";
 import { siteConfig } from "@/src/config/site";
-import { AnimalPhoto, Breadcrumb, CTA, PageHero, PawPlaceholder } from "./SiteChrome";
-import { CopyButton, SmartForm, SponsorGrid, VetDirectory } from "./Interactive";
+import {
+  AnimalPhoto,
+  Breadcrumb,
+  CTA,
+  PageHero,
+  PawPlaceholder,
+} from "./SiteChrome";
+import {
+  CopyButton,
+  SmartForm,
+  SponsorGrid,
+  VetDirectory,
+} from "./Interactive";
 import { NativeLink as Link } from "./NativeLink";
 
 const workIcons: Record<string, React.ReactNode> = {
-  spaying: <Scissors/>,
-  adoption: <Home/>,
-  feeding: <Bone/>,
-  vaccination: <Syringe/>,
-  awareness: <Megaphone/>,
+  spaying: <Scissors />,
+  adoption: <Home />,
+  feeding: <Bone />,
+  vaccination: <Syringe />,
+  awareness: <Megaphone />,
 };
 
 const workImages: Record<string, { src: string; alt: string }> = {
-  spaying: { src: "/images/work/spaying.png", alt: "A dog receiving professional spay and neuter care" },
-  adoption: { src: "/images/work/adoption.png", alt: "A rescued puppy being held by a new companion in Kathmandu" },
-  feeding: { src: "/images/work/feeding.png", alt: "An Oxsa Nepal caregiver feeding community dogs" },
-  vaccination: { src: "/images/work/vaccination.png", alt: "A community dog receiving a vaccination with gentle care" },
-  awareness: { src: "/images/work/awareness.png", alt: "A Nepali animal-welfare volunteer sharing safe ways to care for a community dog" },
+  spaying: {
+    src: "/images/work/spaying.png",
+    alt: "A dog receiving professional spay and neuter care",
+  },
+  adoption: {
+    src: "/images/work/adoption.png",
+    alt: "A rescued puppy being held by a new companion in Kathmandu",
+  },
+  feeding: {
+    src: "/images/work/feeding.png",
+    alt: "An Oxsa Nepal caregiver feeding community dogs",
+  },
+  vaccination: {
+    src: "/images/work/vaccination.png",
+    alt: "A community dog receiving a vaccination with gentle care",
+  },
+  awareness: {
+    src: "/images/work/awareness.png",
+    alt: "A Nepali animal-welfare volunteer sharing safe ways to care for a community dog",
+  },
 };
 
 const wishlistIcons: Record<string, React.ReactNode> = {
-  "Care & Wellness": <HeartPulse/>,
-  Cleaning: <Sparkles/>,
-  Food: <Bone/>,
-  Medical: <BriefcaseMedical/>,
+  "Care & Wellness": <HeartPulse />,
+  Cleaning: <Sparkles />,
+  Food: <Bone />,
+  Medical: <BriefcaseMedical />,
 };
 
 const donationItemIcons: Record<string, React.ReactNode> = {
-  Rice: <Wheat/>,
-  Lentils: <PackageOpen/>,
-  "Dog or cat food": <Bone/>,
-  Medicine: <Pill/>,
-  Biscuits: <Cookie/>,
+  Rice: <Wheat />,
+  Lentils: <PackageOpen />,
+  "Dog or cat food": <Bone />,
+  Medicine: <Pill />,
+  Biscuits: <Cookie />,
 };
 
 export function HomePage() {
-  return <>
-    <section className="home-hero"><div className="container hero-grid"><div className="hero-heading"><p className="eyebrow">Compassion in action</p><h1 className="hero-title">Every street animal deserves safety, <span>care and kindness.</span></h1></div><p className="lead hero-description">Oxsa Nepal works to reduce animal suffering through spaying and neutering, daily feeding, vaccination, responsible adoption and community awareness.</p><div className="hero-visual"><div className="hero-photo-frame"><Image className="hero-photo" src="/images/content/hero-image-v2.png" alt="Oxsa Nepal team caring for dogs and a kitten at the shelter" width={1018} height={1000} sizes="(max-width: 780px) 90vw, (max-width: 1080px) 70vw, 44vw" priority/></div><span className="hero-badge hero-badge-cat" aria-hidden="true">🐱</span><span className="hero-badge hero-badge-dog" aria-hidden="true">🐶</span><PawPrint className="hero-paw-trail hero-paw-one" aria-hidden="true"/><PawPrint className="hero-paw-trail hero-paw-two" aria-hidden="true"/></div><div className="hero-actions"><div className="button-row"><Link className="button" href="/donate">Donate Now</Link><Link className="button button-outline" href="/sponsor">Sponsor an Animal</Link></div><Link className="subtle-link" href="/sponsor">Or sponsor an animal every month <ArrowRight/></Link></div></div></section>
-    <section className="section"><div className="container home-story-grid"><div className="story-image"><Image className="story-photo" src="/images/content/our-story.jpg" alt="Oxsa with the family member she inspired" width={1066} height={1600}/></div><div className="home-story-copy"><p className="eyebrow">Our story</p><h2>It began with one very special dog</h2><p>Oxsa Nepal began with one very special dog named Oxsa.</p><p>Her life and passing deepened one family’s commitment to care for animals beyond their own home. After the 2015 earthquake, the family garage became a place of shelter.</p><Link className="text-link" href="/about">Read Our Story <ArrowRight/></Link></div></div></section>
-    <section className="section soft"><div className="container"><SectionHead eyebrow="What we do" title="Practical care, lasting change" intro="Oxsa Nepal combines direct care with responsible, long-term approaches to animal welfare."/><div className="card-grid work-grid">{work.map(x=><Link className="icon-card" href={`/our-work#${x.id}`} key={x.id}><span className="icon-disc">{workIcons[x.id]}</span><h3>{x.title}</h3><p>{x.short}</p><span>Learn more →</span></Link>)}</div></div></section>
-    <section className="section"><div className="container"><SectionHead eyebrow="Ways to help" title="Choose your way to care"/><div className="card-grid help-grid"><HelpCard icon={<Heart/>} title="Donate" text="Help fund food, medicine, animal care and welfare programmes." href="/donate"/><HelpCard icon={<HandHeart/>} title="Sponsor" text="Support one shelter animal with a monthly contribution." href="/sponsor"/><HelpCard icon={<Home/>} title="Adopt" text="Make a lifelong commitment and give an animal a family." href="/adopt"/><HelpCard icon={<ShoppingBasket/>} title="Wishlist" text="Bring practical supplies the shelter needs every day." href="/wishlist"/></div></div></section>
-    <section className="section blush"><div className="container"><SectionHead eyebrow="Meet our animals" title="A name, a story, a life that matters" intro="Sponsorship offers steady support when adoption is not possible."/><SponsorGrid limit={6}/><div className="section-action"><Link className="button button-outline" href="/sponsor">Meet All Our Animals</Link></div></div></section>
-    <section className="section"><div className="container"><SectionHead eyebrow="Stories of compassion" title="Small acts can change a life"/><ArticleGrid items={stories.slice(0,3)} base="stories"/><div className="section-action"><Link className="text-link" href="/stories">View all stories →</Link></div></div></section><CTA/>
-  </>;
+  return (
+    <>
+      <section className="home-hero">
+        <div className="container hero-grid">
+          <div className="hero-heading">
+            <p className="eyebrow">Compassion in action</p>
+            <h1 className="hero-title">
+              Every street animal deserves safety,{" "}
+              <span>care and kindness.</span>
+            </h1>
+          </div>
+          <p className="lead hero-description">
+            Oxsa Nepal works to reduce animal suffering through spaying and
+            neutering, daily feeding, vaccination, responsible adoption and
+            community awareness.
+          </p>
+          <div className="hero-visual">
+            <div className="hero-photo-frame">
+              <Image
+                className="hero-photo"
+                src="/images/content/hero-image-v2.png"
+                alt="Oxsa Nepal team caring for dogs and a kitten at the shelter"
+                width={1018}
+                height={1000}
+                sizes="(max-width: 780px) 90vw, (max-width: 1080px) 70vw, 44vw"
+                priority
+              />
+            </div>
+            <span className="hero-badge hero-badge-cat" aria-hidden="true">
+              🐱
+            </span>
+            <span className="hero-badge hero-badge-dog" aria-hidden="true">
+              🐶
+            </span>
+            <PawPrint
+              className="hero-paw-trail hero-paw-one"
+              aria-hidden="true"
+            />
+            <PawPrint
+              className="hero-paw-trail hero-paw-two"
+              aria-hidden="true"
+            />
+          </div>
+          <div className="hero-actions">
+            <div className="button-row">
+              <Link className="button" href="/donate">
+                Donate Now
+              </Link>
+              <Link className="button button-outline" href="/sponsor">
+                Sponsor a Furry
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container home-story-grid">
+          <div className="story-image">
+            <Image
+              className="story-photo"
+              src="/images/content/our-story.jpg"
+              alt="Oxsa with the family member she inspired"
+              width={1066}
+              height={1600}
+            />
+          </div>
+          <div className="home-story-copy">
+            <p className="eyebrow">Our story</p>
+            <h2>It began with one very special dog</h2>
+            <p>Oxsa Nepal began with one very special dog named Oxsa.</p>
+            <p>
+              Her life and passing deepened one family’s commitment to care for
+              animals beyond their own home. After the 2015 earthquake, the
+              family garage became a place of shelter.
+            </p>
+            <Link className="text-link" href="/about">
+              Read Our Story <ArrowRight />
+            </Link>
+          </div>
+        </div>
+      </section>
+      <section className="section soft">
+        <div className="container">
+          <SectionHead
+            eyebrow="What we do"
+            title="Practical care, lasting change"
+            intro="Oxsa Nepal combines direct care with responsible, long-term approaches to animal welfare."
+          />
+          <div className="card-grid work-grid">
+            {work.map((x) => (
+              <Link className="icon-card" href={`/our-work#${x.id}`} key={x.id}>
+                <span className="icon-disc">{workIcons[x.id]}</span>
+                <h3>{x.title}</h3>
+                <p>{x.short}</p>
+                <span>Learn more →</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <SectionHead eyebrow="Ways to help" title="Choose your way to care" />
+          <div className="card-grid help-grid">
+            <HelpCard
+              icon={<Heart />}
+              title="Donate"
+              text="Help fund food, medicine, animal care and welfare programmes."
+              href="/donate"
+            />
+            <HelpCard
+              icon={<HandHeart />}
+              title="Sponsor"
+              text="Support one shelter animal with a monthly contribution."
+              href="/sponsor"
+            />
+            <HelpCard
+              icon={<Home />}
+              title="Adopt"
+              text="Make a lifelong commitment and give an animal a family."
+              href="/adopt"
+            />
+            <HelpCard
+              icon={<ShoppingBasket />}
+              title="Wishlist"
+              text="Bring practical supplies the shelter needs every day."
+              href="/wishlist"
+            />
+          </div>
+        </div>
+      </section>
+      <section className="section blush">
+        <div className="container">
+          <SectionHead
+            eyebrow="Meet our animals"
+            title="A name, a story, a life that matters"
+            intro="Sponsorship offers steady support when adoption is not possible."
+          />
+          <SponsorGrid limit={6} />
+          <div className="section-action">
+            <Link className="button button-outline" href="/sponsor">
+              Meet All Our Animals
+            </Link>
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <SectionHead
+            eyebrow="Stories of compassion"
+            title="Small acts can change a life"
+          />
+          <ArticleGrid items={stories.slice(0, 3)} base="stories" />
+          <div className="section-action">
+            <Link className="text-link" href="/stories">
+              View all stories →
+            </Link>
+          </div>
+        </div>
+      </section>
+      <CTA />
+    </>
+  );
 }
 
-export function AboutPage(){return <><PageHero eyebrow="About us" title="Our Story"><p>Oxsa Nepal is named after the dog who changed how one family saw every animal that needed care.</p></PageHero><section className="section"><div className="container"><Breadcrumb items={[["About"]]}/><div className="about-intro-grid"><div className="article"><h2>The Dog Who Started It All</h2><p>Oxsa Nepal began with one very special dog named Oxsa.</p><p>Oxsa, a German Shepherd, joined the family in 2006. When she died in 2013, the loss strengthened a desire to honour her through compassion for other animals.</p><p>Following the 2015 earthquake, the family garage became a shelter. The work later reached a wider audience through a Herne Katha feature in 2019, and Oxsa Nepal was officially registered as a nonprofit in 2020.</p></div><div className="story-image"><Image className="story-photo" src="/images/content/our-story.jpg" alt="Oxsa with the family member she inspired" width={1066} height={1600}/></div></div><div className="about-lower"><div className="timeline">{[["2006","Oxsa joins the family"],["2013","Oxsa passes away"],["2015","The garage becomes a shelter after the earthquake"],["2019","The story is featured by Herne Katha"],["2020","Oxsa Nepal is officially registered"]].map(([y,t])=><div key={y}><b>{y}</b><p>{t}</p></div>)}</div><div className="belief-grid"><div><p className="eyebrow">Our vision</p><h2>A kinder future for animals.</h2><p>A community in which animals are treated with care, dignity and responsibility.</p></div><div><p className="eyebrow">Our mission</p><h2>Reduce suffering through action.</h2><p>Support population management, feeding, vaccination, responsible adoption and public awareness.</p></div></div><blockquote className="belief-quote"><span>Our belief</span><strong>IF NOT US, THEN WHO?</strong><small>Compassion begins when ordinary people decide not to look away.</small></blockquote></div></div></section><section className="mini-cta"><div className="container"><h2>You don’t need to run a shelter to make a difference.</h2><div className="button-row centered"><Link className="button" href="/our-work">See Our Work</Link><Link className="button button-outline" href="/donate">Donate</Link></div></div></section></>}
+export function AboutPage() {
+  return (
+    <>
+      <PageHero eyebrow="About us" title="Our Story">
+        <p>
+          Oxsa Nepal is named after the dog who changed how one family saw every
+          animal that needed care.
+        </p>
+      </PageHero>
+      <section className="section">
+        <div className="container">
+          <Breadcrumb items={[["About"]]} />
+          <div className="about-intro-grid">
+            <div className="article">
+              <h2>The Dog Who Started It All</h2>
+              <p>Oxsa Nepal began with one very special dog named Oxsa.</p>
+              <p>
+                Oxsa, a German Shepherd, joined the family in 2006. When she
+                died in 2013, the loss strengthened a desire to honour her
+                through compassion for other animals.
+              </p>
+              <p>
+                Following the 2015 earthquake, the family garage became a
+                shelter. The work later reached a wider audience through a Herne
+                Katha feature in 2019, and Oxsa Nepal was officially registered
+                as a nonprofit in 2020.
+              </p>
+            </div>
+            <div className="story-image">
+              <Image
+                className="story-photo"
+                src="/images/content/our-story.jpg"
+                alt="Oxsa with the family member she inspired"
+                width={1066}
+                height={1600}
+              />
+            </div>
+          </div>
+          <div className="about-lower">
+            <div className="timeline">
+              {[
+                ["2006", "Oxsa joins the family"],
+                ["2013", "Oxsa passes away"],
+                ["2015", "The garage becomes a shelter after the earthquake"],
+                ["2019", "The story is featured by Herne Katha"],
+                ["2020", "Oxsa Nepal is officially registered"],
+              ].map(([y, t]) => (
+                <div key={y}>
+                  <b>{y}</b>
+                  <p>{t}</p>
+                </div>
+              ))}
+            </div>
+            <div className="belief-grid">
+              <div>
+                <p className="eyebrow">Our vision</p>
+                <h2>A kinder future for animals.</h2>
+                <p>
+                  A community in which animals are treated with care, dignity
+                  and responsibility.
+                </p>
+              </div>
+              <div>
+                <p className="eyebrow">Our mission</p>
+                <h2>Reduce suffering through action.</h2>
+                <p>
+                  Support population management, feeding, vaccination,
+                  responsible adoption and public awareness.
+                </p>
+              </div>
+            </div>
+            <blockquote className="belief-quote">
+              <span>Our belief</span>
+              <strong>IF NOT US, THEN WHO?</strong>
+              <small>
+                Compassion begins when ordinary people decide not to look away.
+              </small>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+      <section className="mini-cta">
+        <div className="container">
+          <h2>You don’t need to run a shelter to make a difference.</h2>
+          <div className="button-row centered">
+            <Link className="button" href="/our-work">
+              See Our Work
+            </Link>
+            <Link className="button button-outline" href="/donate">
+              Donate
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
 
-export function WorkPage(){return <><PageHero eyebrow="Our work" title="Practical work, long-term change"><p>Oxsa Nepal focuses on practical, long-term solutions that improve life for community animals and the people who live alongside them.</p></PageHero><section className="section"><div className="container"><Breadcrumb items={[["Our Work"]]}/><div className="work-jump">{work.map(x=><a href={`#${x.id}`} key={x.id}>{x.title}</a>)}</div><div className="work-sections">{work.map(x=>{const image=workImages[x.id];return <article id={x.id} key={x.id} className="work-section"><div><span className="work-icon">{workIcons[x.id]}</span><h2>{x.title}</h2><p className="lead-sm">{x.short}</p><p>{x.body}</p>{x.id==="spaying"&&<Link className="button button-outline" href="/donate">Support Our Work</Link>}{x.id==="adoption"&&<Link className="button button-outline" href="/adopt">See Animals for Adoption</Link>}</div><div className="program-image">{image?<Image className="program-photo" src={image.src} alt={image.alt} width={1600} height={1200} sizes="(max-width: 780px) 92vw, 48vw"/>:<Image src="/images/logo/oxsa-logo.png" alt={`${x.title} illustration`} width={260} height={260}/>}</div></article>})}</div></div></section><CTA/></>}
+export function WorkPage() {
+  return (
+    <>
+      <PageHero eyebrow="Our work" title="Practical work, long-term change">
+        <p>
+          Oxsa Nepal focuses on practical, long-term solutions that improve life
+          for community animals and the people who live alongside them.
+        </p>
+      </PageHero>
+      <section className="section">
+        <div className="container">
+          <Breadcrumb items={[["Our Work"]]} />
+          <div className="work-jump">
+            {work.map((x) => (
+              <a href={`#${x.id}`} key={x.id}>
+                {x.title}
+              </a>
+            ))}
+          </div>
+          <div className="work-sections">
+            {work.map((x) => {
+              const image = workImages[x.id];
+              return (
+                <article id={x.id} key={x.id} className="work-section">
+                  <div>
+                    <span className="work-icon">{workIcons[x.id]}</span>
+                    <h2>{x.title}</h2>
+                    <p className="lead-sm">{x.short}</p>
+                    <p>{x.body}</p>
+                    {x.id === "spaying" && (
+                      <Link className="button button-outline" href="/donate">
+                        Support Our Work
+                      </Link>
+                    )}
+                    {x.id === "adoption" && (
+                      <Link className="button button-outline" href="/adopt">
+                        See Animals for Adoption
+                      </Link>
+                    )}
+                  </div>
+                  <div className="program-image">
+                    {image ? (
+                      <Image
+                        className="program-photo"
+                        src={image.src}
+                        alt={image.alt}
+                        width={1600}
+                        height={1200}
+                        sizes="(max-width: 780px) 92vw, 48vw"
+                      />
+                    ) : (
+                      <Image
+                        src="/images/logo/oxsa-logo.png"
+                        alt={`${x.title} illustration`}
+                        width={260}
+                        height={260}
+                      />
+                    )}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+      <CTA />
+    </>
+  );
+}
 
-export function DonatePage(){
-  const usefulItems=["Rice","Lentils","Dog or cat food","Medicine","Biscuits"];
-  const whatsapp=siteConfig.whatsapp;
-  return <>
-    <PageHero eyebrow="Donate" title="Small gifts can create a much bigger impact." actions={<><a className="button" href="#donation-methods">Choose How to Donate</a><a className="button button-outline" href="#useful-items"><Gift/>Donate Useful Items</a></>}><p>Your support helps Oxsa Nepal care for street animals with food, medicine, shelter and kindness. Choose the verified method that works best for you.</p></PageHero>
-    <section className="section" id="donation-methods"><div className="container"><SectionHead eyebrow="Verified donation methods" title="Give directly to Oxsa Nepal" intro="Scan a QR code or copy the payment details with one tap."/>
-      <div className="donation-methods">
-        <article className="donation-method-card esewa-card" id="esewa"><div className="donation-method-content"><div className="donation-method-title"><span className="payment-logo"><Image src="/images/donations/esewa-icon.webp" alt="" width={72} height={72}/></span><div><small>Quick donation</small><h3>Donate with eSewa</h3></div></div><p>Open eSewa and scan the QR code, or send your donation to the number below.</p><dl><dt>eSewa name</dt><dd>{siteConfig.donations.esewa.name}</dd><dt>eSewa number</dt><dd className="number">{siteConfig.donations.esewa.number}</dd></dl><CopyButton value={siteConfig.donations.esewa.number} label="Copy eSewa number"/></div><figure className="donation-qr"><Image src="/images/donations/esewa-qr.jpeg" alt="eSewa QR code for Oxsa Nepal Animal Welfare Society" width={1122} height={887}/><figcaption>Open eSewa and scan to donate</figcaption></figure></article>
-        {siteConfig.donations.banks.map(bank=><article className="donation-bank-card" id="bank" key={bank.bank}><div className="donation-bank-heading"><div><small>Bank transfer</small><h3>{bank.bank}</h3><p>{bank.branch} Branch</p></div><span className="payment-logo bank-logo"><Banknote/></span></div><div className="bank-details"><div className="bank-detail-row"><span>Account</span><b>{bank.accountNumber}</b><CopyButton value={bank.accountNumber} label="Copy"/></div><div className="bank-detail-row"><span>Name</span><b>{bank.accountName}</b><CopyButton value={bank.accountName} label="Copy"/></div><div className="bank-detail-row"><span>Branch</span><b>{bank.branch}</b></div></div></article>)}
-        <article className="donation-method-card paypal-card" id="paypal"><div className="donation-method-content"><div className="donation-method-title"><span className="payment-logo paypal-logo"><Image src="/images/donations/paypal-icon.png" alt="" width={3840} height={2160}/></span><div><small>International support</small><h3>Donate with PayPal</h3></div></div><p>Use the PayPal account or scan the QR code in the PayPal app.</p><dl><dt>PayPal</dt><dd><a href={`mailto:${siteConfig.donations.paypal}`}>{siteConfig.donations.paypal}</a></dd></dl><CopyButton value={siteConfig.donations.paypal} label="Copy PayPal address"/></div><figure className="donation-qr paypal-qr"><Image src="/images/donations/paypal-qr.jpeg" alt="PayPal QR code for Oxsa Nepal donations" width={589} height={676}/><figcaption>Scan using the PayPal app</figcaption></figure></article>
+export function DonatePage() {
+  const usefulItems = [
+    "Rice",
+    "Lentils",
+    "Dog or cat food",
+    "Medicine",
+    "Biscuits",
+  ];
+  const whatsapp = siteConfig.whatsapp;
+  return (
+    <>
+      <PageHero
+        eyebrow="Donate"
+        title="Small gifts can create a much bigger impact."
+        actions={
+          <>
+            <a className="button" href="#donation-methods">
+              Choose How to Donate
+            </a>
+            <a className="button button-outline" href="#useful-items">
+              <Gift />
+              Donate Useful Items
+            </a>
+          </>
+        }
+      >
+        <p>
+          Your support helps Oxsa Nepal care for street animals with food,
+          medicine, shelter and kindness. Choose the verified method that works
+          best for you.
+        </p>
+      </PageHero>
+      <section className="section" id="donation-methods">
+        <div className="container">
+          <SectionHead
+            eyebrow="Verified donation methods"
+            title="Give directly to Oxsa Nepal"
+            intro="Scan a QR code or copy the payment details with one tap."
+          />
+          <div className="donation-methods">
+            <article className="donation-method-card esewa-card" id="esewa">
+              <div className="donation-method-content">
+                <div className="donation-method-title">
+                  <span className="payment-logo">
+                    <Image
+                      src="/images/donations/esewa-icon.webp"
+                      alt=""
+                      width={72}
+                      height={72}
+                    />
+                  </span>
+                  <div>
+                    <small>Quick donation</small>
+                    <h3>Donate with eSewa</h3>
+                  </div>
+                </div>
+                <p>
+                  Open eSewa and scan the QR code, or send your donation to the
+                  number below.
+                </p>
+                <dl>
+                  <dt>eSewa name</dt>
+                  <dd>{siteConfig.donations.esewa.name}</dd>
+                  <dt>eSewa number</dt>
+                  <dd className="number">
+                    {siteConfig.donations.esewa.number}
+                  </dd>
+                </dl>
+                <CopyButton
+                  value={siteConfig.donations.esewa.number}
+                  label="Copy eSewa number"
+                />
+              </div>
+              <figure className="donation-qr">
+                <Image
+                  src="/images/donations/esewa-qr.jpeg"
+                  alt="eSewa QR code for Oxsa Nepal Animal Welfare Society"
+                  width={1122}
+                  height={887}
+                />
+                <figcaption>Open eSewa and scan to donate</figcaption>
+              </figure>
+            </article>
+            {siteConfig.donations.banks.map((bank) => (
+              <article className="donation-bank-card" id="bank" key={bank.bank}>
+                <div className="donation-bank-heading">
+                  <div>
+                    <small>Bank transfer</small>
+                    <h3>{bank.bank}</h3>
+                    <p>{bank.branch} Branch</p>
+                  </div>
+                  <span className="payment-logo bank-logo">
+                    <Banknote />
+                  </span>
+                </div>
+                <div className="bank-details">
+                  <div className="bank-detail-row">
+                    <span>Account</span>
+                    <b>{bank.accountNumber}</b>
+                    <CopyButton value={bank.accountNumber} label="Copy" />
+                  </div>
+                  <div className="bank-detail-row">
+                    <span>Name</span>
+                    <b>{bank.accountName}</b>
+                    <CopyButton value={bank.accountName} label="Copy" />
+                  </div>
+                  <div className="bank-detail-row">
+                    <span>Branch</span>
+                    <b>{bank.branch}</b>
+                  </div>
+                </div>
+              </article>
+            ))}
+            <article className="donation-method-card paypal-card" id="paypal">
+              <div className="donation-method-content">
+                <div className="donation-method-title">
+                  <span className="payment-logo paypal-logo">
+                    <Image
+                      src="/images/donations/paypal-icon.png"
+                      alt=""
+                      width={3840}
+                      height={2160}
+                    />
+                  </span>
+                  <div>
+                    <small>International support</small>
+                    <h3>Donate with PayPal</h3>
+                  </div>
+                </div>
+                <p>
+                  Use the PayPal account or scan the QR code in the PayPal app.
+                </p>
+                <dl>
+                  <dt>PayPal</dt>
+                  <dd>
+                    <a href={`mailto:${siteConfig.donations.paypal}`}>
+                      {siteConfig.donations.paypal}
+                    </a>
+                  </dd>
+                </dl>
+                <CopyButton
+                  value={siteConfig.donations.paypal}
+                  label="Copy PayPal address"
+                />
+              </div>
+              <figure className="donation-qr paypal-qr">
+                <Image
+                  src="/images/donations/paypal-qr.jpeg"
+                  alt="PayPal QR code for Oxsa Nepal donations"
+                  width={589}
+                  height={676}
+                />
+                <figcaption>Scan using the PayPal app</figcaption>
+              </figure>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section className="section soft" id="useful-items">
+        <div className="container">
+          <SectionHead
+            eyebrow="More ways to help"
+            title="You can donate useful items too"
+            intro="Every bag of food, packet of medicine or simple treat can bring comfort to an animal in need."
+          />
+          <div className="donation-item-list">
+            {usefulItems.map((item) => (
+              <div key={item}>
+                {donationItemIcons[item]}
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+          <div className="donation-visit">
+            <div>
+              <p className="eyebrow">Planning a shelter visit?</p>
+              <h2>WhatsApp us before you arrive.</h2>
+              <p>
+                We will help plan your visit and confirm which supplies are most
+                useful right now.
+              </p>
+            </div>
+            <a
+              className="button button-light"
+              href={whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MessageCircle />
+              WhatsApp Us
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+export function SponsorPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Sponsor"
+        title="Sponsor an Animal"
+        actions={
+          <Link className="button" href="/sponsor/apply">
+            Start a Sponsorship
+          </Link>
+        }
+      >
+        <p>
+          Want to help one shelter animal in a more personal way? You can
+          sponsor one of Oxsa Nepal’s resident animals every month.
+        </p>
+      </PageHero>
+      <section className="section">
+        <div className="container">
+          <Breadcrumb items={[["Sponsor"]]} />
+          <p className="sponsor-intro">
+            A monthly contribution helps cover food, shelter, routine care and
+            medical support for that animal. Sponsorship is a simple way to
+            become part of their story, even if you cannot adopt.
+          </p>
+          <SectionHead
+            eyebrow="21 shelter residents"
+            title="Meet the animals"
+            intro="Choose a dog or cat, read their story and tell Oxsa Nepal how you would like to help each month."
+          />
+          <SponsorGrid />
+        </div>
+      </section>
+      <CTA />
+    </>
+  );
+}
+export function SponsorProfile({ slug }: { slug: string }) {
+  const a = animals.find((x) => x.slug === slug);
+  if (!a) return null;
+  return (
+    <>
+      <section className="section">
+        <div className="container">
+          <Breadcrumb items={[["Sponsor", "/sponsor"], [a.name]]} />
+          <div className="profile-grid">
+            <AnimalPhoto name={a.name} species={a.species} src={a.image} />
+            <article>
+              <span className="tag">{a.species}</span>
+              <h1>{a.name}</h1>
+              <p className="lead">{a.excerpt}</p>
+              {a.story.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+              <div className="sponsor-box">
+                <h2>Help care for {a.name}</h2>
+                <p>
+                  Your sponsorship contributes toward food, shelter, everyday
+                  care and medical support.
+                </p>
+                <Link
+                  className="button"
+                  href={`/sponsor/apply?animal=${a.slug}`}
+                >
+                  Sponsor {a.name}
+                </Link>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+export function SponsorApplyPage({ animal }: { animal?: string }) {
+  return (
+    <>
+      <PageHero eyebrow="Monthly sponsorship" title="Sponsor an Animal">
+        <p>
+          Choose an animal and a monthly contribution. After you submit, your
+          details are saved and WhatsApp opens so you can continue directly with
+          Oxsa Nepal.
+        </p>
+      </PageHero>
+      <section className="section">
+        <div className="container form-wrap">
+          <div>
+            <SmartForm kind="sponsor" animal={animal} />
+            <p className="sponsor-form-note">
+              Your details are sent securely to Oxsa Nepal and used only to
+              arrange your sponsorship.
+            </p>
+          </div>
+          <aside className="contact-aside sponsor-process">
+            <p className="eyebrow">What happens next?</p>
+            <h2>A simple, personal sponsorship.</h2>
+            <ol>
+              <li>Complete the form and choose your monthly amount.</li>
+              <li>Oxsa Nepal securely records your sponsorship details.</li>
+              <li>WhatsApp opens with your information ready to send.</li>
+            </ol>
+          </aside>
+        </div>
+      </section>
+    </>
+  );
+}
+
+export function AdoptPage() {
+  const available = adoptions.filter(
+    ({ status }: { status: string }) => status === "available",
+  );
+  return (
+    <>
+      <PageHero eyebrow="Adoption" title="Ready to give an animal a real home?">
+        <p>
+          Adoption is a lifelong responsibility. Oxsa Nepal carefully screens
+          homes to protect each animal’s future.
+        </p>
+      </PageHero>
+      <section className="section">
+        <div className="container">
+          <SectionHead eyebrow="Available animals" title="Find a companion" />
+          {available.length === 0 ? (
+            <div className="empty-state large">
+              <Home />
+              <h2>No adoption listings are currently available.</h2>
+              <p>Please check again soon or contact us.</p>
+              <Link className="button button-outline" href="/contact">
+                Contact Oxsa Nepal
+              </Link>
+            </div>
+          ) : null}
+        </div>
+      </section>
+      <section className="section soft">
+        <div className="container form-wrap">
+          <div>
+            <p className="eyebrow">Application</p>
+            <h2>A careful match starts with an honest conversation.</h2>
+            <p>
+              Tell us about your household, experience and plan for lifelong
+              care.
+            </p>
+            <div className="care-note">
+              <ShieldCheck />
+              <span>
+                Applications are reviewed by Oxsa Nepal. Submitting does not
+                guarantee adoption.
+              </span>
+            </div>
+          </div>
+          <SmartForm kind="adoption" />
+        </div>
+      </section>
+    </>
+  );
+}
+
+export function StoriesPage() {
+  return (
+    <>
+      <PageHero title="Stories of Compassion">
+        <p>
+          Stories of recovery, responsibility and the people who chose to care.
+        </p>
+      </PageHero>
+      <section className="section">
+        <div className="container">
+          <ArticleGrid items={stories} base="stories" />
+        </div>
+      </section>
+      <CTA />
+    </>
+  );
+}
+export function BlogPage() {
+  return (
+    <>
+      <PageHero eyebrow="Learn & reflect" title="From the Oxsa Nepal Blog">
+        <p>
+          Practical animal-welfare guidance and stories from lives changed by
+          compassion.
+        </p>
+      </PageHero>
+      <section className="section">
+        <div className="container">
+          <ArticleGrid items={blog} base="blog" />
+        </div>
+      </section>
+    </>
+  );
+}
+export function ArticlePage({
+  kind,
+  slug,
+}: {
+  kind: "blog" | "stories";
+  slug: string;
+}) {
+  const items = kind === "blog" ? blog : stories;
+  const item = items.find((x) => x.slug === slug);
+  if (!item) return null;
+  const json = {
+    "@context": "https://schema.org",
+    "@type": kind === "blog" ? "BlogPosting" : "Article",
+    headline: item.title,
+    description: item.excerpt,
+    author: { "@type": "Organization", name: "Oxsa Nepal" },
+    publisher: { "@type": "Organization", name: "Oxsa Nepal" },
+    mainEntityOfPage: `/${kind}/${slug}`,
+  };
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
+      />
+      <section className="article-hero">
+        <div className="container article">
+          <Breadcrumb
+            items={[
+              [kind === "blog" ? "Blog" : "Stories", `/${kind}`],
+              [item.title],
+            ]}
+          />
+          <span className="tag">{item.category}</span>
+          <h1>{item.title}</h1>
+          <p className="lead">{item.excerpt}</p>
+        </div>
+      </section>
+      <section className="section">
+        <article className="container article reading">
+          {item.image ? (
+            <figure className="article-feature-image">
+              <Image
+                src={item.image}
+                alt={item.imageAlt ?? item.title}
+                width={1600}
+                height={1200}
+                sizes="(max-width: 780px) 92vw, 760px"
+              />
+            </figure>
+          ) : (
+            <PawPlaceholder name={item.title} />
+          )}{" "}
+          {item.paragraphs.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+          <div className="article-cta">
+            <h2>Help us create more stories like this.</h2>
+            <div className="button-row">
+              <Link className="button" href="/donate">
+                Donate
+              </Link>
+              <Link className="button button-outline" href="/sponsor">
+                Sponsor
+              </Link>
+            </div>
+          </div>
+          <h2>Related {kind === "blog" ? "posts" : "stories"}</h2>
+          <div className="related-links">
+            {items
+              .filter((x) => x.slug !== slug)
+              .slice(0, 3)
+              .map((x) => (
+                <Link href={`/${kind}/${x.slug}`} key={x.slug}>
+                  {x.title}
+                  <ArrowRight />
+                </Link>
+              ))}
+          </div>
+        </article>
+      </section>
+    </>
+  );
+}
+
+export function WishlistPage() {
+  return (
+    <>
+      <PageHero title="Want to help without sending money?">
+        <p>
+          Shelter supplies are practical gifts that support care every day.
+          Please contact Oxsa Nepal before bringing medicines.
+        </p>
+      </PageHero>
+      <section className="section">
+        <div className="container wishlist-grid">
+          {Object.entries(wishlist).map(([group, items]) => (
+            <article className="list-card" key={group}>
+              <span className="icon-disc">{wishlistIcons[group]}</span>
+              <h2>{group}</h2>
+              <ul>
+                {items.map((i) => (
+                  <li key={i}>{i}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="mini-cta">
+        <div className="container">
+          <h2>Planning to bring supplies?</h2>
+          <div className="button-row centered">
+            <Link className="button" href="/contact">
+              Contact Us
+            </Link>
+            <Link className="button button-outline" href="/contact#visit">
+              Visit the Shelter
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+export function FAQPage() {
+  const json = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map(([q, a]) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: a },
+    })),
+  };
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
+      />
+      <PageHero title="Frequently Asked Questions">
+        <p>Clear, practical guidance for everyday animal-welfare questions.</p>
+      </PageHero>
+      <section className="section">
+        <div className="container faq-list">
+          {faqs.map(([q, a], i) => (
+            <details key={q} open={i === 0}>
+              <summary>
+                <span>{q}</span>
+                <b>+</b>
+              </summary>
+              <p>{a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+export function VetPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Nationwide directory"
+        title="Veterinary Centres Across Nepal"
+      >
+        <p>
+          Search verified public veterinary hospitals and service centres by
+          name, province, city, district, place or phone number.
+        </p>
+      </PageHero>
+      <section className="section">
+        <div className="container">
+          <div className="disclaimer">
+            <b>Verified {vetDirectoryUpdated}.</b> Only facilities with a
+            current official government listing and a published contact number
+            are included. Numbers can still change, so please call before
+            travelling.
+          </div>
+          <VetDirectory />
+        </div>
+      </section>
+    </>
+  );
+}
+export function MediaPage() {
+  return (
+    <>
+      <PageHero title="Oxsa Nepal in the Media">
+        <p>
+          Selected stories and interviews that have helped bring animal welfare
+          into public conversation.
+        </p>
+      </PageHero>
+      <section className="section">
+        <div className="container media-grid">
+          {media.map((m) => (
+            <a
+              className="media-card"
+              href={m.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              key={m.title}
+            >
+              <span>{m.publication}</span>
+              <h2>{m.title}</h2>
+              <b>
+                Open source <ExternalLink />
+              </b>
+            </a>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+export function ContactPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Contact"
+        title="We'd love to hear from you."
+        actions={
+          <a
+            className="button button-outline"
+            href={`mailto:${siteConfig.email}`}
+          >
+            <Mail />
+            Email Us
+          </a>
+        }
+      >
+        <p>
+          Whether you want to adopt, sponsor, donate, visit the shelter or ask
+          an animal-welfare question, get in touch and someone will get back to
+          you.
+        </p>
+      </PageHero>
+      <section className="section" id="visit">
+        <div className="container">
+          <Breadcrumb items={[["Contact"]]} />
+          <div className="contact-cards contact-summary">
+            <ContactCard
+              icon={<MapPin />}
+              title="Head Office"
+              value={siteConfig.office}
+            />
+            <ContactCard
+              icon={<MapPin />}
+              title="Shelter"
+              value={siteConfig.shelter}
+            />
+            <ContactCard
+              icon={<Mail />}
+              title="Email"
+              value={siteConfig.email}
+              href={`mailto:${siteConfig.email}`}
+            />
+          </div>
+          <div className="contact-grid">
+            <article className="visit-card">
+              <p className="eyebrow">Visiting hours</p>
+              <h2>{siteConfig.visitingHours}</h2>
+              <p>
+                Visits during these hours help the shelter team balance animal
+                routines, feeding, cleaning and care. Please contact Oxsa Nepal
+                before visiting.
+              </p>
+            </article>
+            <div>
+              <h2>Send a message</h2>
+              <p>Your message is saved securely for the Oxsa Nepal team.</p>
+              <SmartForm kind="contact" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function SectionHead({
+  eyebrow,
+  title,
+  intro,
+}: {
+  eyebrow: string;
+  title: string;
+  intro?: string;
+}) {
+  return (
+    <div className="section-head">
+      <p className="eyebrow">{eyebrow}</p>
+      <h2>{title}</h2>
+      {intro && <p>{intro}</p>}
+    </div>
+  );
+}
+function HelpCard({
+  icon,
+  title,
+  text,
+  href,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  text: string;
+  href: string;
+}) {
+  return (
+    <Link className="help-card" href={href}>
+      <span>{icon}</span>
+      <h3>{title}</h3>
+      <p>{text}</p>
+      <b>
+        Learn more <ArrowRight />
+      </b>
+    </Link>
+  );
+}
+function ArticleGrid({ items, base }: { items: typeof blog; base: string }) {
+  return (
+    <div className="card-grid article-grid">
+      {items
+        .filter((x) => x.published !== false)
+        .map((x) => (
+          <article className="article-card" key={x.slug}>
+            {x.image ? (
+              <div className="article-card-image">
+                <Image
+                  src={x.image}
+                  alt={x.imageAlt ?? x.title}
+                  width={1600}
+                  height={1200}
+                  sizes="(max-width: 780px) 92vw, (max-width: 1080px) 45vw, 31vw"
+                />
+              </div>
+            ) : (
+              <PawPlaceholder name={x.title} />
+            )}
+            <div>
+              <span className="tag">{x.category}</span>
+              <h3>
+                <Link href={`/${base}/${x.slug}`}>{x.title}</Link>
+              </h3>
+              <p>{x.excerpt}</p>
+              <Link className="text-link" href={`/${base}/${x.slug}`}>
+                Read {base === "blog" ? "article" : "story"} →
+              </Link>
+            </div>
+          </article>
+        ))}
+    </div>
+  );
+}
+function ContactCard({
+  icon,
+  title,
+  value,
+  href,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  value: string;
+  href?: string;
+}) {
+  return (
+    <article className="contact-card">
+      <span>{icon}</span>
+      <div>
+        <small>{title}</small>
+        {href ? <a href={href}>{value}</a> : <b>{value}</b>}
       </div>
-    </div></section>
-    <section className="section soft" id="useful-items"><div className="container"><SectionHead eyebrow="More ways to help" title="You can donate useful items too" intro="Every bag of food, packet of medicine or simple treat can bring comfort to an animal in need."/><div className="donation-item-list">{usefulItems.map(item=><div key={item}>{donationItemIcons[item]}<span>{item}</span></div>)}</div><div className="donation-visit"><div><p className="eyebrow">Planning a shelter visit?</p><h2>WhatsApp us before you arrive.</h2><p>We will help plan your visit and confirm which supplies are most useful right now.</p></div><a className="button button-light" href={whatsapp} target="_blank" rel="noopener noreferrer"><MessageCircle/>WhatsApp Us</a></div></div></section>
-  </>;
+    </article>
+  );
 }
-
-export function SponsorPage(){return <><PageHero eyebrow="Sponsor" title="Sponsor an Animal" actions={<Link className="button" href="/sponsor/apply">Start a Sponsorship</Link>}><p>Want to help one shelter animal in a more personal way? You can sponsor one of Oxsa Nepal’s resident animals every month.</p></PageHero><section className="section"><div className="container"><Breadcrumb items={[["Sponsor"]]}/><p className="sponsor-intro">A monthly contribution helps cover food, shelter, routine care and medical support for that animal. Sponsorship is a simple way to become part of their story, even if you cannot adopt.</p><SectionHead eyebrow="21 shelter residents" title="Meet the animals" intro="Choose a dog or cat, read their story and tell Oxsa Nepal how you would like to help each month."/><SponsorGrid/></div></section><CTA/></>}
-export function SponsorProfile({slug}:{slug:string}){const a=animals.find(x=>x.slug===slug);if(!a)return null;return <><section className="section"><div className="container"><Breadcrumb items={[["Sponsor","/sponsor"],[a.name]]}/><div className="profile-grid"><AnimalPhoto name={a.name} species={a.species} src={a.image}/><article><span className="tag">{a.species}</span><h1>{a.name}</h1><p className="lead">{a.excerpt}</p>{a.story.map((p,i)=><p key={i}>{p}</p>)}<div className="sponsor-box"><h2>Help care for {a.name}</h2><p>Your sponsorship contributes toward food, shelter, everyday care and medical support.</p><Link className="button" href={`/sponsor/apply?animal=${a.slug}`}>Sponsor {a.name}</Link></div></article></div></div></section></>}
-export function SponsorApplyPage({animal}:{animal?:string}){return <><PageHero eyebrow="Monthly sponsorship" title="Sponsor an Animal"><p>Choose an animal and a monthly contribution. After you submit, your details are saved and WhatsApp opens so you can continue directly with Oxsa Nepal.</p></PageHero><section className="section"><div className="container form-wrap"><div><SmartForm kind="sponsor" animal={animal}/><p className="sponsor-form-note">Your details are sent securely to Oxsa Nepal and used only to arrange your sponsorship.</p></div><aside className="contact-aside sponsor-process"><p className="eyebrow">What happens next?</p><h2>A simple, personal sponsorship.</h2><ol><li>Complete the form and choose your monthly amount.</li><li>Oxsa Nepal securely records your sponsorship details.</li><li>WhatsApp opens with your information ready to send.</li></ol></aside></div></section></>}
-
-export function AdoptPage(){const available=adoptions.filter(({status}:{status:string})=>status==="available");return <><PageHero eyebrow="Adoption" title="Ready to give an animal a real home?"><p>Adoption is a lifelong responsibility. Oxsa Nepal carefully screens homes to protect each animal’s future.</p></PageHero><section className="section"><div className="container"><SectionHead eyebrow="Available animals" title="Find a companion"/>{available.length===0?<div className="empty-state large"><Home/><h2>No adoption listings are currently available.</h2><p>Please check again soon or contact us.</p><Link className="button button-outline" href="/contact">Contact Oxsa Nepal</Link></div>:null}</div></section><section className="section soft"><div className="container form-wrap"><div><p className="eyebrow">Application</p><h2>A careful match starts with an honest conversation.</h2><p>Tell us about your household, experience and plan for lifelong care.</p><div className="care-note"><ShieldCheck/><span>Applications are reviewed by Oxsa Nepal. Submitting does not guarantee adoption.</span></div></div><SmartForm kind="adoption"/></div></section></>}
-
-export function StoriesPage(){return <><PageHero title="Stories of Compassion"><p>Stories of recovery, responsibility and the people who chose to care.</p></PageHero><section className="section"><div className="container"><ArticleGrid items={stories} base="stories"/></div></section><CTA/></>}
-export function BlogPage(){return <><PageHero eyebrow="Learn & reflect" title="From the Oxsa Nepal Blog"><p>Practical animal-welfare guidance and stories from lives changed by compassion.</p></PageHero><section className="section"><div className="container"><ArticleGrid items={blog} base="blog"/></div></section></>}
-export function ArticlePage({kind,slug}:{kind:"blog"|"stories";slug:string}){const items=kind==="blog"?blog:stories;const item=items.find(x=>x.slug===slug);if(!item)return null;const json={"@context":"https://schema.org","@type":kind==="blog"?"BlogPosting":"Article",headline:item.title,description:item.excerpt,author:{"@type":"Organization",name:"Oxsa Nepal"},publisher:{"@type":"Organization",name:"Oxsa Nepal"},mainEntityOfPage:`/${kind}/${slug}`};return <><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(json)}}/><section className="article-hero"><div className="container article"><Breadcrumb items={[[kind==="blog"?"Blog":"Stories",`/${kind}`],[item.title]]}/><span className="tag">{item.category}</span><h1>{item.title}</h1><p className="lead">{item.excerpt}</p></div></section><section className="section"><article className="container article reading">{item.image?<figure className="article-feature-image"><Image src={item.image} alt={item.imageAlt??item.title} width={1600} height={1200} sizes="(max-width: 780px) 92vw, 760px"/></figure>:<PawPlaceholder name={item.title}/>} {item.paragraphs.map((p,i)=><p key={i}>{p}</p>)}<div className="article-cta"><h2>Help us create more stories like this.</h2><div className="button-row"><Link className="button" href="/donate">Donate</Link><Link className="button button-outline" href="/sponsor">Sponsor</Link></div></div><h2>Related {kind==="blog"?"posts":"stories"}</h2><div className="related-links">{items.filter(x=>x.slug!==slug).slice(0,3).map(x=><Link href={`/${kind}/${x.slug}`} key={x.slug}>{x.title}<ArrowRight/></Link>)}</div></article></section></>}
-
-export function WishlistPage(){return <><PageHero title="Want to help without sending money?"><p>Shelter supplies are practical gifts that support care every day. Please contact Oxsa Nepal before bringing medicines.</p></PageHero><section className="section"><div className="container wishlist-grid">{Object.entries(wishlist).map(([group,items])=><article className="list-card" key={group}><span className="icon-disc">{wishlistIcons[group]}</span><h2>{group}</h2><ul>{items.map(i=><li key={i}>{i}</li>)}</ul></article>)}</div></section><section className="mini-cta"><div className="container"><h2>Planning to bring supplies?</h2><div className="button-row centered"><Link className="button" href="/contact">Contact Us</Link><Link className="button button-outline" href="/contact#visit">Visit the Shelter</Link></div></div></section></>}
-export function FAQPage(){const json={"@context":"https://schema.org","@type":"FAQPage",mainEntity:faqs.map(([q,a])=>({"@type":"Question",name:q,acceptedAnswer:{"@type":"Answer",text:a}}))};return <><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(json)}}/><PageHero title="Frequently Asked Questions"><p>Clear, practical guidance for everyday animal-welfare questions.</p></PageHero><section className="section"><div className="container faq-list">{faqs.map(([q,a],i)=><details key={q} open={i===0}><summary><span>{q}</span><b>+</b></summary><p>{a}</p></details>)}</div></section></>}
-export function VetPage(){return <><PageHero eyebrow="Nationwide directory" title="Veterinary Centres Across Nepal"><p>Search verified public veterinary hospitals and service centres by name, province, city, district, place or phone number.</p></PageHero><section className="section"><div className="container"><div className="disclaimer"><b>Verified {vetDirectoryUpdated}.</b> Only facilities with a current official government listing and a published contact number are included. Numbers can still change, so please call before travelling.</div><VetDirectory/></div></section></>}
-export function MediaPage(){return <><PageHero title="Oxsa Nepal in the Media"><p>Selected stories and interviews that have helped bring animal welfare into public conversation.</p></PageHero><section className="section"><div className="container media-grid">{media.map(m=><a className="media-card" href={m.url} target="_blank" rel="noopener noreferrer" key={m.title}><span>{m.publication}</span><h2>{m.title}</h2><b>Open source <ExternalLink/></b></a>)}</div></section></>}
-export function ContactPage(){return <><PageHero eyebrow="Contact" title="We'd love to hear from you." actions={<a className="button button-outline" href={`mailto:${siteConfig.email}`}><Mail/>Email Us</a>}><p>Whether you want to adopt, sponsor, donate, visit the shelter or ask an animal-welfare question, get in touch and someone will get back to you.</p></PageHero><section className="section" id="visit"><div className="container"><Breadcrumb items={[["Contact"]]}/><div className="contact-cards contact-summary"><ContactCard icon={<MapPin/>} title="Head Office" value={siteConfig.office}/><ContactCard icon={<MapPin/>} title="Shelter" value={siteConfig.shelter}/><ContactCard icon={<Mail/>} title="Email" value={siteConfig.email} href={`mailto:${siteConfig.email}`}/></div><div className="contact-grid"><article className="visit-card"><p className="eyebrow">Visiting hours</p><h2>{siteConfig.visitingHours}</h2><p>Visits during these hours help the shelter team balance animal routines, feeding, cleaning and care. Please contact Oxsa Nepal before visiting.</p></article><div><h2>Send a message</h2><p>Your message is saved securely for the Oxsa Nepal team.</p><SmartForm kind="contact"/></div></div></div></section></>}
-
-function SectionHead({eyebrow,title,intro}:{eyebrow:string;title:string;intro?:string}){return <div className="section-head"><p className="eyebrow">{eyebrow}</p><h2>{title}</h2>{intro&&<p>{intro}</p>}</div>}
-function HelpCard({icon,title,text,href}:{icon:React.ReactNode;title:string;text:string;href:string}){return <Link className="help-card" href={href}><span>{icon}</span><h3>{title}</h3><p>{text}</p><b>Learn more <ArrowRight/></b></Link>}
-function ArticleGrid({items,base}:{items:typeof blog;base:string}){return <div className="card-grid article-grid">{items.filter(x=>x.published!==false).map(x=><article className="article-card" key={x.slug}>{x.image?<div className="article-card-image"><Image src={x.image} alt={x.imageAlt??x.title} width={1600} height={1200} sizes="(max-width: 780px) 92vw, (max-width: 1080px) 45vw, 31vw"/></div>:<PawPlaceholder name={x.title}/>}<div><span className="tag">{x.category}</span><h3><Link href={`/${base}/${x.slug}`}>{x.title}</Link></h3><p>{x.excerpt}</p><Link className="text-link" href={`/${base}/${x.slug}`}>Read {base==="blog"?"article":"story"} →</Link></div></article>)}</div>}
-function ContactCard({icon,title,value,href}:{icon:React.ReactNode;title:string;value:string;href?:string}){return <article className="contact-card"><span>{icon}</span><div><small>{title}</small>{href?<a href={href}>{value}</a>:<b>{value}</b>}</div></article>}

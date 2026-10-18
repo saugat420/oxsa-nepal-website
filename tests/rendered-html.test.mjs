@@ -8,10 +8,14 @@ const baseUrl = `http://127.0.0.1:${port}`;
 let server;
 
 before(async () => {
-  server = spawn(process.execPath, ["node_modules/next/dist/bin/next", "start", "-p", `${port}`], {
-    cwd: new URL("..", import.meta.url),
-    stdio: "ignore",
-  });
+  server = spawn(
+    process.execPath,
+    ["node_modules/next/dist/bin/next", "start", "-p", `${port}`],
+    {
+      cwd: new URL("..", import.meta.url),
+      stdio: "ignore",
+    },
+  );
 
   for (let attempt = 0; attempt < 50; attempt += 1) {
     try {
@@ -45,12 +49,19 @@ test("server-renders the completed Oxsa Nepal homepage", async () => {
   assert.match(html, /images\/logo\/oxsa-logo\.png/i);
   assert.match(html, /images\/content\/hero-image-v2\.png/i);
   assert.match(html, /images\/content\/our-story\.jpg/i);
-  assert.match(html, /hero-title[\s\S]*Oxsa Nepal works[\s\S]*hero-image-v2[\s\S]*hero-actions/i);
+  assert.match(
+    html,
+    /hero-title[\s\S]*Oxsa Nepal works[\s\S]*hero-image-v2[\s\S]*hero-actions/i,
+  );
   assert.doesNotMatch(html, /\bOXSA\b/);
   assert.match(html, /favicon\.png\?v=3/i);
   assert.match(html, /href="\/donate"/);
   assert.match(html, /href="\/sponsor"/);
-  assert.match(html, /hero-actions[\s\S]*href="\/sponsor"[\s\S]*Sponsor an Animal/);
+  assert.match(
+    html,
+    /hero-actions[\s\S]*href="\/sponsor"[\s\S]*Sponsor a Furry/,
+  );
+  assert.doesNotMatch(html, /Or sponsor an animal every month/i);
   assert.match(html, /href="\/adopt"/);
   assert.match(html, /aria-controls="mobile-navigation"/);
   assert.match(html, /aria-label="Open navigation"/);
@@ -75,7 +86,10 @@ test("donation page contains the verified payment details and QR assets", async 
   assert.match(html, /images\/donations\/paypal-qr\.jpeg/);
   assert.match(html, /wa\.me\/9779849321303/);
   assert.match(html, /favicon\.png\?v=3/i);
-  assert.doesNotMatch(html, /No contribution is too small|Medicines &amp; checkups|Veterinary support/i);
+  assert.doesNotMatch(
+    html,
+    /No contribution is too small|Medicines &amp; checkups|Veterinary support/i,
+  );
 });
 
 test("contact, media, and work pages contain the requested updates", async () => {
@@ -99,8 +113,18 @@ test("sponsor page lists the current 21 photo-backed shelter residents", async (
   const html = await response.text();
 
   assert.match(html, /21 shelter residents/i);
-  assert.equal((html.match(/Oxsa Nepal shelter (?:dog|cat)/gi) ?? []).length, 21);
-  for (const name of ["Nemo", "Choti Kali", "Badi Kali", "Mimi", "Betali", "Sweaty"]) {
+  assert.equal(
+    (html.match(/Oxsa Nepal shelter (?:dog|cat)/gi) ?? []).length,
+    21,
+  );
+  for (const name of [
+    "Nemo",
+    "Choti Kali",
+    "Badi Kali",
+    "Mimi",
+    "Betali",
+    "Sweaty",
+  ]) {
     assert.match(html, new RegExp(`>${name}<`));
   }
   for (const name of ["Seti", "Bhattu", "Pinky", "Seru"]) {
@@ -135,14 +159,24 @@ test("blog uses generated feature images instead of placeholders", async () => {
 });
 
 test("form routes keep sponsor and contact storage-only email behavior", async () => {
-  const source = await readFile(new URL("../app/api/[type]/route.ts", import.meta.url), "utf8");
-  const sponsorBlock = source.split('if (type === "sponsor")')[1].split('if (type === "contact")')[0];
-  const contactBlock = source.split('if (type === "contact")')[1].split("const parsed = base.safeParse(body)")[0];
+  const source = await readFile(
+    new URL("../app/api/[type]/route.ts", import.meta.url),
+    "utf8",
+  );
+  const sponsorBlock = source
+    .split('if (type === "sponsor")')[1]
+    .split('if (type === "contact")')[0];
+  const contactBlock = source
+    .split('if (type === "contact")')[1]
+    .split("const parsed = base.safeParse(body)")[0];
 
   assert.doesNotMatch(sponsorBlock, /sendEmail/);
   assert.match(sponsorBlock, /appendSheetRow/);
   assert.match(sponsorBlock, /"",\s*`Email:/);
-  assert.doesNotMatch(contactBlock, /sendEmail|whatsappUrl|siteConfig\.whatsapp/);
+  assert.doesNotMatch(
+    contactBlock,
+    /sendEmail|whatsappUrl|siteConfig\.whatsapp/,
+  );
   assert.match(contactBlock, /appendSheetRow/);
 });
 
@@ -150,10 +184,22 @@ test("vet directory includes verified nationwide contacts, filters and map links
   const response = await render("/vet-centres");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.equal((html.match(/class="vet-card"/g) ?? []).length, 51);
+  assert.equal((html.match(/class="vet-card"/g) ?? []).length, 131);
   assert.match(html, /National Referral Veterinary Hospital/);
-  assert.match(html, /Veterinary Hospital and Livestock Service Expert Centre — Bajura/);
-  for (const province of ["Koshi", "Madhesh", "Bagmati", "Gandaki", "Lumbini", "Karnali", "Sudurpashchim"]) assert.match(html, new RegExp(`>${province}<`));
+  assert.match(
+    html,
+    /Veterinary Hospital and Livestock Service Expert Center, Bajura/,
+  );
+  for (const province of [
+    "Koshi",
+    "Madhesh",
+    "Bagmati",
+    "Gandaki",
+    "Lumbini",
+    "Karnali",
+    "Sudurpashchim",
+  ])
+    assert.match(html, new RegExp(`>${province}<`));
   assert.match(html, /Search name, phone, city, district or place/);
   assert.match(html, /google\.com\/maps\/search\/\?api=1(?:&amp;|&)query=/);
   assert.match(html, /href="tel:015361382"/);
@@ -185,13 +231,20 @@ test("primary navigation routes render successfully", async () => {
       `${route} should return HTML`,
     );
     const html = await response.text();
-    assert.match(html, /favicon\.png\?v=3/i, `${route} should include the global favicon`);
+    assert.match(
+      html,
+      /favicon\.png\?v=3/i,
+      `${route} should include the global favicon`,
+    );
   }
 });
 
 test("requested page content updates render cleanly", async () => {
   const about = await (await render("/about")).text();
-  assert.match(about, /class="belief-quote"[\s\S]*Our belief[\s\S]*<strong>IF NOT US, THEN WHO\?<\/strong>[\s\S]*Compassion begins/i);
+  assert.match(
+    about,
+    /class="belief-quote"[\s\S]*Our belief[\s\S]*<strong>IF NOT US, THEN WHO\?<\/strong>[\s\S]*Compassion begins/i,
+  );
 
   const workPage = await (await render("/our-work")).text();
   assert.doesNotMatch(workPage, /Programme 0\d/i);
@@ -199,9 +252,15 @@ test("requested page content updates render cleanly", async () => {
   const contact = await (await render("/contact")).text();
   assert.match(contact, /10:00 AM [–—-] 3:00 PM/);
 
-  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const css = await readFile(
+    new URL("../app/globals.css", import.meta.url),
+    "utf8",
+  );
   assert.match(css, /\.about-intro-grid \.story-image \{ aspect-ratio: 4\/5;/);
-  assert.match(css, /\.footer-brand p \{ max-width: 330px; font-size: 1rem; \}/);
+  assert.match(
+    css,
+    /\.footer-brand p \{ max-width: 330px; font-size: 1rem; \}/,
+  );
 });
 
 test("every rendered internal link resolves successfully", async () => {
@@ -226,13 +285,17 @@ test("every rendered internal link resolves successfully", async () => {
         url.pathname.startsWith("/_next/") ||
         url.pathname.startsWith("/images/") ||
         /\.[a-z0-9]+$/i.test(url.pathname)
-      ) continue;
+      )
+        continue;
       const nextPath = `${url.pathname}${url.search}`;
       if (!visited.has(nextPath)) pending.push(nextPath);
     }
   }
 
-  assert.ok(visited.size > 20, `expected a full-site crawl, visited ${visited.size} routes`);
+  assert.ok(
+    visited.size > 20,
+    `expected a full-site crawl, visited ${visited.size} routes`,
+  );
 });
 
 test("unknown routes return a proper not-found response", async () => {
