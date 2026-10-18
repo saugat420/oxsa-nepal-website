@@ -17,6 +17,10 @@ Open `http://localhost:3000`. To validate a production build, run `npm run build
 - `CONTACT_TO_EMAIL`: recipient for all forms; defaults to `mail@oxsanepal.org`
 - `RESEND_API_KEY`: Resend API key
 - `EMAIL_FROM`: verified sender such as `OXSA Nepal <website@example.org>`
+- `GOOGLE_SHEET_ID`: ID from the sponsorship spreadsheet URL
+- `GOOGLE_SHEET_NAME`: tab name for sponsorship records; defaults to `Sponsorships`
+- `GOOGLE_SERVICE_ACCOUNT_EMAIL`: Google service-account email with edit access to the sheet
+- `GOOGLE_PRIVATE_KEY`: service-account private key; keep the `\\n` line breaks when adding it to Vercel
 
 If email settings are missing or delivery fails, the API returns an error and the form shows OXSA Nepal's phone and email. It never shows a false success message.
 
@@ -35,8 +39,18 @@ To publish an adoption listing, update its data and set `status: "available"`. T
 
 Contact, sponsor and adoption forms post to `/api/[type]`. The handler validates core identity fields with Zod, rejects a hidden honeypot, applies a basic per-IP rate limit and sends mail through Resend only after successful provider delivery.
 
+### Sponsorship spreadsheet setup
+
+Create a Google Sheet with a tab named `Sponsorships`. Add these headers to columns A–H:
+
+`Submitted at`, `Full name`, `Email`, `WhatsApp`, `Animal`, `Monthly contribution (NPR)`, `Message`, `Source`
+
+Enable the Google Sheets API in Google Cloud, create a service account and generate a JSON key. Share the spreadsheet with the service-account email as an editor. Add the four Google environment variables above to Vercel together with the Resend variables, then redeploy. No Google credential is exposed to the browser.
+
+After a valid sponsorship is saved to the sheet and emailed to Oxsa Nepal, the visitor is redirected to WhatsApp with the form information prefilled.
+
 ## Deployment
 
-This repository includes `.openai/hosting.json` for OpenAI Sites. For Vercel, import the repository, add the three environment variables above and deploy with the default Next.js settings.
+This repository includes `.openai/hosting.json` for OpenAI Sites. For Vercel, import the repository, add the environment variables above and deploy with the default Next.js settings.
 
 Before public launch, complete every item in `CONTENT_VERIFICATION.md`—especially the missing rewritten content document and time-sensitive contact, donation, animal and veterinary information.

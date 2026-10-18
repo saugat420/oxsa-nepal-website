@@ -49,10 +49,30 @@ export function VetDirectory() {
 
 type FormKind = "contact"|"sponsor"|"adoption";
 export function SmartForm({ kind, animal }: { kind: FormKind; animal?: string }) {
-  const [status,setStatus]=useState<"idle"|"loading"|"success"|"error">("idle"); const [message,setMessage]=useState("");
-  async function submit(e: React.FormEvent<HTMLFormElement>) { e.preventDefault(); setStatus("loading"); const form=e.currentTarget; const data=Object.fromEntries(new FormData(form)); try { const res=await fetch(`/api/${kind}`,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(data)}); const json=await res.json() as {message?:string}; if(!res.ok) throw new Error(json.message||"Unable to send your message."); setStatus("success"); setMessage(json.message||"Thank you. Your message has been sent."); form.reset(); } catch(err) { setStatus("error"); setMessage(`${err instanceof Error?err.message:"Unable to submit."} Please email ${siteConfig.email}.`); } }
-  const common=<><div className="form-grid"><Field name="fullName" label="Full name" required/><Field name="email" label="Email" type="email" required/><Field name="phone" label="Phone / WhatsApp" required/></div><div className="honeypot" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off"/></label></div></>;
-  return <form className="form-card" onSubmit={submit}>{common}{kind==="contact"&&<><label>Subject<select name="subject" required defaultValue=""><option value="" disabled>Choose a subject</option>{["General Inquiry","Adoption","Sponsorship","Donation","Shelter Visit","Animal Welfare Question","Other"].map(x=><option key={x}>{x}</option>)}</select></label><Field name="message" label="Message" textarea required/></>}{kind==="sponsor"&&<><label>Animal<select name="animal" defaultValue={animal||""} required><option value="" disabled>Choose an animal</option>{animals.map(a=><option key={a.slug} value={a.slug}>{a.name}</option>)}</select></label><Field name="contribution" label="Desired monthly contribution" required/><Field name="message" label="Message (optional)" textarea/></>}{kind==="adoption"&&<AdoptionFields/>}<button className="button submit-button" disabled={status==="loading"}>{status==="loading"?"Sending…":kind==="adoption"?"Submit Adoption Application":kind==="sponsor"?"Submit Sponsorship Interest":"Send Message"}</button>{status!=="idle"&&status!=="loading"&&<div className={`form-status ${status}`} role="status">{message}</div>}</form>;
+  const [status,setStatus]=useState<"idle"|"loading"|"success"|"error">("idle");
+  const [message,setMessage]=useState("");
+  const [contribution,setContribution]=useState("1000");
+  async function submit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("loading");
+    const form=e.currentTarget;
+    const data=Object.fromEntries(new FormData(form));
+    try {
+      const res=await fetch(`/api/${kind}`,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(data)});
+      const json=await res.json() as {message?:string;whatsappUrl?:string};
+      if(!res.ok) throw new Error(json.message||"Unable to send your message.");
+      setStatus("success");
+      setMessage(json.message||"Thank you. Your message has been sent.");
+      form.reset();
+      setContribution("1000");
+      if(kind==="sponsor"&&json.whatsappUrl) window.location.assign(json.whatsappUrl);
+    } catch(err) {
+      setStatus("error");
+      setMessage(`${err instanceof Error?err.message:"Unable to submit."} Please email ${siteConfig.email}.`);
+    }
+  }
+  const common=<><div className="form-grid"><Field name="fullName" label="Full name" required/><Field name="email" label="Email" type="email" required/><Field name="phone" label={kind==="sponsor"?"WhatsApp number":"Phone / WhatsApp"} type="tel" required/></div><div className="honeypot" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off"/></label></div></>;
+  return <form className="form-card" onSubmit={submit}>{common}{kind==="contact"&&<><label>Subject<select name="subject" required defaultValue=""><option value="" disabled>Choose a subject</option>{["General Inquiry","Adoption","Sponsorship","Donation","Shelter Visit","Animal Welfare Question","Other"].map(x=><option key={x}>{x}</option>)}</select></label><Field name="message" label="Message" textarea required/></>}{kind==="sponsor"&&<><label>Who would you like to sponsor?<select name="animal" defaultValue={animal||""} required><option value="" disabled>Choose an animal</option>{animals.map(a=><option key={a.slug} value={a.slug}>{a.name}</option>)}</select></label><fieldset className="contribution-fieldset"><legend>Desired monthly contribution</legend><div className="contribution-options">{[1000,2000,3000,4000,5000].map(amount=><label className="contribution-option" key={amount}><input type="radio" name="contribution" value={amount} checked={contribution===String(amount)} onChange={e=>setContribution(e.target.value)}/><span>{`Rs ${amount.toLocaleString("en-IN")}`}</span></label>)}<label className="contribution-option"><input type="radio" name="contribution" value="custom" checked={contribution==="custom"} onChange={e=>setContribution(e.target.value)}/><span>Custom amount</span></label></div>{contribution==="custom"&&<label className="custom-contribution">Enter a custom monthly amount (Rs)<input name="customContribution" type="number" min="100" max="1000000" step="100" inputMode="numeric" required/></label>}</fieldset><Field name="message" label="Message (optional)" textarea/></>}{kind==="adoption"&&<AdoptionFields/>}<button className="button submit-button" disabled={status==="loading"}>{status==="loading"?"Saving…":kind==="adoption"?"Submit Adoption Application":kind==="sponsor"?"Submit & Continue on WhatsApp":"Send Message"}</button>{status!=="idle"&&status!=="loading"&&<div className={`form-status ${status}`} role="status">{message}</div>}</form>;
 }
 
 function Field({name,label,type="text",required,textarea}:{name:string;label:string;type?:string;required?:boolean;textarea?:boolean}){return <label>{label}{textarea?<textarea name={name} rows={5} required={required}/>:<input name={name} type={type} required={required}/>}</label>}

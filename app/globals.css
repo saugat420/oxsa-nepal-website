@@ -268,6 +268,18 @@ p { margin: 0 0 1.15em; color: var(--muted); }
 .form-card input:focus, .form-card select:focus, .form-card textarea:focus, .directory-tools input:focus, .directory-tools select:focus { border-color: var(--brand); outline: 3px solid rgba(253,70,88,.14); }
 .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
 .form-card h2 { margin-top: 16px; font-size: 1.25rem; }
+.contribution-fieldset { margin: 0; padding: 0; border: 0; }
+.contribution-fieldset legend { margin-bottom: 9px; font-size: .88rem; font-weight: 750; }
+.contribution-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.contribution-option { position: relative; display: block !important; cursor: pointer; }
+.contribution-option input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.contribution-option span { display: grid; min-height: 46px; place-items: center; padding: 9px 10px; border: 1px solid #d8d9dc; border-radius: 10px; background: #fff; color: var(--ink); font-size: .9rem; font-weight: 800; text-align: center; transition: border-color .18s, background .18s, color .18s, box-shadow .18s; }
+.contribution-option input:checked + span { border-color: var(--brand); background: var(--blush); color: var(--brand-dark); box-shadow: 0 0 0 2px rgba(253,70,88,.12); }
+.contribution-option input:focus-visible + span { outline: 3px solid rgba(253,70,88,.2); outline-offset: 2px; }
+.custom-contribution { margin-top: 12px; }
+.sponsor-form-note { margin: 12px 6px 0; color: var(--muted); font-size: .84rem; }
+.sponsor-process ol { display: grid; gap: 14px; margin: 20px 0 0; padding-left: 22px; color: var(--ink); }
+.sponsor-process li { padding-left: 4px; }
 .check-label { display: flex !important; align-items: flex-start; }
 .check-label input { width: 19px; height: 19px; margin-top: 3px; }
 .honeypot { position: absolute; left: -10000px; }
@@ -471,6 +483,7 @@ p { margin: 0 0 1.15em; color: var(--muted); }
   .bank-detail-row .copy-button { grid-column: 1/-1; width: 100%; }
   .form-card { padding: 18px; }
   .form-grid, .directory-tools { grid-template-columns: 1fr; }
+  .contribution-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .vet-list { grid-template-columns: 1fr; }
   .vet-card { align-items: stretch; }
   .footer-grid { grid-template-columns: 1fr; }

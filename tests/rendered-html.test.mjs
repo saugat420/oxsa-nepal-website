@@ -102,6 +102,20 @@ test("sponsor page lists the current 21 photo-backed shelter residents", async (
   }
 });
 
+test("sponsorship form offers preset and custom monthly contributions", async () => {
+  const response = await render("/sponsor/apply?animal=nemo");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+
+  assert.match(html, /WhatsApp number/);
+  assert.match(html, /Who would you like to sponsor/);
+  for (const amount of ["1,000", "2,000", "3,000", "4,000", "5,000"]) {
+    assert.match(html, new RegExp(`Rs ${amount}`));
+  }
+  assert.match(html, /Custom amount/);
+  assert.match(html, /Submit &amp; Continue on WhatsApp/);
+});
+
 test("vet directory includes verified nationwide contacts, filters and map links", async () => {
   const response = await render("/vet-centres");
   assert.equal(response.status, 200);
