@@ -81,9 +81,13 @@ p { margin: 0 0 1.15em; color: var(--muted); }
 .menu-backdrop { position: fixed; inset: 72px 0 0; z-index: 100; border: 0; background: rgba(32,33,36,.28); }
 .mobile-panel { position: fixed; top: 72px; right: 0; left: 0; z-index: 102; max-height: calc(100dvh - 72px); padding: 16px 24px 22px; overflow: auto; border-bottom: 1px solid var(--line); background: #fff; box-shadow: var(--shadow); }
 .mobile-panel nav { display: grid; max-width: 720px; gap: 2px; margin: auto; }
-.mobile-panel a, .mobile-section { padding: 11px 12px; border-radius: 8px; }
+.mobile-panel a { padding: 11px 12px; border-radius: 8px; }
 .mobile-panel a:hover { background: var(--blush); }
-.mobile-section { margin-top: 6px; color: var(--brand-dark); font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.mobile-explore-trigger { display: flex; width: 100%; align-items: center; justify-content: space-between; margin-top: 5px; padding: 11px 12px; border: 0; border-radius: 8px; background: var(--blush); color: var(--brand-dark); font: inherit; font-weight: 800; cursor: pointer; }
+.mobile-explore-trigger svg { width: 19px; height: 19px; transition: transform .18s; }
+.mobile-explore-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+.mobile-explore-menu { display: grid; margin: 3px 0 6px; padding: 4px 0 4px 14px; border-left: 2px solid var(--brand); }
+.mobile-explore-menu a { color: var(--muted); }
 
 .home-hero { position: relative; padding: 88px 0 94px; overflow: hidden; border-bottom: 1px solid var(--line); background: radial-gradient(circle at 82% 42%, rgba(253,70,88,.11), transparent 30%), linear-gradient(135deg, #fff8f9 0%, var(--cream) 46%, #fff 100%); }
 .home-hero:before { position: absolute; top: -150px; left: -110px; width: 340px; height: 340px; border: 1px solid rgba(253,70,88,.12); border-radius: 50%; content: ""; }
@@ -109,6 +113,10 @@ p { margin: 0 0 1.15em; color: var(--muted); }
 .hero-paw-two { right: 5%; bottom: 6%; transform: rotate(18deg); }
 .home-story-grid, .about-intro-grid { display: grid; grid-template-columns: 1fr 1.05fr; align-items: center; gap: 64px; }
 .home-story-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr); }
+.home-story-copy .eyebrow { margin-bottom: 16px; }
+.home-story-copy h2 { margin-bottom: 26px; }
+.home-story-copy p:not(.eyebrow) { margin-bottom: 20px; }
+.home-story-copy .text-link { margin-top: 8px; }
 .story-image { aspect-ratio: 16/10; }
 .home-story-grid .story-image { aspect-ratio: 4/5; max-height: 640px; }
 .story-image img, .program-image img { width: 42%; mix-blend-mode: multiply; opacity: .58; }

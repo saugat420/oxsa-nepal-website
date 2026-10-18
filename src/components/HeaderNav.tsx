@@ -9,6 +9,7 @@ import { NativeLink as Link } from "./NativeLink";
 export function HeaderNav() {
   const [exploreOpen, setExploreOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileExploreOpen, setMobileExploreOpen] = useState(false);
   const exploreRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -16,6 +17,7 @@ export function HeaderNav() {
       if (event.key === "Escape") {
         setExploreOpen(false);
         setMobileOpen(false);
+        setMobileExploreOpen(false);
       }
     }
 
@@ -34,6 +36,7 @@ export function HeaderNav() {
   function closeAll() {
     setExploreOpen(false);
     setMobileOpen(false);
+    setMobileExploreOpen(false);
   }
 
   return <>
@@ -82,8 +85,8 @@ export function HeaderNav() {
               <div className="mobile-panel" id="mobile-navigation">
                 <nav aria-label="Mobile navigation">
                   {nav.map(([label, href]) => <Link key={href} href={href} onClick={closeAll}>{label}</Link>)}
-                  <span className="mobile-section">Explore</span>
-                  {exploreNav.map(([label, href]) => <Link key={href} href={href} onClick={closeAll}>{label}</Link>)}
+                  <button className="mobile-explore-trigger" type="button" aria-expanded={mobileExploreOpen} aria-controls="mobile-explore-menu" onClick={() => setMobileExploreOpen(open => !open)}>Explore <ChevronDown aria-hidden="true" /></button>
+                  {mobileExploreOpen && <div className="mobile-explore-menu" id="mobile-explore-menu">{exploreNav.map(([label, href]) => <Link key={href} href={href} onClick={closeAll}>{label}</Link>)}</div>}
                 </nav>
               </div>
             </>}

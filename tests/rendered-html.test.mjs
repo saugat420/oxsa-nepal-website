@@ -64,7 +64,8 @@ test("donation page contains the verified payment details and QR assets", async 
   assert.equal(response.status, 200);
   const html = await response.text();
 
-  assert.doesNotMatch(html, />9849321303</);
+  assert.match(html, />9849321303</);
+  assert.match(html, /Copy eSewa number/);
   assert.match(html, /Oxsa Nepal Animal Welfare Organization/);
   assert.match(html, /01901017501825/);
   assert.match(html, /Nabil Bank Ltd/);
@@ -79,6 +80,7 @@ test("donation page contains the verified payment details and QR assets", async 
 test("contact, media, and work pages contain the requested updates", async () => {
   const contact = await (await render("/contact")).text();
   assert.doesNotMatch(contact, /Get Directions|9849321303|tel:/i);
+  assert.match(contact, /oxsanepal\.org@gmail\.com/);
 
   const media = await (await render("/media")).text();
   assert.match(media, /youtube\.com\/watch\?v=2QZAUVMkKg8(?:&amp;|&)t=1749s/);
@@ -220,4 +222,15 @@ test("internal navigation uses production-safe native links", async () => {
 
   for (const contents of source) assert.doesNotMatch(contents, /next\/link/);
   assert.doesNotMatch(source.join("\n"), /[✚⌂◒✦◎]/);
+});
+
+test("mobile navigation includes an expandable Explore menu", async () => {
+  const source = await readFile(
+    new URL("../src/components/HeaderNav.tsx", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(source, /className="mobile-explore-trigger"/);
+  assert.match(source, /aria-controls="mobile-explore-menu"/);
+  assert.match(source, /mobileExploreOpen/);
 });

@@ -12,7 +12,7 @@ The requested `OXSA_Nepal_Rewritten_Website_Content.docx` was not present in the
 - [ ] Confirm Nabil Bank account `01901017501825`, account name and Pulchowk branch
 - [ ] Confirm eSewa name and number `9849321303`
 - [ ] Confirm PayPal ID `oxsanepal.org@gmail.com`
-- [ ] Confirm phone `9849321303` and email `mail@oxsanepal.org`
+- [ ] Confirm phone `9849321303` and email `oxsanepal.org@gmail.com`
 - [ ] Confirm shelter location `Jwagal, Lalitpur`
 - [ ] Confirm head office location `Jhamsikhel, Lalitpur`
 - [ ] Confirm visiting hours `9:00 AM – 4:00 PM`
@@ -23,7 +23,7 @@ The requested `OXSA_Nepal_Rewritten_Website_Content.docx` was not present in the
 - [ ] Confirm every vet-centre name, location and phone number; these details can change
 - [ ] Confirm and replace the Herne Katha search link with the exact verified video URL
 - [ ] Review media links and add only verified OXSA Nepal coverage
-- [ ] Configure and test `RESEND_API_KEY`, `EMAIL_FROM` and `CONTACT_TO_EMAIL`
+- [ ] Configure and test Gmail or Resend delivery and `CONTACT_TO_EMAIL`
 - [ ] Replace the canonical production URL in `src/config/site.ts` if the final domain differs
 - [ ] Review any old statistics before publication; none are currently displayed
 

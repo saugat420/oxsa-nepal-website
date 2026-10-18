@@ -1,5 +1,6 @@
 import { createSign } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 import { z } from "zod";
 import { siteConfig } from "@/src/config/site";
 import { animals } from "@/src/content/data";
@@ -19,6 +20,8 @@ const sponsorSchema = base.extend({
 });
 
 const recent = new Map<string, { count: number; reset: number }>();
+
+export const runtime = "nodejs";
 
 function encodeBase64Url(value: string | Buffer) {
   return Buffer.from(value).toString("base64url");
@@ -58,7 +61,7 @@ async function getGoogleAccessToken() {
   return data.access_token;
 }
 
-async function appendSponsorRow(values: string[]) {
+async function appendSponsorRow(values: Array<string | number>) {
   const spreadsheetId = process.env.GOOGLE_SHEET_ID;
   const sheetName = process.env.GOOGLE_SHEET_NAME || "Sponsorships";
   if (!spreadsheetId) throw new Error("Google Sheet ID is missing.");
@@ -76,9 +79,26 @@ async function appendSponsorRow(values: string[]) {
 }
 
 async function sendEmail({ email, subject, text }: { email: string; subject: string; text: string }) {
+  const gmailUser = process.env.GMAIL_USER;
+  const gmailAppPassword = process.env.GMAIL_APP_PASSWORD?.replace(/\s/g, "");
+  const to = process.env.CONTACT_TO_EMAIL || siteConfig.email;
+  if (gmailUser && gmailAppPassword) {
+    const transport = nodemailer.createTransport({
+      service: "gmail",
+      auth: { user: gmailUser, pass: gmailAppPassword },
+    });
+    await transport.sendMail({
+      from: `Oxsa Nepal <${gmailUser}>`,
+      to,
+      replyTo: email,
+      subject,
+      text,
+    });
+    return;
+  }
+
   const key = process.env.RESEND_API_KEY;
   const from = process.env.EMAIL_FROM;
-  const to = process.env.CONTACT_TO_EMAIL || siteConfig.email;
   if (!key || !from) throw new Error("Email delivery is not configured.");
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -123,7 +143,8 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ typ
     if (!animal || !Number.isInteger(amount) || amount < 100 || amount > 1_000_000) {
       return NextResponse.json({ message: "Please choose an animal and a valid monthly amount." }, { status: 400 });
     }
-    if (!process.env.GOOGLE_SHEET_ID || !process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || !process.env.GOOGLE_PRIVATE_KEY || !process.env.RESEND_API_KEY || !process.env.EMAIL_FROM) {
+    const emailConfigured = Boolean((process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD) || (process.env.RESEND_API_KEY && process.env.EMAIL_FROM));
+    if (!process.env.GOOGLE_SHEET_ID || !process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || !process.env.GOOGLE_PRIVATE_KEY || !emailConfigured) {
       return NextResponse.json({ message: "Sponsorship storage and email delivery are not configured yet." }, { status: 503 });
     }
 
@@ -151,12 +172,12 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ typ
     try {
       await Promise.all([
         appendSponsorRow([
-          new Date().toISOString(),
+          Date.now() / 86_400_000 + 25_569,
           parsed.data.fullName,
           parsed.data.email,
           parsed.data.phone,
           animal.name,
-          String(amount),
+          amount,
           message,
           "Website sponsorship form",
         ]),

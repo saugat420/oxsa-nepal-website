@@ -14,7 +14,9 @@ Open `http://localhost:3000`. To validate a production build, run `npm run build
 
 ## Environment variables
 
-- `CONTACT_TO_EMAIL`: recipient for all forms; defaults to `mail@oxsanepal.org`
+- `CONTACT_TO_EMAIL`: recipient for all forms; defaults to `oxsanepal.org@gmail.com`
+- `GMAIL_USER`: Gmail address used to send form notifications
+- `GMAIL_APP_PASSWORD`: Google app password for the Gmail account
 - `RESEND_API_KEY`: Resend API key
 - `EMAIL_FROM`: verified sender such as `OXSA Nepal <website@example.org>`
 - `GOOGLE_SHEET_ID`: ID from the sponsorship spreadsheet URL
@@ -45,7 +47,7 @@ Create a Google Sheet with a tab named `Sponsorships`. Add these headers to colu
 
 `Submitted at`, `Full name`, `Email`, `WhatsApp`, `Animal`, `Monthly contribution (NPR)`, `Message`, `Source`
 
-Enable the Google Sheets API in Google Cloud, create a service account and generate a JSON key. Share the spreadsheet with the service-account email as an editor. Add the four Google environment variables above to Vercel together with the Resend variables, then redeploy. No Google credential is exposed to the browser.
+Enable the Google Sheets API in Google Cloud, create a service account and generate a JSON key. Share the spreadsheet with the service-account email as an editor. Add the four Google environment variables above to Vercel together with the Gmail variables, then redeploy. Resend remains supported as a fallback. No Google credential is exposed to the browser.
 
 After a valid sponsorship is saved to the sheet and emailed to Oxsa Nepal, the visitor is redirected to WhatsApp with the form information prefilled.
 
