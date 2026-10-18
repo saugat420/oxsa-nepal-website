@@ -74,16 +74,16 @@ export const stories: Article[] = [
 ];
 
 export const blog: Article[] = [
-  article("Why Every Dog Should Wear an ID Tag", "why-every-dog-needs-an-id-tag", "An ID tag is a small step that can help a lost dog return home.", "Education"),
-  article("From the Streets of Nepal to a Loving Home in Canada", "streets-of-nepal-to-canada", "A journey from street life in Nepal to a permanent family abroad.", "Animal Welfare"),
-  article("Our Shelter's Adorable Guardian: Tinu", "shelter-guardian-tinu", "Meet Tinu, a familiar and watchful presence at the shelter.", "Story"),
-  article("The Heartbreaking Reality Behind Irresponsible Breeding", "irresponsible-breeding", "Why breeding decisions must put animal welfare before convenience or profit.", "Education"),
-  article("A Tale of Trust and Freedom: Pappan the Crow", "pappan-trust-and-freedom", "Pappan's relationship with people became a lesson in trust and freedom.", "Story"),
-  article("Does a Dog's Gender Decide How Loving They Will Be?", "dog-gender-and-affection", "Affection and suitability cannot be reduced to a dog's gender.", "Education"),
-  article("Three Motherless Puppies and the Responsibility We All Share", "three-motherless-puppies", "Vulnerable puppies need more than sympathy; they need shared responsibility.", "Animal Welfare"),
-  article("A Lifetime of Loyalty for One Act of Kindness", "lifetime-of-loyalty", "A single compassionate act can begin a lifelong bond.", "Story"),
-  article("Transforming Fear Into Trust: Mama Kali", "mama-kali", "Patience and consistency helped fear slowly become trust.", "Story"),
-  article("From Caged to Freedom: Chunti and Nakali", "chunti-and-nakali", "A story of recovery, freedom and learning to feel safe.", "Story"),
+  article("Why Every Dog Should Wear an ID Tag", "why-every-dog-needs-an-id-tag", "An ID tag is a small step that can help a lost dog return home.", "Education", "/images/blog/why-every-dog-needs-an-id-tag.png", "A community dog wearing a collar with a blank identification tag in a Nepali courtyard"),
+  article("From the Streets of Nepal to a Loving Home in Canada", "streets-of-nepal-to-canada", "A journey from street life in Nepal to a permanent family abroad.", "Animal Welfare", "/images/blog/streets-of-nepal-to-canada.png", "A rescued Nepali dog meeting a welcoming family after air travel"),
+  article("Our Shelter's Adorable Guardian: Tinu", "shelter-guardian-tinu", "Meet Tinu, a familiar and watchful presence at the shelter.", "Story", "/images/blog/shelter-guardian-tinu.png", "An older black shelter dog sitting watchfully near the shelter entrance"),
+  article("The Heartbreaking Reality Behind Irresponsible Breeding", "irresponsible-breeding", "Why breeding decisions must put animal welfare before convenience or profit.", "Education", "/images/blog/irresponsible-breeding.png", "A mother dog resting protectively with puppies in a makeshift shelter"),
+  article("A Tale of Trust and Freedom: Pappan the Crow", "pappan-trust-and-freedom", "Pappan's relationship with people became a lesson in trust and freedom.", "Story", "/images/blog/pappan-trust-and-freedom.png", "A crow perched freely near a caregiver's open hand in a shelter garden"),
+  article("Does a Dog's Gender Decide How Loving They Will Be?", "dog-gender-and-affection", "Affection and suitability cannot be reduced to a dog's gender.", "Education", "/images/blog/dog-gender-and-affection.png", "Two community dogs receiving equal affection from a caregiver"),
+  article("Three Motherless Puppies and the Responsibility We All Share", "three-motherless-puppies", "Vulnerable puppies need more than sympathy; they need shared responsibility.", "Animal Welfare", "/images/blog/three-motherless-puppies.png", "Three young puppies resting together while a caregiver prepares a feeding bottle"),
+  article("A Lifetime of Loyalty for One Act of Kindness", "lifetime-of-loyalty", "A single compassionate act can begin a lifelong bond.", "Story", "/images/blog/lifetime-of-loyalty.png", "A rescued dog walking closely beside a trusted caregiver in Kathmandu"),
+  article("Transforming Fear Into Trust: Mama Kali", "mama-kali", "Patience and consistency helped fear slowly become trust.", "Story", "/images/blog/mama-kali.png", "A shy mother dog cautiously accepting food from a calm caregiver"),
+  article("From Caged to Freedom: Chunti and Nakali", "chunti-and-nakali", "A story of recovery, freedom and learning to feel safe.", "Story", "/images/blog/chunti-and-nakali.png", "Two shelter dogs stepping together through an open kennel door"),
 ];
 
 export const faqs = [

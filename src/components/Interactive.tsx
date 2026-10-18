@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import { Check, Copy, ExternalLink, MapPin, Phone, Search, ShieldCheck } from "lucide-react";
 import { animals, vets } from "@/src/content/data";
 import { AnimalPhoto } from "./SiteChrome";
-import { siteConfig } from "@/src/config/site";
 import { NativeLink as Link } from "./NativeLink";
 
 export function CopyButton({ value, label = "Copy" }: { value: string; label?: string }) {
@@ -68,7 +67,7 @@ export function SmartForm({ kind, animal }: { kind: FormKind; animal?: string })
       if(kind==="sponsor"&&json.whatsappUrl) window.location.assign(json.whatsappUrl);
     } catch(err) {
       setStatus("error");
-      setMessage(`${err instanceof Error?err.message:"Unable to submit."} Please email ${siteConfig.email}.`);
+      setMessage(`${err instanceof Error?err.message:"Unable to submit."} Please try again or contact Oxsa Nepal on WhatsApp.`);
     }
   }
   const common=<><div className="form-grid"><Field name="fullName" label="Full name" required/><Field name="email" label="Email" type="email" required/><Field name="phone" label={kind==="sponsor"?"WhatsApp number":"Phone / WhatsApp"} type="tel" required/></div><div className="honeypot" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off"/></label></div></>;

@@ -50,6 +50,7 @@ test("server-renders the completed Oxsa Nepal homepage", async () => {
   assert.match(html, /favicon\.png\?v=3/i);
   assert.match(html, /href="\/donate"/);
   assert.match(html, /href="\/sponsor"/);
+  assert.match(html, /hero-actions[\s\S]*href="\/sponsor"[\s\S]*Sponsor an Animal/);
   assert.match(html, /href="\/adopt"/);
   assert.match(html, /aria-controls="mobile-navigation"/);
   assert.match(html, /aria-label="Open navigation"/);
@@ -81,6 +82,9 @@ test("contact, media, and work pages contain the requested updates", async () =>
   const contact = await (await render("/contact")).text();
   assert.doesNotMatch(contact, /Get Directions|9849321303|tel:/i);
   assert.match(contact, /oxsanepal\.org@gmail\.com/);
+  assert.match(contact, /Please contact Oxsa Nepal before visiting\./);
+  assert.match(contact, />Send Message</);
+  assert.doesNotMatch(contact, /Continue on WhatsApp/);
 
   const media = await (await render("/media")).text();
   assert.match(media, /youtube\.com\/watch\?v=2QZAUVMkKg8(?:&amp;|&)t=1749s/);
@@ -116,6 +120,30 @@ test("sponsorship form offers preset and custom monthly contributions", async ()
   }
   assert.match(html, /Custom amount/);
   assert.match(html, /Submit &amp; Continue on WhatsApp/);
+  assert.doesNotMatch(html, /details by email/i);
+});
+
+test("blog uses generated feature images instead of placeholders", async () => {
+  const response = await render("/blog");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.equal((html.match(/images\/blog\//g) ?? []).length, 10);
+  assert.doesNotMatch(html, /paw-placeholder/);
+
+  const article = await (await render("/blog/mama-kali")).text();
+  assert.match(article, /images\/blog\/mama-kali\.png/);
+});
+
+test("form routes keep sponsor and contact storage-only email behavior", async () => {
+  const source = await readFile(new URL("../app/api/[type]/route.ts", import.meta.url), "utf8");
+  const sponsorBlock = source.split('if (type === "sponsor")')[1].split('if (type === "contact")')[0];
+  const contactBlock = source.split('if (type === "contact")')[1].split("const parsed = base.safeParse(body)")[0];
+
+  assert.doesNotMatch(sponsorBlock, /sendEmail/);
+  assert.match(sponsorBlock, /appendSheetRow/);
+  assert.match(sponsorBlock, /"",\s*`Email:/);
+  assert.doesNotMatch(contactBlock, /sendEmail|whatsappUrl|siteConfig\.whatsapp/);
+  assert.match(contactBlock, /appendSheetRow/);
 });
 
 test("vet directory includes verified nationwide contacts, filters and map links", async () => {
@@ -170,6 +198,10 @@ test("requested page content updates render cleanly", async () => {
 
   const contact = await (await render("/contact")).text();
   assert.match(contact, /10:00 AM [–—-] 3:00 PM/);
+
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  assert.match(css, /\.about-intro-grid \.story-image \{ aspect-ratio: 4\/5;/);
+  assert.match(css, /\.footer-brand p \{ max-width: 330px; font-size: 1rem; \}/);
 });
 
 test("every rendered internal link resolves successfully", async () => {

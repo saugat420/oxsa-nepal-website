@@ -119,6 +119,7 @@ p { margin: 0 0 1.15em; color: var(--muted); }
 .home-story-copy .text-link { margin-top: 8px; }
 .story-image { aspect-ratio: 16/10; }
 .home-story-grid .story-image { aspect-ratio: 4/5; max-height: 640px; }
+.about-intro-grid .story-image { aspect-ratio: 4/5; max-height: 640px; }
 .story-image img, .program-image img { width: 42%; mix-blend-mode: multiply; opacity: .58; }
 .story-image .story-photo { width: 100%; height: 100%; object-fit: contain; background: #fff; mix-blend-mode: normal; opacity: 1; }
 .program-image .program-photo { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: normal; opacity: 1; }
@@ -371,7 +372,7 @@ p { margin: 0 0 1.15em; color: var(--muted); }
 .footer h2 { margin: 12px 0; font-size: 1.35rem; }
 .footer h3 { margin-bottom: 18px; font-size: .95rem; }
 .footer-brand img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
-.footer-brand p { max-width: 330px; font-size: .9rem; }
+.footer-brand p { max-width: 330px; font-size: 1rem; }
 .footer-links { margin: 0; padding: 0; list-style: none; }
 .footer-links li { margin: 7px 0; }
 .footer a:hover { color: var(--brand-dark); }
