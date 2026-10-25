@@ -1,6 +1,7 @@
 export type VetCentre = {
   name: string;
   province: string;
+  district: string;
   city: string;
   location: string;
   phones: readonly string[];
@@ -13,6 +14,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Bhojpur",
     province: "Koshi",
+    district: "Bhojpur",
     city: "Bhojpur",
     location: "Bhojpur",
     phones: ["9852053129", "029-420129"],
@@ -21,6 +23,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Centre, Dhankuta",
     province: "Koshi",
+    district: "Dhankuta",
     city: "Dhankuta",
     location: "Dhankuta",
     phones: ["026-520280", "9842032215"],
@@ -29,6 +32,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Centre, Ilam",
     province: "Koshi",
+    district: "Ilam",
     city: "Ilam",
     location: "Ilam",
     phones: ["9852626127", "027-523043"],
@@ -37,6 +41,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Centre, Jhapa",
     province: "Koshi",
+    district: "Jhapa",
     city: "Jhapa",
     location: "Jhapa",
     phones: ["023-521161", "9852671390"],
@@ -45,6 +50,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Dogspital & Pet Clinic",
     province: "Koshi",
+    district: "Jhapa",
     city: "Birtamod",
     location: "Urvashi Chowk, Birtamod-4, Jhapa",
     phones: ["023-591606", "9807904700"],
@@ -53,6 +59,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Paw Zone Clinic & Pet Store",
     province: "Koshi",
+    district: "Jhapa",
     city: "Birtamod",
     location: "Birtamod-4, Chandragadhi Road, Jhapa",
     phones: ["9815029549"],
@@ -61,6 +68,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Khotang",
     province: "Koshi",
+    district: "Khotang",
     city: "Khotang",
     location: "Khotang",
     phones: ["9852849126", "036-420107"],
@@ -69,6 +77,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Bacchu Medico",
     province: "Koshi",
+    district: "Morang",
     city: "Biratnagar",
     location: "Dharan Road, Morang",
     phones: ["9842580222"],
@@ -77,6 +86,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "City Animal Clinic, Biratnagar (सिटी एनिमल क्लिनिक, बिराटनगर)",
     province: "Koshi",
+    district: "Morang",
     city: "Biratnagar",
     location:
       "Near Century House, 450 Mtr North from Tinpaini chowk, Main Rd (North), Biratnagar 27385, Nepal, Morang",
@@ -87,6 +97,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Centre, Morang",
     province: "Koshi",
+    district: "Morang",
     city: "Biratnagar",
     location: "Veterinary Tol, Morang",
     phones: ["021-471958", "9852030239"],
@@ -95,6 +106,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Centre, Okhaldhunga",
     province: "Koshi",
+    district: "Okhaldhunga",
     city: "Okhaldhunga",
     location: "Okhaldhunga",
     phones: ["037-520210", "9852842210"],
@@ -103,6 +115,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Centre, Panchthar",
     province: "Koshi",
+    district: "Panchthar",
     city: "Panchthar",
     location: "Panchthar",
     phones: ["024-522127", "024-520127", "024-520469"],
@@ -111,6 +124,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Centre, Sankhuwasabha",
     province: "Koshi",
+    district: "Sankhuwasabha",
     city: "Sankhuwasabha",
     location: "Sankhuwasabha",
     phones: ["029-560159", "9852051910"],
@@ -119,6 +133,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Centre, Solukhumbu",
     province: "Koshi",
+    district: "Solukhumbu",
     city: "Solukhumbu",
     location: "Solukhumbu",
     phones: ["9852873123", "038-520103"],
@@ -127,6 +142,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Centre, Sunsari",
     province: "Koshi",
+    district: "Sunsari",
     city: "Sunsari",
     location: "Sunsari",
     phones: ["025-565162", "9852055625"],
@@ -135,6 +151,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Nepal Pets Veterinary",
     province: "Koshi",
+    district: "Sunsari",
     city: "Dharan",
     location: "Butterfly Line, Putali Line, Sunsari",
     phones: ["9842063895"],
@@ -144,6 +161,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Petsandvets Nepal Pet Animal Clinic",
     province: "Koshi",
+    district: "Sunsari",
     city: "Dharan",
     location: "Dharan; detailed street address not established, Sunsari",
     phones: ["9811353294"],
@@ -153,6 +171,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Purwanchal Vet Pharma - Veterinary Clinic & Lab",
     province: "Koshi",
+    district: "Sunsari",
     city: "Itahari",
     location: "Purva Line, Itahari-4, Sunsari",
     phones: ["9822299946", "9845330733"],
@@ -161,6 +180,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Purwanchal Vet Pharma - Veterinary Clinic And Lab",
     province: "Koshi",
+    district: "Sunsari",
     city: "Itahari",
     location: "purva line, Itahari, Nepal, Sunsari",
     phones: ["984-5330733"],
@@ -169,6 +189,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "​ ​Veterinary Hospital and Livestock Service Expert Center, Taplejung",
     province: "Koshi",
+    district: "Taplejung",
     city: "Taplejung",
     location: "Taplejung",
     phones: ["9852660176", "024-460167"],
@@ -177,6 +198,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Terhthum",
     province: "Koshi",
+    district: "Terhathum",
     city: "Terhathum",
     location: "Terhathum",
     phones: ["9852060127", "026-460127"],
@@ -185,6 +207,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Centre, Udaypur",
     province: "Koshi",
+    district: "Udayapur",
     city: "Udayapur",
     location: "Udayapur",
     phones: ["035-420129", "9852835006"],
@@ -193,6 +216,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Bara",
     province: "Madhesh",
+    district: "Bara",
     city: "Kalaiya",
     location: "Kalaiya, Bara",
     phones: ["9855049412"],
@@ -201,6 +225,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Raaz Veterinary Hospital & Research Center",
     province: "Madhesh",
+    district: "Dhanusha",
     city: "Janakpurdham",
     location: "Janakpurdham, Dhanusha",
     phones: ["9844028561"],
@@ -210,6 +235,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Dhanusha",
     province: "Madhesh",
+    district: "Dhanusha",
     city: "Janakpurdham",
     location: "Janakpurdham, Dhanusha",
     phones: ["9854026021"],
@@ -218,6 +244,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Mahottari",
     province: "Madhesh",
+    district: "Mahottari",
     city: "Jaleshwar",
     location: "Jaleshwar, Mahottari",
     phones: ["044-520073", "9844141165", "9841903963"],
@@ -227,6 +254,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Parsa",
     province: "Madhesh",
+    district: "Parsa",
     city: "Birgunj",
     location: "Birgunj, Parsa",
     phones: ["051-525351"],
@@ -235,6 +263,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Rautahat",
     province: "Madhesh",
+    district: "Rautahat",
     city: "Gaur",
     location: "Gaur, Rautahat",
     phones: ["055-520125"],
@@ -244,6 +273,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Saptari",
     province: "Madhesh",
+    district: "Saptari",
     city: "Rajbiraj",
     location: "Rajbiraj (recent news); exact entrance unconfirmed, Saptari",
     phones: ["031-520942"],
@@ -253,6 +283,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Sarlahi",
     province: "Madhesh",
+    district: "Sarlahi",
     city: "Malangawa",
     location: "Malangawa, Sarlahi",
     phones: ["046-520145"],
@@ -262,6 +293,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Siraha",
     province: "Madhesh",
+    district: "Siraha",
     city: "Siraha",
     location: "Siraha-7, Siraha",
     phones: ["033-520008", "9852834801"],
@@ -270,6 +302,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Ujjwal Veterinary Clinic",
     province: "Bagmati",
+    district: "Bhaktapur",
     city: "Bhaktapur",
     location:
       "MCCQ+G7C, Jagati-KamalBinayak Rd, Bhaktapur 44800, Nepal, Bhaktapur",
@@ -280,6 +313,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Vet for Your Pet- the Animals' Clinic",
     province: "Bagmati",
+    district: "Bhaktapur",
     city: "Bhaktapur",
     location: "Bhaktapur Rd, Bhaktapur 44800, Nepal, Bhaktapur",
     phones: ["01-6613244"],
@@ -289,6 +323,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Buddha Pet Store & Vet Clinic",
     province: "Bagmati",
+    district: "Bhaktapur",
     city: "Madhyapur Thimi",
     location: "Lokanthali, Bhaktapur",
     phones: ["9851040883"],
@@ -298,6 +333,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Pacific Vet Clinic",
     province: "Bagmati",
+    district: "Bhaktapur",
     city: "Madhyapur Thimi",
     location: "Madhyapur Thimi, Bhaktapur",
     phones: ["9841080258"],
@@ -307,6 +343,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Pet Home Veterinary Clinic",
     province: "Bagmati",
+    district: "Bhaktapur",
     city: "Madhyapur Thimi",
     location: "Thimi, Bhaktapur",
     phones: ["9843405203"],
@@ -316,6 +353,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "The Animal Clinic",
     province: "Bagmati",
+    district: "Bhaktapur",
     city: "Madhyapur Thimi",
     location: "Madhyapur Thimi, Bhaktapur",
     phones: ["9803586059"],
@@ -325,6 +363,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Chitwan Lumbini Kennel Club & Pet Vet Clinic",
     province: "Bagmati",
+    district: "Chitwan",
     city: "Bharatpur",
     location: "Dipendra Chowk Bus Stop, Chitwan",
     phones: ["9845050944"],
@@ -334,6 +373,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Livestock Service Office, Bharatpur, Chitwan",
     province: "Bagmati",
+    district: "Chitwan",
     city: "Bharatpur",
     location: "Bharatpur, Chitwan",
     phones: ["056-520176", "9855065176"],
@@ -342,6 +382,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Metro Vet Clinic Pvt Ltd",
     province: "Bagmati",
+    district: "Chitwan",
     city: "Bharatpur",
     location: "Bhojad-Padampur Marg, Chitwan",
     phones: ["9851054224"],
@@ -350,6 +391,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Sira Vet Center / Pet Clinic",
     province: "Bagmati",
+    district: "Chitwan",
     city: "Bharatpur",
     location: "Sajha Petrol Pump, Chitwan",
     phones: ["9805857503"],
@@ -358,6 +400,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Himalayan Animal Rescue Trust (HART), Ratnanagar clinic",
     province: "Bagmati",
+    district: "Chitwan",
     city: "Ratnanagar",
     location: "Tikauli-9, Khageri Dam, Chitwan",
     phones: ["056-595221", "9845580779"],
@@ -366,6 +409,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Livestock Service Office, Dhading",
     province: "Bagmati",
+    district: "Dhading",
     city: "Dhading",
     location: "Dhading",
     phones: ["01-0520107", "9851213874"],
@@ -374,6 +418,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Livestock Service Office, Charikot, Dolakha",
     province: "Bagmati",
+    district: "Dolakha",
     city: "Bhimeshwar",
     location: "Charikot, Dolakha",
     phones: ["049-421115", "9854045115"],
@@ -382,6 +427,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Everyday Pet Shop & Vet Clinic",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Budhanilkantha",
     location: "Q83X+P52, Budhanilkantha, Kathmandu",
     phones: ["9849718346"],
@@ -391,6 +437,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Pashupati Vet Clinic",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Gokarneshwar",
     location: "P9CG+Q2M, Boudha Rd, Gokarneshwor 44600, Nepal, Kathmandu",
     phones: ["974-1231995"],
@@ -400,6 +447,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Aarya Veterinary Clinic",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "Chabahil-07, Gopikrishna 44600, Nepal, Kathmandu",
     phones: ["981-5815998"],
@@ -409,6 +457,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Advanced Pet Hospital & Research Centre",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "Bishalnagar (directory); report: Kathmandu, Kathmandu",
     phones: ["01-4522855", "01-4422855"],
@@ -418,6 +467,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Alpine Veterinary Clinic",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "Bansbari Road, Kathmandu",
     phones: ["9813400565"],
@@ -427,6 +477,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Animal Care Centre (Veterinary Clinic)",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "Kathmandu; precise address not established, Kathmandu",
     phones: ["9851224131"],
@@ -436,6 +487,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Animal Medical Center (AMC)",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location:
       "P8JP+WQR Opposite to Brazil Embassy, Chun Devi Marg, Kathmandu 44600, Nepal, Kathmandu",
@@ -446,6 +498,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Annapurna Vet Clinic & Pet Shop",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "Chabahil, Chuchepati, Kathmandu",
     phones: ["9841296162", "01-4480746"],
@@ -454,6 +507,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Bhatbhateni Animal Hospital and Research Center",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "Thirbam Sadak, Kathmandu 44600, Nepal, Kathmandu",
     phones: ["01-4443803"],
@@ -463,6 +517,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "City Veterinary Hospital",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "Tinkune, Near Pentagon College, 44600, Nepal, Kathmandu",
     phones: ["980-1017334"],
@@ -472,6 +527,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Dogmatic Animal Care & Pet Shop",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "Kathmandu; exact street address not established, Kathmandu",
     phones: ["9810094261"],
@@ -480,6 +536,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Himalayan Veterinary Service",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "M8MV+5JX, Shri Ganesh Marg, Kathmandu 44600, Nepal, Kathmandu",
     phones: ["984-1990060"],
@@ -489,6 +546,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Home service veterinary center",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "Kathmandu 44600, Nepal, Kathmandu",
     phones: ["986-0627544"],
@@ -498,6 +556,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Kathmandu Animal Hospital and Research Centre",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "530 Pandol Marg, Baluwatar, Kathmandu",
     phones: ["01-4001700", "9860167722"],
@@ -507,6 +566,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Kathmandu Model Veterinary Hospital & Research",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "Swayambhu, Thulobharyang, Kathmandu",
     phones: ["01-4674305", "01-2299516"],
@@ -515,6 +575,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Kathmandu Veterinary Clinic",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "Ring Road, Chakrapath, Kathmandu",
     phones: ["01-4720266", "9841336399"],
@@ -523,6 +584,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "National Referral Veterinary Hospital",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "Tripureshwor, Kathmandu",
     phones: ["01-5361382"],
@@ -531,6 +593,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Oxford Veterinary Clinic",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "Baluwatar, Kathmandu",
     phones: ["01-4412236"],
@@ -539,6 +602,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Paws & Claws Animal Hospital",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "Baluwatar, Kathmandu",
     phones: ["9841209744", "01-4547744", "9856047744"],
@@ -547,6 +611,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Rajdhani Pet Hospital & Animal Research Center",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "KMC-16, Balaju Chowk, Kathmandu",
     phones: ["01-5917813", "9860827813"],
@@ -555,6 +620,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Swoyambhu Vet Clinic",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "P77Q+5VW, Swayambhu area, Kathmandu",
     phones: ["9851097087"],
@@ -563,6 +629,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Valley Animal Clinic",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Kathmandu",
     location: "M8GV+7MP, Chautarphi Marg, Kathmandu 44600, Nepal, Kathmandu",
     phones: ["986-8714307"],
@@ -572,6 +639,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Sri Veterinary Clinic",
     province: "Bagmati",
+    district: "Kathmandu",
     city: "Nagarjun",
     location: "P7GR+FP4, Ring Rd, Nagarjun 44600, Nepal, Kathmandu",
     phones: ["984-9709736"],
@@ -581,6 +649,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Livestock Service Office, Kavrepalanchowk",
     province: "Bagmati",
+    district: "Kavrepalanchok",
     city: "Kavrepalanchok",
     location: "Kavrepalanchok",
     phones: ["9851164594", "0114950266"],
@@ -589,6 +658,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Animal Nepal (veterinary services)",
     province: "Bagmati",
+    district: "Lalitpur",
     city: "Lalitpur",
     location: "Lalitpur; treatment site to confirm, Lalitpur",
     phones: ["01-5538068"],
@@ -597,6 +667,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "City Veterinary Hospital, Satdobato",
     province: "Bagmati",
+    district: "Lalitpur",
     city: "Lalitpur",
     location: "Satdobato-15, Lalitpur",
     phones: ["9801117334", "9851117334"],
@@ -605,6 +676,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Image Vet Clinic",
     province: "Bagmati",
+    district: "Lalitpur",
     city: "Lalitpur",
     location: "Lalitpur",
     phones: ["9841379529"],
@@ -614,6 +686,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Jalabinayak Vet & Pet Mobile Clinic",
     province: "Bagmati",
+    district: "Lalitpur",
     city: "Lalitpur",
     location: "Lalitpur 44600, Nepal, Lalitpur",
     phones: ["985-1038989"],
@@ -623,6 +696,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Jibachha Veterinary Hospital, Sanepa",
     province: "Bagmati",
+    district: "Lalitpur",
     city: "Lalitpur",
     location: "Jhamsikhel-3, Sanepa, Lalitpur",
     phones: ["9869761751", "9808892748", "01-5450013"],
@@ -631,6 +705,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Lifeline Veterinary Hospital & Research Centre",
     province: "Bagmati",
+    district: "Lalitpur",
     city: "Lalitpur",
     location: "Bijaybasti Marga, Sanepa-2, Lalitpur",
     phones: ["01-5919101"],
@@ -639,6 +714,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Livestock Service Office, Lagankhel, Lalitpur",
     province: "Bagmati",
+    district: "Lalitpur",
     city: "Lalitpur",
     location: "Lagankhel, Lalitpur",
     phones: ["01-5547377", "9851137970"],
@@ -647,6 +723,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Mandala Veterinary Hospital",
     province: "Bagmati",
+    district: "Lalitpur",
     city: "Lalitpur",
     location: "Lalitpur",
     phones: ["9866921239"],
@@ -656,6 +733,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Mobile Veterinary Hospital",
     province: "Bagmati",
+    district: "Lalitpur",
     city: "Lalitpur",
     location: "Lalitpur",
     phones: ["01-5444715", "01-5441293"],
@@ -665,6 +743,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Muna Veterinary Hospital",
     province: "Bagmati",
+    district: "Lalitpur",
     city: "Lalitpur",
     location: "Lalitpur",
     phones: ["9851075762"],
@@ -674,6 +753,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Patan Veterinary Clinic",
     province: "Bagmati",
+    district: "Lalitpur",
     city: "Lalitpur",
     location: "M8H5+JH4, Lalitpur, Lalitpur",
     phones: ["01-5442733"],
@@ -683,6 +763,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Vet Animal Clinic",
     province: "Bagmati",
+    district: "Lalitpur",
     city: "Lalitpur",
     location: "Lalitpur",
     phones: ["01-5425280"],
@@ -692,6 +773,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Imadol Veterinary Clinic",
     province: "Bagmati",
+    district: "Lalitpur",
     city: "Mahalaxmi",
     location: "Imadol, Lalitpur",
     phones: ["9860872125"],
@@ -701,6 +783,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "SN Pet Animal Clinic",
     province: "Bagmati",
+    district: "Lalitpur",
     city: "Mahalaxmi",
     location: "Imadol Krishna Mandir Road, Police Chowki Pipal Bot, Lalitpur",
     phones: ["9765003850", "9803989123", "01-5201188"],
@@ -709,6 +792,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Livestock Service Office, Makawanpur",
     province: "Bagmati",
+    district: "Makwanpur",
     city: "Hetauda",
     location: "Hetauda-9, Makwanpur",
     phones: ["057-412828", "9855070728"],
@@ -717,6 +801,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Nepal Veterinary Clinics & Lab",
     province: "Bagmati",
+    district: "Makwanpur",
     city: "Hetauda",
     location: "By-Pass Chowk, Main Road, Makwanpur",
     phones: ["9855071119"],
@@ -726,6 +811,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Livestock Service Office, Nuwakot",
     province: "Bagmati",
+    district: "Nuwakot",
     city: "Nuwakot",
     location: "Nuwakot",
     phones: ["01-0560012", "9851137970"],
@@ -734,6 +820,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Livestock Service Office, Sindhuli",
     province: "Bagmati",
+    district: "Sindhuli",
     city: "Sindhuli",
     location: "Sindhuli",
     phones: ["047-520185", "9854041785"],
@@ -742,6 +829,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Baglung",
     province: "Gandaki",
+    district: "Baglung",
     city: "Baglung",
     location: "Baglung",
     phones: ["068-522475"],
@@ -751,6 +839,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Gorkha",
     province: "Gandaki",
+    district: "Gorkha",
     city: "Gorkha",
     location: "Gorkha",
     phones: ["064-411251"],
@@ -759,6 +848,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Best Friends Veterinary Hospital",
     province: "Gandaki",
+    district: "Kaski",
     city: "Pokhara",
     location: "Shiwalaya Marga / Parshyang-5, Kaski",
     phones: ["9864427226"],
@@ -767,6 +857,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Gandaki Vet & Pet Clinic",
     province: "Gandaki",
+    district: "Kaski",
     city: "Pokhara",
     location: "Pokhara, Kaski",
     phones: ["9806516204", "9841016204"],
@@ -775,6 +866,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Himalayan Animal Rescue Trust (HART), Pokhara clinic",
     province: "Gandaki",
+    district: "Kaski",
     city: "Pokhara",
     location: "Pokhara clinic; office at Shital Path, Titepani-17, Kaski",
     phones: ["9819104973", "9846531069"],
@@ -783,6 +875,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Kaski",
     province: "Gandaki",
+    district: "Kaski",
     city: "Pokhara",
     location: "Kaski / Pokhara, Kaski",
     phones: ["061-570082", "061-583356"],
@@ -791,6 +884,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Lamjung",
     province: "Gandaki",
+    district: "Lamjung",
     city: "Lamjung",
     location: "Lamjung",
     phones: ["066-520131"],
@@ -799,6 +893,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Manang",
     province: "Gandaki",
+    district: "Manang",
     city: "Chame",
     location: "Chame, Manang",
     phones: ["066-440113"],
@@ -807,6 +902,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Myagdi",
     province: "Gandaki",
+    district: "Myagdi",
     city: "Beni",
     location: "Beni, Myagdi",
     phones: ["069-520121"],
@@ -815,6 +911,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Nawalpur",
     province: "Gandaki",
+    district: "Nawalpur",
     city: "Kawasoti",
     location: "Kawasoti-8, Nawalpur",
     phones: ["078-541091"],
@@ -823,6 +920,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Parbat",
     province: "Gandaki",
+    district: "Parbat",
     city: "Parbat",
     location: "Parbat",
     phones: ["067-420123", "9857630855"],
@@ -832,6 +930,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Syangja",
     province: "Gandaki",
+    district: "Syangja",
     city: "Putalibazar",
     location: "Putalibazar, Syangja",
     phones: ["063-425000"],
@@ -840,6 +939,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Tanahun",
     province: "Gandaki",
+    district: "Tanahun",
     city: "Tanahun",
     location: "Tanahun",
     phones: ["065-563205", "065-564792"],
@@ -848,6 +948,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Arghakhanchi",
     province: "Lumbini",
+    district: "Arghakhanchi",
     city: "Arghakhanchi",
     location: "Arghakhanchi",
     phones: ["077-420116"],
@@ -856,6 +957,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Horizon Vet Clinic & Pet Shop",
     province: "Lumbini",
+    district: "Banke",
     city: "Nepalgunj",
     location: "Surkhet Road, Nepalgunj-2, Banke",
     phones: ["9869369273"],
@@ -864,6 +966,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Banke",
     province: "Lumbini",
+    district: "Banke",
     city: "Nepalgunj",
     location: "Ramlila Maidan, Nepalgunj-13, Banke",
     phones: ["081-530254"],
@@ -872,6 +975,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Dang",
     province: "Lumbini",
+    district: "Dang",
     city: "Dang",
     location: "Dang",
     phones: ["082-560021"],
@@ -880,6 +984,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Gulmi",
     province: "Lumbini",
+    district: "Gulmi",
     city: "Gulmi",
     location: "Gulmi",
     phones: ["079-520227"],
@@ -888,6 +993,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Kapilvastu",
     province: "Lumbini",
+    district: "Kapilvastu",
     city: "Kapilvastu",
     location: "Kapilvastu",
     phones: ["076-560021"],
@@ -896,6 +1002,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Palpa",
     province: "Lumbini",
+    district: "Palpa",
     city: "Palpa",
     location: "Palpa",
     phones: ["075-520145"],
@@ -905,6 +1012,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Parasi",
     province: "Lumbini",
+    district: "Parasi",
     city: "Parasi",
     location: "Nawalparasi West (Parasi), Parasi",
     phones: ["078-521010"],
@@ -914,6 +1022,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Rolpa",
     province: "Lumbini",
+    district: "Rolpa",
     city: "Rolpa",
     location: "Rolpa",
     phones: ["086-440056"],
@@ -922,6 +1031,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Rupandehi",
     province: "Lumbini",
+    district: "Rupandehi",
     city: "Rupandehi",
     location: "Rupandehi",
     phones: ["071-576506", "071-570206"],
@@ -930,6 +1040,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Animal Health Care & Research Centre",
     province: "Lumbini",
+    district: "Rupandehi",
     city: "Butwal",
     location: "Kalikanagar / Milanchowk, Rupandehi",
     phones: ["9857043418", "9857043718"],
@@ -938,6 +1049,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Everest Vet Concern / Royal Veterinary Clinic",
     province: "Lumbini",
+    district: "Rupandehi",
     city: "Butwal",
     location: "Old Buspark, Butwal 32900, Nepal, Rupandehi",
     phones: ["985-7077636"],
@@ -946,6 +1058,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Dailekh",
     province: "Karnali",
+    district: "Dailekh",
     city: "Dailekh",
     location: "Dailekh",
     phones: ["089-410085"],
@@ -955,6 +1068,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Dolpa",
     province: "Karnali",
+    district: "Dolpa",
     city: "Dolpa",
     location: "Dolpa",
     phones: ["087-550052"],
@@ -963,6 +1077,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Humla",
     province: "Karnali",
+    district: "Humla",
     city: "Humla",
     location: "Humla",
     phones: ["087-680010"],
@@ -971,6 +1086,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Jajarkot",
     province: "Karnali",
+    district: "Jajarkot",
     city: "Jajarkot",
     location: "Jajarkot",
     phones: ["089-430030"],
@@ -979,6 +1095,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Jumla",
     province: "Karnali",
+    district: "Jumla",
     city: "Jumla",
     location: "Jumla",
     phones: ["087-520028"],
@@ -988,6 +1105,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Kalikot",
     province: "Karnali",
+    district: "Kalikot",
     city: "Khandachakra",
     location: "Manma, Karnali Highway, Kalikot",
     phones: ["087-440023"],
@@ -997,6 +1115,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Mugu",
     province: "Karnali",
+    district: "Mugu",
     city: "Mugu",
     location: "Mugu",
     phones: ["087-460076"],
@@ -1006,6 +1125,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Rukum West",
     province: "Karnali",
+    district: "Rukum West",
     city: "Rukum West",
     location: "Rukum West",
     phones: ["088-530010"],
@@ -1014,6 +1134,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Office, Salyan",
     province: "Karnali",
+    district: "Salyan",
     city: "Salyan",
     location: "Salyan",
     phones: ["088-520382"],
@@ -1022,6 +1143,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital / Livestock Service Office, Surkhet (within Directorate)",
     province: "Karnali",
+    district: "Surkhet",
     city: "Birendranagar",
     location: "Birendranagar-5, Surkhet",
     phones: ["083-520099", "083-520288"],
@@ -1030,6 +1152,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Achham",
     province: "Sudurpashchim",
+    district: "Achham",
     city: "Achham",
     location: "Achham",
     phones: ["097-620102", "9868525415"],
@@ -1039,6 +1162,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Baitadi",
     province: "Sudurpashchim",
+    district: "Baitadi",
     city: "Baitadi",
     location: "Baitadi",
     phones: ["097-620102", "9858782525"],
@@ -1048,6 +1172,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Bajhang",
     province: "Sudurpashchim",
+    district: "Bajhang",
     city: "Bajhang",
     location: "Bajhang",
     phones: ["092-421050", "9868560746"],
@@ -1057,6 +1182,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Bajura",
     province: "Sudurpashchim",
+    district: "Bajura",
     city: "Bajura",
     location: "Bajura",
     phones: ["097-541064", "9858425020"],
@@ -1066,6 +1192,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Dadeldhura",
     province: "Sudurpashchim",
+    district: "Dadeldhura",
     city: "Dadeldhura",
     location: "Dadeldhura",
     phones: ["096-410114", "9858783060"],
@@ -1075,6 +1202,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Darchula",
     province: "Sudurpashchim",
+    district: "Darchula",
     city: "Darchula",
     location: "Darchula",
     phones: ["093-420104", "9848898494"],
@@ -1084,6 +1212,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Doti",
     province: "Sudurpashchim",
+    district: "Doti",
     city: "Doti",
     location: "Doti",
     phones: ["094-420114", "9858488137"],
@@ -1093,6 +1222,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Vet Care Center",
     province: "Sudurpashchim",
+    district: "Kailali",
     city: "Dhangadhi",
     location: "Main Road / Veterinary Line, Dhangadhi-1, Kailali",
     phones: ["091-525278"],
@@ -1101,6 +1231,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Kailali",
     province: "Sudurpashchim",
+    district: "Kailali",
     city: "Dhangadhi",
     location: "Dhangadhi, Kailali",
     phones: ["091-521114", "9858477127"],
@@ -1110,6 +1241,7 @@ export const vets: readonly VetCentre[] = [
   {
     name: "Veterinary Hospital and Livestock Service Expert Center, Kanchanpur",
     province: "Sudurpashchim",
+    district: "Kanchanpur",
     city: "Kanchanpur",
     location: "Kanchanpur",
     phones: ["099-521176", "9851157487"],

@@ -185,6 +185,11 @@ test("vet directory includes verified nationwide contacts, filters and map links
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.equal((html.match(/class="vet-card"/g) ?? []).length, 131);
+  const readableHtml = html.replaceAll("<!-- -->", "");
+  assert.match(
+    readableHtml,
+    /vet-list[\s\S]*Bagmati · 55 clinics[\s\S]*Kathmandu District · 23 clinics/,
+  );
   assert.match(html, /National Referral Veterinary Hospital/);
   assert.match(
     html,

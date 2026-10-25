@@ -21,29 +21,43 @@ export function SponsorGrid({ limit }: { limit?: number }) {
 export function VetDirectory() {
   const [query,setQuery] = useState("");
   const [province,setProvince] = useState("All");
-  const provinces=["All",...Array.from(new Set(vets.map(v=>v.province))).sort()];
+  const provinceCounts=useMemo(()=>countBy(vets.map(v=>v.province)),[]);
+  const districtCounts=useMemo(()=>countBy(vets.map(v=>`${v.province}\u0000${v.district}`)),[]);
+  const provinces=["All",...Array.from(provinceCounts.keys()).sort((a,b)=>(provinceCounts.get(b)??0)-(provinceCounts.get(a)??0)||a.localeCompare(b,"en"))];
   const normalizedQuery=query.trim().toLowerCase();
   const results=useMemo(()=>vets.filter(v=>{
     const matchesProvince=province==="All"||v.province===province;
-    const searchable=`${v.name} ${v.province} ${v.city} ${v.location} ${v.phones.join(" ")}`.toLowerCase();
+    const searchable=`${v.name} ${v.province} ${v.district} ${v.city} ${v.location} ${v.phones.join(" ")}`.toLowerCase();
     return matchesProvince&&(!normalizedQuery||searchable.includes(normalizedQuery));
-  }),[normalizedQuery,province]);
+  }).sort((a,b)=>
+    (provinceCounts.get(b.province)??0)-(provinceCounts.get(a.province)??0)
+    ||(districtCounts.get(`${b.province}\u0000${b.district}`)??0)-(districtCounts.get(`${a.province}\u0000${a.district}`)??0)
+    ||a.province.localeCompare(b.province,"en")
+    ||a.district.localeCompare(b.district,"en")
+    ||a.name.localeCompare(b.name,"en")
+  ),[districtCounts,normalizedQuery,province,provinceCounts]);
 
   return <>
     <div className="directory-tools">
       <label className="search-box"><Search/><span className="sr-only">Search vet centres</span><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search name, phone, city, district or place"/></label>
-      <label><span className="sr-only">Filter by province</span><select value={province} onChange={e=>setProvince(e.target.value)}>{provinces.map(p=><option key={p}>{p}</option>)}</select></label>
+      <label><span className="sr-only">Filter by province</span><select value={province} onChange={e=>setProvince(e.target.value)}>{provinces.map(p=><option key={p} value={p}>{p === "All" ? "All provinces" : `${p} (${provinceCounts.get(p)} clinics)`}</option>)}</select></label>
     </div>
-    <div className="directory-summary" aria-live="polite"><ShieldCheck/>{results.length} verified {results.length===1?"centre":"centres"} shown</div>
+    <div className="directory-summary" aria-live="polite"><ShieldCheck/>{results.length} verified {results.length===1?"centre":"centres"} shown · Highest clinic-count provinces and districts appear first</div>
     <div className="vet-list" role="list">{results.map(v=>{
       const mapQuery=encodeURIComponent(`${v.name}, ${v.location}, Nepal`);
       return <article className="vet-card" role="listitem" key={`${v.name}-${v.location}`}>
-        <div className="vet-card-copy"><div className="vet-tags"><span className="tag">{v.province}</span><span>{v.city}</span></div><h3>{v.name}</h3><p><MapPin/>{v.location}</p></div>
+        <div className="vet-card-copy"><div className="vet-tags"><span className="tag">{v.province} · {provinceCounts.get(v.province)} clinics</span><span>{v.district} District · {districtCounts.get(`${v.province}\u0000${v.district}`)} {districtCounts.get(`${v.province}\u0000${v.district}`)===1?"clinic":"clinics"}</span></div><h3>{v.name}</h3><p><MapPin/>{v.location}</p></div>
         <div className="vet-card-actions"><div className="vet-phones">{v.phones.map(phone=><a className="phone-link" href={`tel:${phone.replace(/[^\d+]/g,"")}`} key={phone}><Phone/>{phone}</a>)}</div><a className="vet-action-link" href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`} target="_blank" rel="noopener noreferrer"><MapPin/>Google Maps</a><a className="vet-source-link" href={v.source} target="_blank" rel="noopener noreferrer">Official source<ExternalLink/></a></div>
       </article>;
     })}</div>
     {results.length===0&&<div className="empty-state">No verified vet centres match your search. Try a different spelling, district, city or province.</div>}
   </>;
+}
+
+function countBy(values: readonly string[]) {
+  const counts=new Map<string,number>();
+  for(const value of values) counts.set(value,(counts.get(value)??0)+1);
+  return counts;
 }
 
 type FormKind = "contact"|"sponsor"|"adoption";

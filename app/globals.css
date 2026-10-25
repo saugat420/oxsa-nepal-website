@@ -90,7 +90,6 @@ p { margin: 0 0 1.15em; color: var(--muted); }
 .mobile-explore-menu a { color: var(--muted); }
 
 .home-hero { position: relative; padding: 88px 0 94px; overflow: hidden; border-bottom: 1px solid var(--line); background: radial-gradient(circle at 82% 42%, rgba(253,70,88,.11), transparent 30%), linear-gradient(135deg, #fff8f9 0%, var(--cream) 46%, #fff 100%); }
-.home-hero:before { position: absolute; top: -150px; left: -110px; width: 340px; height: 340px; border: 1px solid rgba(253,70,88,.12); border-radius: 50%; content: ""; }
 .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(420px, .95fr); grid-template-areas: "heading visual" "description visual" "actions visual"; align-items: center; gap: 18px 72px; }
 .hero-heading { grid-area: heading; align-self: end; }
 .hero-heading .eyebrow { margin-bottom: 14px; letter-spacing: .14em; }
