@@ -526,8 +526,8 @@ export function DonatePage() {
                       <Image
                         src="/images/donations/nabil-logo.png"
                         alt=""
-                        width={554}
-                        height={554}
+                        width={512}
+                        height={512}
                       />
                     </span>
                     <div>

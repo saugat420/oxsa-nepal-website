@@ -222,7 +222,8 @@ p { margin: 0 0 1.15em; color: var(--muted); }
 .payment-logo { display: grid; width: 62px; height: 62px; place-items: center; flex: none; overflow: hidden; border-radius: 16px; background: #fff; box-shadow: 0 7px 20px rgba(32,33,36,.08); }
 .payment-logo img { width: 100%; height: 100%; object-fit: contain; }
 .payment-logo.paypal-logo { width: 78px; padding: 8px; }
-.payment-logo.bank-logo { width: 78px; background: #20b25d; }
+.payment-logo.bank-logo { width: 72px; height: 72px; padding: 6px; background: #fff; }
+.payment-logo.bank-logo img { object-fit: contain; }
 .donation-method-card dl { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 8px 18px; margin: 22px 0 0; padding: 18px 0; border-block: 1px solid rgba(32,33,36,.1); }
 .donation-method-card dt { color: var(--muted); font-size: .85rem; font-weight: 700; }
 .donation-method-card dd { margin: 0; overflow-wrap: anywhere; font-weight: 800; }
