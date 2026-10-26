@@ -1,7 +1,6 @@
 import Image from "next/image";
 import {
   ArrowRight,
-  Banknote,
   Bone,
   BriefcaseMedical,
   Cookie,
@@ -516,33 +515,58 @@ export function DonatePage() {
               </figure>
             </article>
             {siteConfig.donations.banks.map((bank) => (
-              <article className="donation-bank-card" id="bank" key={bank.bank}>
-                <div className="donation-bank-heading">
-                  <div>
-                    <small>Bank transfer</small>
-                    <h3>{bank.bank}</h3>
-                    <p>{bank.branch} Branch</p>
+              <article
+                className="donation-method-card bank-card"
+                id="bank"
+                key={bank.bank}
+              >
+                <div className="donation-method-content">
+                  <div className="donation-method-title">
+                    <span className="payment-logo bank-logo">
+                      <Image
+                        src="/images/donations/nabil-logo.png"
+                        alt=""
+                        width={554}
+                        height={554}
+                      />
+                    </span>
+                    <div>
+                      <small>Bank transfer</small>
+                      <h3>{bank.bank}</h3>
+                    </div>
                   </div>
-                  <span className="payment-logo bank-logo">
-                    <Banknote />
-                  </span>
+                  <p>
+                    Scan the Nabil Bank QR code or use the account details for
+                    a direct bank transfer.
+                  </p>
+                  <dl>
+                    <dt>Account</dt>
+                    <dd className="number">{bank.accountNumber}</dd>
+                    <dt>Name</dt>
+                    <dd>{bank.accountName}</dd>
+                    <dt>Branch</dt>
+                    <dd>{bank.branch}</dd>
+                  </dl>
+                  <div className="bank-copy-actions">
+                    <CopyButton
+                      value={bank.accountNumber}
+                      label="Copy account number"
+                    />
+                    <CopyButton
+                      value={bank.accountName}
+                      label="Copy account name"
+                    />
+                  </div>
                 </div>
-                <div className="bank-details">
-                  <div className="bank-detail-row">
-                    <span>Account</span>
-                    <b>{bank.accountNumber}</b>
-                    <CopyButton value={bank.accountNumber} label="Copy" />
-                  </div>
-                  <div className="bank-detail-row">
-                    <span>Name</span>
-                    <b>{bank.accountName}</b>
-                    <CopyButton value={bank.accountName} label="Copy" />
-                  </div>
-                  <div className="bank-detail-row">
-                    <span>Branch</span>
-                    <b>{bank.branch}</b>
-                  </div>
-                </div>
+                <figure className="donation-qr bank-qr">
+                  <Image
+                    src="/images/donations/nabil-qr.jpeg"
+                    alt="Nabil Bank QR code for Oxsa Nepal donations"
+                    width={1280}
+                    height={1142}
+                  />
+                  <figcaption>Scan with a supported banking app</figcaption>
+                </figure>
               </article>
             ))}
             <article className="donation-method-card paypal-card" id="paypal">

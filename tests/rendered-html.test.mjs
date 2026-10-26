@@ -84,6 +84,9 @@ test("donation page contains the verified payment details and QR assets", async 
   assert.match(html, /sonysukaso@gmail\.com/);
   assert.match(html, /images\/donations\/esewa-qr\.jpeg/);
   assert.match(html, /images\/donations\/paypal-qr\.jpeg/);
+  assert.match(html, /images\/donations\/nabil-logo\.png/);
+  assert.match(html, /images\/donations\/nabil-qr\.jpeg/);
+  assert.doesNotMatch(html, /bank-detail-row/);
   assert.match(html, /wa\.me\/9779849321303/);
   assert.match(html, /favicon\.png\?v=3/i);
   assert.doesNotMatch(
