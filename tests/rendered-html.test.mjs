@@ -82,7 +82,7 @@ test("donation page contains the verified payment details and QR assets", async 
   assert.match(html, /01901017501825/);
   assert.match(html, /Nabil Bank Ltd/);
   assert.match(html, /sonysukaso@gmail\.com/);
-  assert.match(html, /images\/donations\/esewa-qr\.jpeg/);
+  assert.match(html, /images\/donations\/esewa-qr\.png/);
   assert.match(html, /images\/donations\/paypal-qr\.jpeg/);
   assert.match(html, /images\/donations\/nabil-logo\.png/);
   assert.match(html, /images\/donations\/nabil-qr\.jpeg/);

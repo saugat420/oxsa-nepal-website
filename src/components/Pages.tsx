@@ -506,10 +506,10 @@ export function DonatePage() {
               </div>
               <figure className="donation-qr">
                 <Image
-                  src="/images/donations/esewa-qr.jpeg"
+                  src="/images/donations/esewa-qr.png"
                   alt="eSewa QR code for Oxsa Nepal Animal Welfare Society"
-                  width={1122}
-                  height={887}
+                  width={1254}
+                  height={1254}
                 />
                 <figcaption>Open eSewa and scan to donate</figcaption>
               </figure>
