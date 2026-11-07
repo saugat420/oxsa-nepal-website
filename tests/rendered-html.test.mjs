@@ -95,6 +95,26 @@ test("donation page contains the verified payment details and QR assets", async 
   );
 });
 
+test("Tihar visit page includes wishlist, donations, video and embedded map", async () => {
+  const response = await render("/tihar");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+
+  assert.match(html, /Happy Kukur Tihar!/);
+  for (const item of ["Rice", "Lentils", "Biscuits", "Cat food", "Soya bean"]) {
+    assert.match(html, new RegExp(`>${item}<`));
+  }
+  assert.match(html, /images\/donations\/esewa-qr\.png/);
+  assert.match(html, /images\/donations\/nabil-qr\.jpeg/);
+  assert.match(html, /01901017501825/);
+  assert.match(html, /9849321303/);
+  assert.match(html, /player\.vimeo\.com\/video\/1244498032\?controls=0/);
+  assert.match(html, /aria-label="Play location video"/);
+  assert.match(html, /aria-label="Video position"/);
+  assert.match(html, /google\.com\/maps\?q=27\.6850124,85\.3216234/);
+  assert.match(html, /maps\.app\.goo\.gl\/8qxfQy2ZFqWChtYSA/);
+});
+
 test("contact, media, and work pages contain the requested updates", async () => {
   const contact = await (await render("/contact")).text();
   assert.doesNotMatch(contact, /Get Directions|9849321303|tel:/i);
@@ -219,6 +239,7 @@ test("primary navigation routes render successfully", async () => {
     "/about",
     "/our-work",
     "/donate",
+    "/tihar",
     "/sponsor",
     "/adopt",
     "/stories",

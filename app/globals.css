@@ -247,6 +247,73 @@ p { margin: 0 0 1.15em; color: var(--muted); }
 .donation-visit .button { flex: none; }
 .donation-visit .button:hover { color: #fff; }
 
+.tihar-hero { position: relative; overflow: hidden; padding: 112px 0 96px; background: radial-gradient(circle at 82% 25%, rgba(255,201,40,.5), transparent 28%), radial-gradient(circle at 12% 84%, rgba(239,83,28,.18), transparent 30%), linear-gradient(135deg, #fff8dc 0%, #fffdf5 46%, #ffe8c2 100%); }
+.tihar-hero:before { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(125,45,34,.09) 1.2px, transparent 1.2px); background-size: 22px 22px; content: ""; opacity: .45; }
+.tihar-garland { position: absolute; top: -8px; right: -2%; left: -2%; z-index: 2; display: flex; justify-content: space-around; font-size: clamp(1.5rem, 3vw, 2.35rem); filter: drop-shadow(0 5px 4px rgba(105,52,20,.13)); transform: rotate(-1deg); }
+.tihar-garland:after { position: absolute; top: 24px; right: 0; left: 0; z-index: -1; height: 3px; border-radius: 999px; background: #1c7a3e; content: ""; }
+.tihar-hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr); align-items: center; gap: 64px; }
+.tihar-kicker { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px; padding: 8px 14px; border: 1px solid rgba(109,31,34,.13); border-radius: 999px; background: rgba(255,255,255,.74); color: #7c2d25; font-size: .82rem; font-weight: 850; letter-spacing: .04em; }
+.tihar-kicker span { font-size: 1.35rem; }
+.tihar-hero h1 { max-width: 760px; color: #7a231d; font-size: clamp(3rem, 7vw, 6rem); letter-spacing: -.055em; text-shadow: 0 4px 0 rgba(255,255,255,.7); }
+.tihar-lead { max-width: 720px; margin-top: 22px; color: #644b3f; font-size: clamp(1.05rem, 1.8vw, 1.25rem); }
+.tihar-button { border-color: #e54b1d; background: #e54b1d; }
+.tihar-button:hover { border-color: #bf3611; background: #bf3611; }
+.tihar-outline-button { border-color: rgba(109,31,34,.22); background: rgba(255,255,255,.76); color: #69251f; }
+.tihar-festival-art { position: relative; display: grid; min-height: 390px; place-items: center; border: 1px solid rgba(122,35,29,.12); border-radius: 50% 44% 48% 42%; background: radial-gradient(circle at 50% 43%, #fff 0 23%, #ffc928 24% 43%, #f17223 44% 62%, #9b2d24 63% 100%); box-shadow: 0 28px 70px rgba(122,35,29,.2); }
+.tihar-festival-art:before, .tihar-festival-art:after { position: absolute; border: 2px dashed rgba(255,255,255,.55); border-radius: 50%; content: ""; }
+.tihar-festival-art:before { inset: 10%; }
+.tihar-festival-art:after { inset: 21%; }
+.tihar-art-dog { z-index: 2; font-size: clamp(7rem, 16vw, 11rem); filter: drop-shadow(0 15px 12px rgba(75,27,17,.2)); }
+.tihar-art-flower, .tihar-art-diya { position: absolute; z-index: 3; font-size: clamp(3rem, 7vw, 5.2rem); filter: drop-shadow(0 8px 6px rgba(77,30,15,.22)); }
+.tihar-art-flower { top: 8%; right: 8%; transform: rotate(12deg); }
+.tihar-art-diya { bottom: 3%; left: 7%; transform: rotate(-8deg); }
+
+.tihar-wishlist-section { background: #fffdf8; }
+.tihar-wishlist-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+.tihar-wishlist-item { display: grid; min-height: 180px; place-items: center; padding: 24px 16px; border: 1px solid #f2d7a5; border-radius: 22px; background: linear-gradient(160deg, #fff 0%, #fff6db 100%); box-shadow: 0 12px 28px rgba(124,68,20,.07); text-align: center; transition: transform .2s, box-shadow .2s; }
+.tihar-wishlist-item:hover { box-shadow: 0 18px 36px rgba(124,68,20,.12); transform: translateY(-4px); }
+.tihar-wishlist-item > span { display: grid; width: 70px; height: 70px; place-items: center; border-radius: 22px; background: #ffe59b; color: #9a3a1e; }
+.tihar-wishlist-item svg { width: 34px; height: 34px; }
+.tihar-wishlist-item h3 { margin-top: 16px; font-size: 1.05rem; }
+
+.tihar-donation-section { background: linear-gradient(180deg, #7a241d 0%, #551a1b 100%); }
+.tihar-donation-section .section-head h2 { color: #fff; }
+.tihar-donation-section .section-head .eyebrow { color: #ffd56a; }
+.tihar-donation-section .section-head > p:last-child { color: #f5d8cd; }
+.tihar-payment-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.tihar-payment-card { display: flex; min-width: 0; flex-direction: column; padding: clamp(22px, 4vw, 34px); border: 1px solid rgba(255,255,255,.6); border-radius: 24px; background: #fffdf8; box-shadow: 0 24px 60px rgba(22,8,8,.24); }
+.tihar-payment-heading { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+.tihar-payment-heading small { display: block; color: var(--muted); font-size: .74rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+.tihar-payment-heading h3 { margin-top: 2px; font-size: 1.55rem; }
+.tihar-payment-qr { display: grid; width: 100%; max-width: 430px; aspect-ratio: 1; place-items: center; align-self: center; margin: 0 0 22px; padding: 12px; overflow: hidden; border: 1px solid #eaded4; border-radius: 18px; background: #fff; }
+.tihar-payment-qr img { width: 100%; height: 100%; object-fit: contain; }
+.tihar-payment-qr.tihar-bank-qr { aspect-ratio: 1.12; }
+.tihar-payment-card dl { display: grid; grid-template-columns: 105px minmax(0, 1fr); gap: 8px 16px; margin: 0; padding: 18px 0; border-block: 1px solid #eee0d5; }
+.tihar-payment-card dt { color: var(--muted); font-size: .82rem; font-weight: 750; }
+.tihar-payment-card dd { margin: 0; overflow-wrap: anywhere; font-weight: 800; }
+.tihar-payment-card .copy-button { align-self: flex-start; }
+
+.tihar-location-section { background: #fff9ed; }
+.tihar-location-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 24px; }
+.tihar-location-card { min-width: 0; padding: clamp(20px, 3vw, 30px); border: 1px solid #efd6a8; border-radius: 24px; background: #fff; box-shadow: 0 14px 36px rgba(104,58,17,.08); }
+.tihar-location-card-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.tihar-location-card-heading > span { display: grid; width: 52px; height: 52px; place-items: center; border-radius: 16px; background: #fff1c1; font-size: 1.6rem; }
+.tihar-location-card-heading .eyebrow { margin-bottom: 1px; color: #a43b1c; }
+.tihar-location-card-heading h3 { font-size: 1.25rem; }
+.tihar-video-frame, .tihar-map-frame { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; border-radius: 16px; background: #1d1715; }
+.tihar-video-frame iframe, .tihar-map-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.tihar-video-controls { display: grid; grid-template-columns: 48px minmax(0, 1fr); align-items: center; gap: 12px; padding: 12px 2px 0; }
+.tihar-video-controls button { display: grid; width: 44px; height: 44px; place-items: center; border: 0; border-radius: 50%; background: #e54b1d; color: #fff; cursor: pointer; }
+.tihar-video-controls button:hover { background: #bf3611; }
+.tihar-video-controls button svg { width: 20px; height: 20px; }
+.tihar-video-controls input { width: 100%; accent-color: #e54b1d; cursor: grab; }
+.tihar-video-controls input:active { cursor: grabbing; }
+.tihar-fallback-link { display: inline-block; margin-top: 12px; color: #8b3d27; font-size: .82rem; font-weight: 750; text-decoration: underline; text-underline-offset: 3px; }
+.tihar-map-button { width: 100%; margin-top: 16px; border-color: #e54b1d; background: #e54b1d; }
+.tihar-visit-note { display: flex; align-items: center; gap: 14px; margin-top: 26px; padding: 18px 22px; border: 1px solid #edd093; border-radius: 18px; background: #fff3cf; }
+.tihar-visit-note > span { font-size: 2rem; }
+.tihar-visit-note p { margin: 0; color: #684536; }
+
 .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 25px; }
 .filter-row button { padding: 7px 16px; border: 1px solid var(--line-strong); border-radius: 999px; background: #fff; cursor: pointer; }
 .filter-row button.active { border-color: var(--ink); background: var(--ink); color: #fff; }
@@ -429,6 +496,10 @@ p { margin: 0 0 1.15em; color: var(--muted); }
   .hero-visual { width: min(100%, 610px); margin: 2px auto 0; aspect-ratio: 1; justify-self: center; }
   .hero-photo-frame { width: 84%; aspect-ratio: 1; padding: 0; }
   .hero-visual .hero-photo { object-position: 50% 48%; }
+  .tihar-hero { padding: 96px 0 72px; }
+  .tihar-hero-inner { grid-template-columns: 1fr; gap: 42px; }
+  .tihar-festival-art { width: min(100%, 520px); min-height: 360px; justify-self: center; }
+  .tihar-wishlist-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (max-width: 780px) {
@@ -451,6 +522,9 @@ p { margin: 0 0 1.15em; color: var(--muted); }
   .donation-item-list { grid-template-columns: repeat(3, 1fr); }
   .donation-visit { align-items: flex-start; flex-direction: column; }
   .wishlist-grid { grid-template-columns: 1fr; }
+  .tihar-payment-grid, .tihar-location-grid { grid-template-columns: 1fr; }
+  .tihar-payment-card { max-width: 620px; width: 100%; margin-inline: auto; }
+  .tihar-location-card { max-width: 680px; width: 100%; margin-inline: auto; }
   .contact-summary { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid > div:first-child, .footer-grid > div:last-child { grid-column: 1/-1; }
@@ -480,6 +554,19 @@ p { margin: 0 0 1.15em; color: var(--muted); }
   .donation-method-card dd { margin-bottom: 10px; }
   .donation-item-list { grid-template-columns: repeat(2, 1fr); }
   .bank-copy-actions { display: grid; }
+  .tihar-hero { padding: 82px 0 54px; }
+  .tihar-garland { font-size: 1.45rem; }
+  .tihar-kicker { align-items: flex-start; border-radius: 16px; line-height: 1.45; }
+  .tihar-festival-art { min-height: 280px; }
+  .tihar-wishlist-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .tihar-wishlist-item { min-height: 145px; padding: 18px 10px; }
+  .tihar-wishlist-item > span { width: 58px; height: 58px; border-radius: 18px; }
+  .tihar-wishlist-item svg { width: 28px; height: 28px; }
+  .tihar-payment-card dl { grid-template-columns: 1fr; gap: 2px; }
+  .tihar-payment-card dd { margin-bottom: 8px; }
+  .tihar-payment-card .copy-button { width: 100%; justify-content: center; }
+  .tihar-video-controls { grid-template-columns: 44px minmax(0, 1fr); gap: 8px; }
+  .tihar-visit-note { align-items: flex-start; padding: 16px; }
   .form-card { padding: 18px; }
   .form-grid, .directory-tools { grid-template-columns: 1fr; }
   .contribution-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }

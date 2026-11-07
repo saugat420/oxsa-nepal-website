@@ -3,6 +3,7 @@ import {
   ArrowRight,
   Bone,
   BriefcaseMedical,
+  Cat,
   Cookie,
   ExternalLink,
   Gift,
@@ -10,6 +11,7 @@ import {
   Heart,
   HeartPulse,
   Home,
+  Leaf,
   Mail,
   MapPin,
   Megaphone,
@@ -50,6 +52,7 @@ import {
   VetDirectory,
 } from "./Interactive";
 import { NativeLink as Link } from "./NativeLink";
+import { TiharVideo } from "./TiharVideo";
 
 const workIcons: Record<string, React.ReactNode> = {
   spaying: <Scissors />,
@@ -647,6 +650,226 @@ export function DonatePage() {
               <MessageCircle />
               WhatsApp Us
             </a>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+export function TiharPage() {
+  const bank = siteConfig.donations.banks[0];
+  const visitItems = [
+    { name: "Rice", icon: <Wheat /> },
+    { name: "Lentils", icon: <PackageOpen /> },
+    { name: "Biscuits", icon: <Cookie /> },
+    { name: "Cat food", icon: <Cat /> },
+    { name: "Soya bean", icon: <Leaf /> },
+  ];
+  const mapLink = "https://maps.app.goo.gl/8qxfQy2ZFqWChtYSA";
+
+  return (
+    <>
+      <section className="tihar-hero">
+        <div className="tihar-garland" aria-hidden="true">
+          {Array.from({ length: 18 }, (_, index) => (
+            <span key={index}>🌼</span>
+          ))}
+        </div>
+        <div className="container tihar-hero-inner">
+          <div className="tihar-hero-copy">
+            <p className="tihar-kicker">
+              <span aria-hidden="true">🇳🇵</span> A festival of gratitude,
+              light and loyal friendship
+            </p>
+            <h1>Happy Kukur Tihar!</h1>
+            <p className="tihar-lead">
+              Celebrate Nepal’s beautiful festival by spending time with the
+              dogs and cats at Oxsa Nepal. Your visit, kindness and thoughtful
+              gifts can make their day brighter.
+            </p>
+            <div className="button-row">
+              <a className="button tihar-button" href="#visit-plan">
+                Plan Your Shelter Visit
+              </a>
+              <a
+                className="button button-outline tihar-outline-button"
+                href={mapLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MapPin /> Open in Google Maps
+              </a>
+            </div>
+          </div>
+          <div className="tihar-festival-art" aria-hidden="true">
+            <span className="tihar-art-flower">🌼</span>
+            <span className="tihar-art-dog">🐕</span>
+            <span className="tihar-art-diya">🪔</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="section tihar-wishlist-section">
+        <div className="container">
+          <SectionHead
+            eyebrow="A thoughtful Tihar gift"
+            title="Shelter visit wishlist"
+            intro="If you would like to bring something when you visit, these everyday essentials help us feed and care for the animals."
+          />
+          <div className="tihar-wishlist-grid">
+            {visitItems.map((item) => (
+              <article className="tihar-wishlist-item" key={item.name}>
+                <span>{item.icon}</span>
+                <h3>{item.name}</h3>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section tihar-donation-section">
+        <div className="container">
+          <SectionHead
+            eyebrow="Celebrate with compassion"
+            title="Support the shelter this Tihar"
+            intro="If you cannot bring supplies, you can scan a QR code or use the verified payment details below."
+          />
+          <div className="tihar-payment-grid">
+            <article className="tihar-payment-card tihar-esewa-card">
+              <div className="tihar-payment-heading">
+                <span className="payment-logo">
+                  <Image
+                    src="/images/donations/esewa-icon.webp"
+                    alt=""
+                    width={72}
+                    height={72}
+                  />
+                </span>
+                <div>
+                  <small>Quick donation</small>
+                  <h3>eSewa</h3>
+                </div>
+              </div>
+              <figure className="tihar-payment-qr">
+                <Image
+                  src="/images/donations/esewa-qr.png"
+                  alt="eSewa QR code for Oxsa Nepal Animal Welfare Society"
+                  width={1254}
+                  height={1254}
+                />
+              </figure>
+              <dl>
+                <dt>Name</dt>
+                <dd>{siteConfig.donations.esewa.name}</dd>
+                <dt>Number</dt>
+                <dd>{siteConfig.donations.esewa.number}</dd>
+              </dl>
+              <CopyButton
+                value={siteConfig.donations.esewa.number}
+                label="Copy eSewa number"
+              />
+            </article>
+
+            <article className="tihar-payment-card tihar-bank-card">
+              <div className="tihar-payment-heading">
+                <span className="payment-logo bank-logo">
+                  <Image
+                    src="/images/donations/nabil-logo.png"
+                    alt=""
+                    width={512}
+                    height={512}
+                  />
+                </span>
+                <div>
+                  <small>Bank transfer</small>
+                  <h3>{bank.bank}</h3>
+                </div>
+              </div>
+              <figure className="tihar-payment-qr tihar-bank-qr">
+                <Image
+                  src="/images/donations/nabil-qr.jpeg"
+                  alt="Nabil Bank QR code for Oxsa Nepal donations"
+                  width={1280}
+                  height={1142}
+                />
+              </figure>
+              <dl>
+                <dt>Account</dt>
+                <dd>{bank.accountNumber}</dd>
+                <dt>Name</dt>
+                <dd>{bank.accountName}</dd>
+                <dt>Branch</dt>
+                <dd>{bank.branch}</dd>
+              </dl>
+              <CopyButton
+                value={bank.accountNumber}
+                label="Copy account number"
+              />
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section tihar-location-section" id="visit-plan">
+        <div className="container">
+          <SectionHead
+            eyebrow="Find the shelter"
+            title="Plan your Kukur Tihar visit"
+            intro={`Watch the short route video, then use the map to reach our shelter in ${siteConfig.shelter}. Visiting hours are ${siteConfig.visitingHours}.`}
+          />
+          <div className="tihar-location-grid">
+            <article className="tihar-location-card">
+              <div className="tihar-location-card-heading">
+                <span aria-hidden="true">🎥</span>
+                <div>
+                  <p className="eyebrow">Route video</p>
+                  <h3>How to reach Oxsa Nepal</h3>
+                </div>
+              </div>
+              <TiharVideo />
+              <a
+                className="tihar-fallback-link"
+                href="https://vimeo.com/1244498032?share=copy&fl=sv&fe=ci"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Watch on Vimeo if the video does not load
+              </a>
+            </article>
+
+            <article className="tihar-location-card">
+              <div className="tihar-location-card-heading">
+                <span aria-hidden="true">📍</span>
+                <div>
+                  <p className="eyebrow">Google Maps</p>
+                  <h3>Oxsa Nepal shelter</h3>
+                </div>
+              </div>
+              <div className="tihar-map-frame">
+                <iframe
+                  src="https://www.google.com/maps?q=27.6850124,85.3216234&z=18&output=embed"
+                  title="Map showing the Oxsa Nepal shelter location"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+              <a
+                className="button tihar-map-button"
+                href={mapLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MapPin /> Open Directions
+              </a>
+            </article>
+          </div>
+          <div className="tihar-visit-note">
+            <span aria-hidden="true">🪔</span>
+            <p>
+              Please contact Oxsa Nepal before visiting so the shelter team can
+              welcome you without disrupting feeding, cleaning and animal care.
+            </p>
           </div>
         </div>
       </section>
