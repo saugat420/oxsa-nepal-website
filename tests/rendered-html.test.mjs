@@ -113,6 +113,8 @@ test("Tihar visit page includes wishlist, donations, video and embedded map", as
   assert.match(html, /aria-label="Video position"/);
   assert.match(html, /google\.com\/maps\?q=27\.6850124,85\.3216234/);
   assert.match(html, /maps\.app\.goo\.gl\/8qxfQy2ZFqWChtYSA/);
+  assert.match(html, /9869001241/);
+  assert.doesNotMatch(html, /Watch on Vimeo if the video does not load/);
 });
 
 test("contact, media, and work pages contain the requested updates", async () => {

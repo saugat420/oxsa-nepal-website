@@ -145,7 +145,7 @@ export function HomePage() {
             />
           </div>
           <div className="hero-actions">
-            <div className="button-row">
+            <div className="button-row centered">
               <Link className="button" href="/donate">
                 Donate Now
               </Link>
@@ -702,11 +702,6 @@ export function TiharPage() {
               </a>
             </div>
           </div>
-          <div className="tihar-festival-art" aria-hidden="true">
-            <span className="tihar-art-flower">🌼</span>
-            <span className="tihar-art-dog">🐕</span>
-            <span className="tihar-art-diya">🪔</span>
-          </div>
         </div>
       </section>
 
@@ -828,14 +823,6 @@ export function TiharPage() {
                 </div>
               </div>
               <TiharVideo />
-              <a
-                className="tihar-fallback-link"
-                href="https://vimeo.com/1244498032?share=copy&fl=sv&fe=ci"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Watch on Vimeo if the video does not load
-              </a>
             </article>
 
             <article className="tihar-location-card">
@@ -867,8 +854,7 @@ export function TiharPage() {
           <div className="tihar-visit-note">
             <span aria-hidden="true">🪔</span>
             <p>
-              Please contact Oxsa Nepal before visiting so the shelter team can
-              welcome you without disrupting feeding, cleaning and animal care.
+              Please contact Oxsa Nepal at <a href="tel:+9779869001241">9869001241</a> for any queries.
             </p>
           </div>
         </div>

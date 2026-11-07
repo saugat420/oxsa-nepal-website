@@ -251,11 +251,12 @@ p { margin: 0 0 1.15em; color: var(--muted); }
 .tihar-hero:before { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(125,45,34,.09) 1.2px, transparent 1.2px); background-size: 22px 22px; content: ""; opacity: .45; }
 .tihar-garland { position: absolute; top: -8px; right: -2%; left: -2%; z-index: 2; display: flex; justify-content: space-around; font-size: clamp(1.5rem, 3vw, 2.35rem); filter: drop-shadow(0 5px 4px rgba(105,52,20,.13)); transform: rotate(-1deg); }
 .tihar-garland:after { position: absolute; top: 24px; right: 0; left: 0; z-index: -1; height: 3px; border-radius: 999px; background: #1c7a3e; content: ""; }
-.tihar-hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr); align-items: center; gap: 64px; }
+.tihar-hero-inner { position: relative; z-index: 1; display: flex; justify-content: center; text-align: center; }
+.tihar-hero-copy { width: min(900px, 100%); }
 .tihar-kicker { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px; padding: 8px 14px; border: 1px solid rgba(109,31,34,.13); border-radius: 999px; background: rgba(255,255,255,.74); color: #7c2d25; font-size: .82rem; font-weight: 850; letter-spacing: .04em; }
 .tihar-kicker span { font-size: 1.35rem; }
-.tihar-hero h1 { max-width: 760px; color: #7a231d; font-size: clamp(3rem, 7vw, 6rem); letter-spacing: -.055em; text-shadow: 0 4px 0 rgba(255,255,255,.7); }
-.tihar-lead { max-width: 720px; margin-top: 22px; color: #644b3f; font-size: clamp(1.05rem, 1.8vw, 1.25rem); }
+.tihar-hero h1 { max-width: 760px; margin-inline: auto; color: #7a231d; font-size: clamp(3rem, 7vw, 6rem); letter-spacing: -.055em; text-shadow: 0 4px 0 rgba(255,255,255,.7); }
+.tihar-lead { max-width: 720px; margin: 22px auto 0; color: #644b3f; font-size: clamp(1.05rem, 1.8vw, 1.25rem); }
 .tihar-button { border-color: #e54b1d; background: #e54b1d; }
 .tihar-button:hover { border-color: #bf3611; background: #bf3611; }
 .tihar-outline-button { border-color: rgba(109,31,34,.22); background: rgba(255,255,255,.76); color: #69251f; }
@@ -313,6 +314,7 @@ p { margin: 0 0 1.15em; color: var(--muted); }
 .tihar-visit-note { display: flex; align-items: center; gap: 14px; margin-top: 26px; padding: 18px 22px; border: 1px solid #edd093; border-radius: 18px; background: #fff3cf; }
 .tihar-visit-note > span { font-size: 2rem; }
 .tihar-visit-note p { margin: 0; color: #684536; }
+.tihar-visit-note a { color: #7a231d; font-weight: 850; text-decoration: underline; }
 
 .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 25px; }
 .filter-row button { padding: 7px 16px; border: 1px solid var(--line-strong); border-radius: 999px; background: #fff; cursor: pointer; }
