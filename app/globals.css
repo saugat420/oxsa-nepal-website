@@ -253,6 +253,7 @@ p { margin: 0 0 1.15em; color: var(--muted); }
 .tihar-garland:after { position: absolute; top: 24px; right: 0; left: 0; z-index: -1; height: 3px; border-radius: 999px; background: #1c7a3e; content: ""; }
 .tihar-hero-inner { position: relative; z-index: 1; display: flex; justify-content: center; text-align: center; }
 .tihar-hero-copy { width: min(900px, 100%); }
+.tihar-hero-copy .button-row { justify-content: center; }
 .tihar-kicker { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px; padding: 8px 14px; border: 1px solid rgba(109,31,34,.13); border-radius: 999px; background: rgba(255,255,255,.74); color: #7c2d25; font-size: .82rem; font-weight: 850; letter-spacing: .04em; }
 .tihar-kicker span { font-size: 1.35rem; }
 .tihar-hero h1 { max-width: 760px; margin-inline: auto; color: #7a231d; font-size: clamp(3rem, 7vw, 6rem); letter-spacing: -.055em; text-shadow: 0 4px 0 rgba(255,255,255,.7); }
